@@ -1,0 +1,117 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "Joystick",
+            "id": "7062d815-dac6-42ed-a625-881725754b70",
+            "actions": [
+                {
+                    "name": "LX",
+                    "type": "Value",
+                    "id": "215f6bfc-ef30-449c-be6e-9700dbefec38",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LY",
+                    "type": "Value",
+                    "id": "db851613-7f03-4a3b-a307-c79958cf9de9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RX",
+                    "type": "Value",
+                    "id": "0fb124fa-f407-4352-9f7f-28fa2b23435a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RY",
+                    "type": "Value",
+                    "id": "4be24c09-a00f-4f9f-9dfa-671c6a4f62fd",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2d015549-19e4-4769-bdb0-5043f8c95922",
+                    "path": "<HID::Logitech Logitech Attack 3>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff58107a-95b7-4f8c-9f61-259282b3763c",
+                    "path": "<HID::Logitech Logitech Attack 3>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "LX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6046733-f0f1-4727-9fc7-e3627d18fd72",
+                    "path": "<AndroidJoystick>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bef5fbb-addd-4db7-8150-4175abd067f0",
+                    "path": "<AndroidJoystick>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "RY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "New control scheme",
+            "bindingGroup": "New control scheme",
+            "devices": [
+                {
+                    "devicePath": "<HID::Logitech Logitech Attack 3>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Joystick",
+            "bindingGroup": "Joystick",
+            "devices": [
+                {
+                    "devicePath": "<HID::Logitech Logitech Attack 3>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
