@@ -9,6 +9,10 @@ public class SpaceController : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float accelerationFactor;
+    [SerializeField]
+    private float accelerationUpFactor;
+    [SerializeField]
+    private float deadzone;
 
     private MechaParts mecha;
     private Rigidbody rb;
@@ -26,7 +30,22 @@ public class SpaceController : MonoBehaviour
 
     private void HandleMovement()
     {
-        rb.AddForceAtPosition(mecha.leftThruster.transform.forward * JoystickExpose.instance.LYAxis * accelerationFactor, new Vector3(mecha.leftThruster.transform.position.x, 0, mecha.leftThruster.transform.position.z));
-        rb.AddForceAtPosition(mecha.rightThruster.transform.forward * JoystickExpose.instance.LYAxis * accelerationFactor, new Vector3(mecha.rightThruster.transform.position.x, 0, mecha.leftThruster.transform.position.z));
+        float leftY = JoystickExpose.instance.LYAxis;
+        float leftX = JoystickExpose.instance.RYAxis;
+        float downThrust = JoystickExpose.instance.LeftPedaleAxis;
+        float upThrust = JoystickExpose.instance.RightPedaleAxis;
+
+        // Want straight forward
+        if(Mathf.Abs(leftX - leftY) < deadzone)
+        {
+            leftX = leftY = (leftX + leftY) / 2;
+        }
+
+        if(rb.velocity.magnitude <= maxSpeed) {
+            rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
+            rb.AddForceAtPosition(mecha.rightThruster.transform.forward * leftX * accelerationFactor, mecha.rightThruster.transform.position);
+        }
+
+        rb.AddForce(transform.up * (-downThrust + upThrust) * accelerationUpFactor);
     }
 }
