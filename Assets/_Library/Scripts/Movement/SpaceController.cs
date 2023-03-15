@@ -5,10 +5,23 @@ using UnityEngine;
 public class SpaceController : MonoBehaviour
 {
     [Header("Parameters")]
-    [SerializeField]
-    private float maxSpeed;
+
+    [Header("Acceleration Parameters")]
     [SerializeField]
     private float accelerationFactor;
+    [SerializeField]
+    private float accelerationUpFactor;
+    [SerializeField]
+    private float accelerationStrafFactor;
+    [SerializeField]
+    private float accelerationTorqueFactor;
+
+    [Header("Other Parameters")]
+
+    [SerializeField]
+    private float deadzone;
+    [SerializeField]
+    private float maxSpeed;
 
     private MechaParts mecha;
     private Rigidbody rb;
@@ -22,11 +35,46 @@ public class SpaceController : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+        HandleRotation();
     }
 
     private void HandleMovement()
     {
-        rb.AddForceAtPosition(mecha.leftThruster.transform.forward * JoystickExpose.instance.LYAxis * accelerationFactor, new Vector3(mecha.leftThruster.transform.position.x, 0, mecha.leftThruster.transform.position.z));
-        rb.AddForceAtPosition(mecha.rightThruster.transform.forward * JoystickExpose.instance.LYAxis * accelerationFactor, new Vector3(mecha.rightThruster.transform.position.x, 0, mecha.leftThruster.transform.position.z));
+        float leftY = JoystickExpose.instance.LYAxis;
+        float rightY = JoystickExpose.instance.RYAxis;
+        float leftX = JoystickExpose.instance.LXAxis;
+
+        float downThrust = JoystickExpose.instance.LeftPedaleAxis;
+        float upThrust = JoystickExpose.instance.RightPedaleAxis;
+
+        // Want straight forward
+        if(Mathf.Abs(rightY - leftY) < deadzone)
+        {
+            leftY = rightY = (rightY + leftY) / 2;
+        }
+
+        if(rb.velocity.magnitude <= maxSpeed) {
+            rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
+            rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
+
+            rb.AddForce(transform.right * leftX * accelerationStrafFactor);
+        }
+
+        rb.AddForce(transform.up * (-downThrust + upThrust) * accelerationUpFactor);
+    }
+
+    private void HandleRotation()
+    {
+        float rightX = JoystickExpose.instance.RXAxis;
+        float ZTilt = JoystickExpose.instance.ZTilt;
+
+        if(!mecha.isGrounded && Mathf.Abs(rightX) >= deadzone)
+        {
+            rb.AddTorque(transform.right * accelerationTorqueFactor * rightX);
+        }
+        if (!mecha.isGrounded && Mathf.Abs(ZTilt) >= deadzone)
+        {
+            rb.AddTorque(transform.forward * accelerationTorqueFactor * ZTilt);
+        }
     }
 }

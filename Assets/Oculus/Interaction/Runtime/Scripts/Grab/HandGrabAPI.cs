@@ -37,6 +37,13 @@ namespace Oculus.Interaction.GrabAPI
         [SerializeField, Interface(typeof(IHand))]
         private MonoBehaviour _hand;
 
+        public bool inTarget = false;
+
+        public void SetInTarget(bool value)
+        {
+            inTarget = value;
+        }
+
         public IHand Hand { get; private set; }
 
         [SerializeField, Interface(typeof(IHmd)), Optional]
@@ -129,11 +136,13 @@ namespace Oculus.Interaction.GrabAPI
         public bool IsHandPalmGrabbing(in GrabbingRule fingers)
         {
             HandFingerFlags palmFingers = HandPalmGrabbingFingers();
+            
             return IsSustainingGrab(fingers, palmFingers);
         }
 
         public bool IsSustainingGrab(in GrabbingRule fingers, HandFingerFlags grabbingFingers)
         {
+            //return inTarget;
             bool anyHolding = false;
             for (int i = 0; i < Constants.NUM_FINGERS; i++)
             {
@@ -161,7 +170,6 @@ namespace Oculus.Interaction.GrabAPI
                     anyHolding |= isFingerGrabbing;
                 }
             }
-
             return anyHolding;
         }
 
