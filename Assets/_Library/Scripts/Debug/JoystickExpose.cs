@@ -23,6 +23,10 @@ public class JoystickExpose : MonoBehaviour
     [Tooltip("The left pedal (0, 1)")]
     public float LeftPedaleAxis;
 
+    [Header("Special")]
+    [Tooltip("Button for Z tilt")]
+    public float ZTilt;
+
 
     private PlayerInput input;
 
@@ -74,5 +78,10 @@ public class JoystickExpose : MonoBehaviour
             LeftPedaleAxis = input.actions["RPedal"].ReadValue<float>();
         else
             RightPedaleAxis = LeftPedaleAxis = 0;
+    }
+
+    public void OnZTilt()
+    {
+        ZTilt = input.actions["ZTilt"].ReadValue<float>();
     }
 }

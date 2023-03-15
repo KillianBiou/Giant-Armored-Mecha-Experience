@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ZTilt",
+                    "type": "Value",
+                    "id": "95c6bc71-3dcf-41dc-9af3-37395d56f39d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -124,6 +133,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LPedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "166ecdfa-89e2-493b-bdc3-9bfd291ec108",
+                    "path": "<HID::Logitech Logitech Dual Action>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "ZTilt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
