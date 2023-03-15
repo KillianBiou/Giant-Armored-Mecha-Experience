@@ -289,20 +289,6 @@
                 "m_Node": {
                     "m_Id": "a39b43db87f24e968c791a4691c7222b"
                 },
-                "m_SlotId": 5
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "80a1745ed8534302bdce32901726ee2b"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "a39b43db87f24e968c791a4691c7222b"
-                },
                 "m_SlotId": 7
             },
             "m_InputSlot": {
@@ -540,7 +526,7 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10200,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
         "preventRotation": false
@@ -752,7 +738,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 2.049999952316284,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -852,7 +838,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "21fe49e702ea4a6bb29b0500d44ae007",
     "m_Id": 0,
-    "m_DisplayName": "Mask Map",
+    "m_DisplayName": "Metlic Smoothness Map",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1073,10 +1059,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1290.9998779296875,
-            "y": 47.000003814697269,
-            "width": 104.9998779296875,
-            "height": 34.0000114440918
+            "x": -1192.0,
+            "y": 213.0,
+            "width": 105.0,
+            "height": 34.00001525878906
         }
     },
     "m_Slots": [
@@ -2359,10 +2345,10 @@
     "m_Guid": {
         "m_GuidSerialized": "e7908f55-382b-4e00-9dbc-a9700368e6dc"
     },
-    "m_Name": "Mask Map",
+    "m_Name": "Metlic Smoothness Map",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Mask Map",
-    "m_DefaultReferenceName": "_Mask_Map",
+    "m_RefNameGeneratedByDisplayName": "Metlic Smoothness Map",
+    "m_DefaultReferenceName": "_Metlic_Smoothness_Map",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2658,10 +2644,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1181.0,
-            "y": 260.0,
+            "x": -1350.0,
+            "y": 281.9999694824219,
             "width": 208.0,
-            "height": 326.00006103515627
+            "height": 326.0000305175781
         }
     },
     "m_Slots": [
@@ -2699,10 +2685,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1518.0,
-            "y": 105.0000228881836,
-            "width": 128.0001220703125,
-            "height": 93.99999237060547
+            "x": -1533.0,
+            "y": 100.0,
+            "width": 128.0,
+            "height": 93.99998474121094
         }
     },
     "m_Slots": [
@@ -2734,10 +2720,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1148.0001220703125,
-            "y": -375.0,
-            "width": 141.00006103515626,
-            "height": 33.999969482421878
+            "x": -1160.0,
+            "y": -456.0,
+            "width": 140.99993896484376,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -2787,10 +2773,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -868.0,
-            "y": 61.0,
+            "x": -908.0,
+            "y": 48.99998092651367,
             "width": 118.0,
-            "height": 34.0
+            "height": 34.0000114440918
         }
     },
     "m_Slots": [
@@ -2874,7 +2860,7 @@
     "m_ShaderOutputName": "True",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 1.0,
+        "x": 0.0,
         "y": 1.0,
         "z": 1.0,
         "w": 1.0
@@ -3081,9 +3067,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1982.0001220703125,
-            "y": -88.0000228881836,
-            "width": 124.0001220703125,
+            "x": -1936.0,
+            "y": -0.0000034207914723083378,
+            "width": 124.0,
             "height": 173.00001525878907
         }
     },
@@ -3160,10 +3146,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -549.0000610351563,
-            "y": 685.0,
-            "width": 138.00006103515626,
-            "height": 33.99993896484375
+            "x": -586.0000610351563,
+            "y": 689.0,
+            "width": 202.00003051757813,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -3203,7 +3189,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"6f62dbb8fce29e04fb0a99913642d116\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3497,10 +3483,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1371.0,
-            "y": 126.00000762939453,
+            "x": -1357.0,
+            "y": 129.0,
             "width": 126.0,
-            "height": 117.99999237060547
+            "height": 118.00001525878906
         }
     },
     "m_Slots": [
