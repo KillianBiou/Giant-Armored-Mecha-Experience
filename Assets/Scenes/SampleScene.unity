@@ -1084,6 +1084,7 @@ MonoBehaviour:
   accelerationStrafFactor: 7
   accelerationTorqueFactor: 5
   deadzone: 0.3
+  deadzoneTilt: 0.5
   maxSpeed: 10
 --- !u!114 &345081281
 MonoBehaviour:
@@ -2399,8 +2400,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LXAxis: 0
   LYAxis: 0
+  L2Button: 0
   RXAxis: 0
   RYAxis: 0
+  R2Button: 0
   Pedals: 0
   ZTilt: 0
 --- !u!1 &735200441
