@@ -15,18 +15,18 @@ public class JoystickMove : MonoBehaviour
     private GameObject handle;
 
     [SerializeField]
-    private Side side;
+    public Side side;
 
     // Update is called once per frame
     void Update()
     {
         if(side == Side.LEFT)
         {
-            handle.transform.rotation = Quaternion.Euler(Vector3.left * JoystickExpose.instance.LYAxis * maxAngle + Vector3.forward * JoystickExpose.instance.LXAxis * maxAngle);
+            handle.transform.rotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + Vector3.forward * InputExpose.instance.LXAxis * maxAngle);
         }
         if (side == Side.RIGHT)
         {
-            handle.transform.rotation = Quaternion.Euler(Vector3.left * JoystickExpose.instance.RYAxis * maxAngle + Vector3.forward * JoystickExpose.instance.RXAxis * maxAngle);
+            handle.transform.rotation = Quaternion.Euler(Vector3.left * InputExpose.instance.RYAxis * maxAngle + Vector3.forward * InputExpose.instance.RXAxis * maxAngle);
         }
     }
 }
