@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class HandleCallback : MonoBehaviour
 {
+    [SerializeField]
+    private bool enter;
+
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<DebugPrint2>().EnterTrigger(other);
+        if(enter && other.transform.CompareTag("Hand"))
+            transform.parent.GetComponentInParent<DebugPrint2>().EnterTrigger(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInParent<DebugPrint2>().ExitTrigger(other);
+        if(!enter && other.transform.CompareTag("Hand"))
+            transform.parent.GetComponentInParent<DebugPrint2>().ExitTrigger(other);
     }
 }

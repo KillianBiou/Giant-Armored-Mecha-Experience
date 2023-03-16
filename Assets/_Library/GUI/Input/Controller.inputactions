@@ -42,18 +42,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RPedal",
+                    "name": "Pedals",
                     "type": "Value",
                     "id": "e73b699d-9612-4b0f-93e0-69bd1d526762",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "LPedal",
-                    "type": "Value",
-                    "id": "add349e7-96a9-4422-94f2-405333d7360d",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -117,22 +108,11 @@
                 {
                     "name": "",
                     "id": "51ac9817-9046-4fb2-8a4d-1734cfad134e",
-                    "path": "<HID::Logitech Logitech Dual Action>/rz",
+                    "path": "<HID::Enzo PC-PS2 RW>/stick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "RPedal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a8f52b2a-542e-48a7-ae3d-738838b6f1e4",
-                    "path": "<HID::Logitech Logitech Dual Action>/rz",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LPedal",
+                    "action": "Pedals",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -173,6 +153,11 @@
                 },
                 {
                     "devicePath": "<HID::Logitech Logitech Dual Action>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<HID::Enzo PC-PS2 RW>",
                     "isOptional": false,
                     "isOR": false
                 }
