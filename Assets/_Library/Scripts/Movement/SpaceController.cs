@@ -52,12 +52,13 @@ public class SpaceController : MonoBehaviour
             rightY = leftY;
 
         // Want straight forward
-        if(Mathf.Abs(rightY - leftY) < deadzone)
+        if (Mathf.Abs(rightY - leftY) < deadzone)
         {
             leftY = rightY = (rightY + leftY) / 2;
         }
 
-        if(rb.velocity.magnitude <= maxSpeed) {
+        if (rb.velocity.magnitude <= maxSpeed)
+        {
             rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
             rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
 
