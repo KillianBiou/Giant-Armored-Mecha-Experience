@@ -44,8 +44,7 @@ public class SpaceController : MonoBehaviour
         float rightY = JoystickExpose.instance.RYAxis;
         float leftX = JoystickExpose.instance.LXAxis;
 
-        float downThrust = JoystickExpose.instance.LeftPedaleAxis;
-        float upThrust = JoystickExpose.instance.RightPedaleAxis;
+        float verticalThrust = JoystickExpose.instance.Pedals;
 
         // Want straight forward
         if(Mathf.Abs(rightY - leftY) < deadzone)
@@ -60,7 +59,7 @@ public class SpaceController : MonoBehaviour
             rb.AddForce(transform.right * leftX * accelerationStrafFactor);
         }
 
-        rb.AddForce(transform.up * (-downThrust + upThrust) * accelerationUpFactor);
+        rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
     }
 
     private void HandleRotation()

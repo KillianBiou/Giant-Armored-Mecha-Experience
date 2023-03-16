@@ -223,7 +223,7 @@ namespace Oculus.Interaction.Input
                     _ovrHand.GetFingerConfidence(ovrFingerIdx) == OVRHand.TrackingConfidence.High;
                 _handDataAsset.IsFingerHighConfidence[fingerIdx] = isHighConfidence;
 
-                float fingerPinchStrength = _ovrHand.GetFingerPinchStrength(ovrFingerIdx);
+                float fingerPinchStrength = _ovrHand.GetFingerPinchStrength(ovrFingerIdx) * 5;
                 _handDataAsset.FingerPinchStrength[fingerIdx] = fingerPinchStrength;
             }
 

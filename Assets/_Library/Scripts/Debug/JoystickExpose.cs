@@ -18,10 +18,8 @@ public class JoystickExpose : MonoBehaviour
     public float RYAxis;
 
     [Header("Pedals")]
-    [Tooltip("The right pedal (0, 1)")]
-    public float RightPedaleAxis;
-    [Tooltip("The left pedal (0, 1)")]
-    public float LeftPedaleAxis;
+    [Tooltip("The pedals value (Left -1, Right 1)")]
+    public float Pedals;
 
     [Header("Special")]
     [Tooltip("Button for Z tilt")]
@@ -58,26 +56,9 @@ public class JoystickExpose : MonoBehaviour
         RYAxis = input.actions["RY"].ReadValue<float>();
     }
 
-    public void OnRPedal()
+    public void OnPedals()
     {
-        //RightPedaleAxis = input.actions["RPedal"].ReadValue<float>();
-        if(input.actions["RPedal"].ReadValue<float>() <= -0.1)
-            RightPedaleAxis = Mathf.Abs(input.actions["RPedal"].ReadValue<float>());
-        else if (input.actions["RPedal"].ReadValue<float>() >= 0.1)
-            LeftPedaleAxis = input.actions["RPedal"].ReadValue<float>();
-        else
-            RightPedaleAxis = LeftPedaleAxis = 0;
-    }
-
-    public void OnLPedal()
-    {
-        //LeftPedaleAxis = input.actions["LPedal"].ReadValue<float>();
-        if (input.actions["RPedal"].ReadValue<float>() <= -0.1)
-            RightPedaleAxis = Mathf.Abs(input.actions["RPedal"].ReadValue<float>());
-        else if (input.actions["RPedal"].ReadValue<float>() >= 0.1)
-            LeftPedaleAxis = input.actions["RPedal"].ReadValue<float>();
-        else
-            RightPedaleAxis = LeftPedaleAxis = 0;
+        Pedals = input.actions["Pedals"].ReadValue<float>();
     }
 
     public void OnZTilt()
