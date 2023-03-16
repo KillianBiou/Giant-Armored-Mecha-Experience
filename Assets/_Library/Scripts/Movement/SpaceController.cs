@@ -44,23 +44,23 @@ public class SpaceController : MonoBehaviour
         float rightY = JoystickExpose.instance.RYAxis;
         float leftX = JoystickExpose.instance.LXAxis;
 
-        float downThrust = JoystickExpose.instance.LeftPedaleAxis;
-        float upThrust = JoystickExpose.instance.RightPedaleAxis;
+        float verticalThrust = JoystickExpose.instance.Pedals;
 
         // Want straight forward
-        if(Mathf.Abs(rightY - leftY) < deadzone)
+        if (Mathf.Abs(rightY - leftY) < deadzone)
         {
             leftY = rightY = (rightY + leftY) / 2;
         }
 
-        if(rb.velocity.magnitude <= maxSpeed) {
+        if (rb.velocity.magnitude <= maxSpeed)
+        {
             rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
             rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
 
             rb.AddForce(transform.right * leftX * accelerationStrafFactor);
         }
 
-        rb.AddForce(transform.up * (-downThrust + upThrust) * accelerationUpFactor);
+        rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
     }
 
     private void HandleRotation()
@@ -68,7 +68,7 @@ public class SpaceController : MonoBehaviour
         float rightX = JoystickExpose.instance.RXAxis;
         float ZTilt = JoystickExpose.instance.ZTilt;
 
-        if(!mecha.isGrounded && Mathf.Abs(rightX) >= deadzone)
+        if (!mecha.isGrounded && Mathf.Abs(rightX) >= deadzone)
         {
             rb.AddTorque(transform.right * accelerationTorqueFactor * rightX);
         }
