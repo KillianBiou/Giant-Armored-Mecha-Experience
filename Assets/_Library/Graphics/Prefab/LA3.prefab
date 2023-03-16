@@ -546,6 +546,8 @@ GameObject:
   - component: {fileID: 7074821160077116791}
   - component: {fileID: 2084777588}
   - component: {fileID: 898021467}
+  - component: {fileID: 2906099270146767853}
+  - component: {fileID: 7432056433123621511}
   m_Layer: 0
   m_Name: LA3
   m_TagString: Untagged
@@ -653,6 +655,52 @@ MonoBehaviour:
   maxAngle: 15
   handle: {fileID: 8731965295575494813}
   side: 1
+--- !u!114 &2906099270146767853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731965296509707426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 93f933e52c5b5934380c9c804d3bdbdf,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Joystick
+  m_DefaultActionMap: Joystick
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &7432056433123621511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731965296509707426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f657d02ba81864eabe579dc1d31c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XAxis: 0
+  YAxis: 0
+  Pedals: 0
 --- !u!1001 &828700482
 PrefabInstance:
   m_ObjectHideFlags: 0
