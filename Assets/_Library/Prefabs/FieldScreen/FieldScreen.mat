@@ -65,7 +65,10 @@ Material:
     - _down: 1
     - _rotation: -1.25
     - _up: 1
-    m_Colors: []
+    - _useCube: 0
+    m_Colors:
+    - _offset: {r: 0, g: 0, b: 0.03, a: 0}
+    - _scaling: {r: 12.39, g: 11.04, b: 3.82, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5774516684711750299
 MonoBehaviour:
