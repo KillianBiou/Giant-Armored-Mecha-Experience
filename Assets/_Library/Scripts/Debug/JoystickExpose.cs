@@ -64,7 +64,6 @@ public class JoystickExpose : MonoBehaviour
 
     public void On_3()
     {
-        Debug.Log(input.actions["3"].ReadValue<float>());
         ButtonThree = input.actions["3"].ReadValue<float>() == 1 ? true : false;
         SynchronizeValue();
     }
