@@ -22,11 +22,11 @@ public class JoystickMove : MonoBehaviour
     {
         if(side == Side.LEFT)
         {
-            handle.transform.rotation = Quaternion.Euler(Vector3.left * JoystickExpose.instance.LYAxis * maxAngle + Vector3.forward * JoystickExpose.instance.LXAxis * maxAngle + transform.rotation.eulerAngles);
+            handle.transform.rotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + Vector3.forward * InputExpose.instance.LXAxis * maxAngle + transform.rotation.eulerAngles);
         }
         if (side == Side.RIGHT)
         {
-            handle.transform.rotation = Quaternion.Euler(Vector3.left * JoystickExpose.instance.RYAxis * maxAngle + Vector3.forward * JoystickExpose.instance.RXAxis * maxAngle + transform.rotation.eulerAngles);
+            handle.transform.rotation = Quaternion.Euler(Vector3.left * InputExpose.instance.RYAxis * maxAngle + Vector3.forward * InputExpose.instance.RXAxis * maxAngle + transform.rotation.eulerAngles);
         }
     }
 }

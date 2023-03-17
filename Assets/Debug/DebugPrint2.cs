@@ -37,6 +37,7 @@ public class DebugPrint2: MonoBehaviour
 
     public void EnterTrigger(Collider other)
     {
+        Debug.Log("Entered");
         if (!handReference)
         {
             Transform hand = other.transform.parent.parent.parent.parent.parent;
