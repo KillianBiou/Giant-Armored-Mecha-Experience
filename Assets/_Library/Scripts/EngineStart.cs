@@ -18,23 +18,19 @@ public class EngineStart : MonoBehaviour
     private Slider initbar;
 
     [SerializeField]
+    private Image bg;
+
+    [SerializeField]
     private GameObject Menu;
 
-    [SerializeField]
-    private GameObject TpsScreen;
-    private Material m_TpsScreen;
-    private float fadein = 1;
 
     [SerializeField]
-    private GameObject FieldScreen;
-    private Material m_FieldScreen;
+    private InitializingControlls initctrl;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        m_TpsScreen = TpsScreen.GetComponent<Renderer>().materials[0];
-        m_FieldScreen = FieldScreen.GetComponent<Renderer>().materials[0];
         StartCoroutine(BootSec());
     }
 
@@ -44,6 +40,7 @@ public class EngineStart : MonoBehaviour
 
     IEnumerator BootSec()
     {
+        bootScreen.SetActive(true);
         yield return BootScrolling();
 
         bootScreen.SetActive(false);
@@ -54,24 +51,15 @@ public class EngineStart : MonoBehaviour
         yield return LoadOS();
 
         OsStart.SetActive(false);
-        Menu.SetActive(true);
 
+        yield return FadeBG();
 
         yield return new WaitForSeconds(0.4f);
-        fadein = 1.1f;
-        yield return DrawGrid();
-        yield return new WaitForSeconds(0.2f);
-        yield return FadeInTPS();
-        yield return new WaitForSeconds(0.5f);
 
+        Menu.SetActive(true);
 
-
-        fadein = 1;
-        yield return FadeIn();
-        fadein = 0;
-        yield return FadeCompensate();
-
-
+        if(initctrl != null)
+            initctrl.enabled = true;
 
         yield return null;
     }
@@ -131,55 +119,14 @@ public class EngineStart : MonoBehaviour
         yield return null;
     }
 
-
-
-    IEnumerator DrawGrid()
+    IEnumerator FadeBG()
     {
-        while (fadein > 0)
+        while (bg.color.r < 1)
         {
-            fadein -= Time.deltaTime * 1f;
-            m_TpsScreen.SetFloat("_Grid", fadein);
-            yield return new WaitForEndOfFrame();
+            bg.color = new Color(bg.color.r + 0.05f, bg.color.r + 0.05f, bg.color.r + 0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
         yield return null;
     }
 
-    IEnumerator FadeInTPS()
-    {
-        while (fadein < 1)
-        {
-            fadein += Time.deltaTime * 0.5f;
-            m_TpsScreen.SetFloat("_Scanner", fadein);
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
-    }
-
-
-
-
-
-
-
-    IEnumerator FadeIn()
-    {
-        while (fadein > -1)
-        {
-            fadein -= Time.deltaTime * 1f;
-            m_FieldScreen.SetFloat("_down", fadein);
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
-    }
-
-    IEnumerator FadeCompensate()
-    {
-        while (fadein < 0.5f)
-        {
-            fadein += Time.deltaTime * 0.5f;
-            m_FieldScreen.SetFloat("_compensation", fadein);
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
-    }
 }
