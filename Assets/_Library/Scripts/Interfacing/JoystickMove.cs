@@ -15,7 +15,7 @@ public class JoystickMove : MonoBehaviour
     private GameObject handle;
 
     [SerializeField]
-    private Side side;
+    public Side side;
 
     // Update is called once per frame
     void Update()

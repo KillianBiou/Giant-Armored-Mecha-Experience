@@ -6,7 +6,7 @@
             "id": "7062d815-dac6-42ed-a625-881725754b70",
             "actions": [
                 {
-                    "name": "LX",
+                    "name": "X",
                     "type": "Value",
                     "id": "215f6bfc-ef30-449c-be6e-9700dbefec38",
                     "expectedControlType": "Axis",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LY",
+                    "name": "Y",
                     "type": "Value",
                     "id": "db851613-7f03-4a3b-a307-c79958cf9de9",
                     "expectedControlType": "Axis",
@@ -24,36 +24,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RX",
+                    "name": "2",
                     "type": "Value",
-                    "id": "0fb124fa-f407-4352-9f7f-28fa2b23435a",
-                    "expectedControlType": "Axis",
+                    "id": "0085a59c-c528-44de-8bc0-493eb29ae0de",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RY",
-                    "type": "Value",
-                    "id": "4be24c09-a00f-4f9f-9dfa-671c6a4f62fd",
-                    "expectedControlType": "Axis",
+                    "name": "ChangePlayer",
+                    "type": "Button",
+                    "id": "4bc0442d-775e-45b5-9cc1-c628b65f0229",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pedals",
                     "type": "Value",
-                    "id": "e73b699d-9612-4b0f-93e0-69bd1d526762",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ZTilt",
-                    "type": "Value",
-                    "id": "95c6bc71-3dcf-41dc-9af3-37395d56f39d",
+                    "id": "db29860d-3546-418a-b00e-1592ceb14ddf",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -68,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "LY",
+                    "action": "Y",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -79,51 +70,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "LX",
+                    "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d6046733-f0f1-4727-9fc7-e3627d18fd72",
-                    "path": "<HID::Logitech Logitech Dual Action>/stick/x",
+                    "id": "0651fe4f-7c23-41d4-a446-5ec167011042",
+                    "path": "<HID::Logitech Logitech Attack 3>/button8",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "RX",
+                    "groups": "",
+                    "action": "ChangePlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5bef5fbb-addd-4db7-8150-4175abd067f0",
-                    "path": "<HID::Logitech Logitech Dual Action>/stick/y",
+                    "id": "237d5d41-bb1b-46bc-95da-433dd62db083",
+                    "path": "<HID::Logitech Logitech Attack 3>/button9",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "RY",
+                    "groups": "",
+                    "action": "ChangePlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "51ac9817-9046-4fb2-8a4d-1734cfad134e",
+                    "id": "43ae1d7e-9067-4bdf-a2d2-0bd123b3bb3d",
                     "path": "<HID::Enzo PC-PS2 RW>/stick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "",
                     "action": "Pedals",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "166ecdfa-89e2-493b-bdc3-9bfd291ec108",
-                    "path": "<HID::Logitech Logitech Dual Action>/z",
+                    "id": "741674cf-b8ea-4f26-a6a2-93dfb709ca5e",
+                    "path": "<HID::Logitech Logitech Attack 3>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "ZTilt",
+                    "groups": "",
+                    "action": "2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -131,17 +122,6 @@
         }
     ],
     "controlSchemes": [
-        {
-            "name": "New control scheme",
-            "bindingGroup": "New control scheme",
-            "devices": [
-                {
-                    "devicePath": "<HID::Logitech Logitech Attack 3>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
         {
             "name": "Joystick",
             "bindingGroup": "Joystick",

@@ -6,63 +6,95 @@ using UnityEngine.InputSystem;
 public class JoystickExpose : MonoBehaviour
 {
     [Header("Left Joystick")]
-    [Tooltip("X Axis of the left joystick (-1, 1)")]
-    public float LXAxis;
-    [Tooltip("Y Axis of the left joystick (-1, 1)")]
-    public float LYAxis;
+    [Tooltip("X Axis (-1, 1)")]
+    public float XAxis;
+    [Tooltip("Y Axis (-1, 1)")]
+    public float YAxis;
 
-    [Header("Right Joystick")]
-    [Tooltip("X Axis of the right joystick (-1, 1)")]
-    public float RXAxis;
-    [Tooltip("Y Axis of the right joystick (-1, 1)")]
-    public float RYAxis;
+    [Header("Buttons")]
+    public bool ButtonTwo;
 
-    [Header("Pedals")]
-    [Tooltip("The pedals value (Left -1, Right 1)")]
     public float Pedals;
-
-    [Header("Special")]
-    [Tooltip("Button for Z tilt")]
-    public float ZTilt;
-
 
     private PlayerInput input;
 
+    private bool playerOne;
+
     public static JoystickExpose instance;
+
+
 
     private void Start()
     {
         input = GetComponent<PlayerInput>();
         instance = this;
+        playerOne = PlayerInputManager.instance.playerCount == 1 ? true : false;
+
+        if (playerOne)
+            GetComponent<JoystickMove>().side = Side.LEFT;
+        else
+            GetComponent<JoystickMove>().side = Side.RIGHT;
     }
 
-    public void OnLX()
+    public void OnX()
     {
-        LXAxis = input.actions["LX"].ReadValue<float>();
+        XAxis = input.actions["X"].ReadValue<float>();
+        SynchronizeValue();
     }
 
-    public void OnLY()
+    public void OnY()
     {
-        LYAxis = input.actions["LY"].ReadValue<float>();
-    }
-
-    public void OnRX()
-    {
-        RXAxis = input.actions["RX"].ReadValue<float>();
-    }
-
-    public void OnRY()
-    {
-        RYAxis = input.actions["RY"].ReadValue<float>();
+        YAxis = input.actions["Y"].ReadValue<float>();
+        SynchronizeValue();
     }
 
     public void OnPedals()
     {
         Pedals = input.actions["Pedals"].ReadValue<float>();
+        SynchronizeValue();
     }
 
-    public void OnZTilt()
+    public void On_2()
     {
-        ZTilt = input.actions["ZTilt"].ReadValue<float>();
+        ButtonTwo = input.actions["2"].ReadValue<float>() == 1 ? true : false;
+        SynchronizeValue();
+    }
+
+    public void OnChangePlayer()
+    {
+        if(PlayerInputManager.instance.playerCount == 2) {
+            foreach (JoystickExpose jp in GameObject.FindObjectsOfType<JoystickExpose>())
+            {
+                jp.ChangePlayer();
+            }
+        }
+    }
+
+    private void SynchronizeValue()
+    {
+        if(playerOne)
+        {
+            InputExpose.instance.LXAxis = XAxis;
+            InputExpose.instance.LYAxis = YAxis;
+            InputExpose.instance.Pedals = Pedals;
+            InputExpose.instance.L2Button = ButtonTwo;
+        }
+        else
+        {
+            InputExpose.instance.RXAxis = XAxis;
+            InputExpose.instance.RYAxis = YAxis;
+            InputExpose.instance.Pedals = Pedals;
+            InputExpose.instance.R2Button = ButtonTwo;
+        }
+    }
+
+    public void ChangePlayer()
+    {
+        playerOne = !playerOne;
+
+        if (GetComponent<JoystickMove>().side == Side.LEFT)
+            GetComponent<JoystickMove>().side = Side.RIGHT;
+        else
+            GetComponent<JoystickMove>().side = Side.LEFT;
     }
 }

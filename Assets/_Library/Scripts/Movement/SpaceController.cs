@@ -21,6 +21,8 @@ public class SpaceController : MonoBehaviour
     [SerializeField]
     private float deadzone;
     [SerializeField]
+    private float deadzoneTilt;
+    [SerializeField]
     private float maxSpeed;
 
     private MechaParts mecha;
@@ -40,11 +42,14 @@ public class SpaceController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float leftY = JoystickExpose.instance.LYAxis;
-        float rightY = JoystickExpose.instance.RYAxis;
-        float leftX = JoystickExpose.instance.LXAxis;
+        float leftY = InputExpose.instance.LYAxis;
+        float rightY = InputExpose.instance.RYAxis;
+        float leftX = InputExpose.instance.LXAxis;
 
-        float verticalThrust = JoystickExpose.instance.Pedals;
+        float verticalThrust = InputExpose.instance.Pedals;
+
+        if (InputExpose.instance.R2Button)
+            rightY = leftY;
 
         // Want straight forward
         if (Mathf.Abs(rightY - leftY) < deadzone)
@@ -65,16 +70,17 @@ public class SpaceController : MonoBehaviour
 
     private void HandleRotation()
     {
-        float rightX = JoystickExpose.instance.RXAxis;
-        float ZTilt = JoystickExpose.instance.ZTilt;
+        float RightX = InputExpose.instance.RXAxis;
+        float RightY = InputExpose.instance.RYAxis;
+        bool R2Button = InputExpose.instance.R2Button;
 
-        if (!mecha.isGrounded && Mathf.Abs(rightX) >= deadzone)
+        if(!mecha.isGrounded && Mathf.Abs(RightX) >= deadzoneTilt)
         {
-            rb.AddTorque(transform.right * accelerationTorqueFactor * rightX);
+            rb.AddTorque(-transform.forward * accelerationTorqueFactor * RightX);
         }
-        if (!mecha.isGrounded && Mathf.Abs(ZTilt) >= deadzone)
+        if (!mecha.isGrounded && R2Button && Mathf.Abs(RightY) >= deadzoneTilt)
         {
-            rb.AddTorque(transform.forward * accelerationTorqueFactor * ZTilt);
+            rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
         }
     }
 }
