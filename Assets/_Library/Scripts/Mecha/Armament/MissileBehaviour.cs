@@ -25,7 +25,7 @@ public class MissileBehaviour : MonoBehaviour
         if(missileLeft > 0)
         {
             Debug.Log("Missile is firing");
-            GameObject IMissile = Instantiate(missile, transform.Find((6 - missileLeft).ToString()).transform.position, Quaternion.Euler(Vector3.right * 180));
+            GameObject IMissile = Instantiate(missile, transform.Find((6 - missileLeft).ToString()).transform.position, missile.transform.localRotation);
             IMissile.GetComponent<MissileLogic>().InitilizeMissile(target, thrustFactor, explosionEffect);
             missileLeft--;
         }

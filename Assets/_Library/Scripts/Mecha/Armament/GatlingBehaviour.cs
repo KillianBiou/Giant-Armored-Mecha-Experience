@@ -6,14 +6,36 @@ public class GatlingBehaviour : MonoBehaviour
 {
 
     private GameObject bullet;
+    private float bulletSpeed;
+    private int bulletPerSecond;
+    private bool canFire = true;
 
-    public void Initialize(GameObject bullet)
+    public void Initialize(GameObject bullet, float bulletSpeed, int bulletPerSecond)
     {
         this.bullet = bullet;
+        this.bulletSpeed = bulletSpeed;
+        this.bulletPerSecond = bulletPerSecond;
     }
 
-    public void Fire()
+    private IEnumerator BulletCooldown()
     {
-        Debug.Log("Gatling is firing");
+        yield return new WaitForSeconds(1f / bulletPerSecond);
+        canFire = true;
+    }
+
+    public void Fire(GameObject target)
+    {
+        if(canFire)
+        {
+            Debug.Log("Gatling is firing");
+
+            foreach (Transform child in transform)
+            {
+                GameObject bulletInstance = Instantiate(bullet, child.position, Quaternion.identity);
+                bulletInstance.GetComponent<BulletLogic>().InitilizeBullet(target, bulletSpeed);
+            }
+            canFire = false;
+            StartCoroutine(BulletCooldown());
+        }
     }
 }

@@ -12,6 +12,8 @@ public class InputExpose : MonoBehaviour
     public float LYAxis;
 
     public bool L2Button;
+    public bool L3Button;
+    public bool LTrigger;
 
     [Header("Right Joystick")]
     [Tooltip("X Axis of the right joystick (-1, 1)")]

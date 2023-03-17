@@ -13,6 +13,8 @@ public class JoystickExpose : MonoBehaviour
 
     [Header("Buttons")]
     public bool ButtonTwo;
+    public bool Trigger;
+    public bool ButtonThree;
 
     public float Pedals;
 
@@ -60,6 +62,19 @@ public class JoystickExpose : MonoBehaviour
         SynchronizeValue();
     }
 
+    public void On_3()
+    {
+        Debug.Log(input.actions["3"].ReadValue<float>());
+        ButtonThree = input.actions["3"].ReadValue<float>() == 1 ? true : false;
+        SynchronizeValue();
+    }
+
+    public void OnTrigger()
+    {
+        Trigger = input.actions["Trigger"].ReadValue<float>() == 1 ? true : false;
+        SynchronizeValue();
+    }
+
     public void OnChangePlayer()
     {
         if(PlayerInputManager.instance.playerCount == 2) {
@@ -78,6 +93,8 @@ public class JoystickExpose : MonoBehaviour
             InputExpose.instance.LYAxis = YAxis;
             InputExpose.instance.Pedals = Pedals;
             InputExpose.instance.L2Button = ButtonTwo;
+            InputExpose.instance.L3Button = ButtonThree;
+            InputExpose.instance.LTrigger = Trigger;
         }
         else
         {
