@@ -11,6 +11,13 @@ public class BulletLogic : MonoBehaviour
     {
         this.target = target;
         this.accelerationForce = accelerationForce;
+        StartCoroutine(ArmProjectile());
+    }
+
+    private IEnumerator ArmProjectile()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.layer = LayerMask.NameToLayer("ArmedProjectile");
     }
 
     private void FixedUpdate()
