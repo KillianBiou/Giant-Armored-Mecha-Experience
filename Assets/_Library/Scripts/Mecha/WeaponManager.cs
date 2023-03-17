@@ -23,17 +23,26 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private GameObject missileExplosion;
 
+    [Header("Bullet Parameters")]
+    [SerializeField]
+    private float bulletSpeed;
+    [SerializeField]
+    private int bulletPerSecond;
+
     [Header("Projectile Prefab")]
     [SerializeField]
     private GameObject bullet;
     [SerializeField]
     private GameObject missile;
+    [SerializeField]
+    private float missileCooldown;
 
     [Header("Debug Parameters")]
     [SerializeField]
     private GameObject target;
 
     private int missileIndex = 0;
+    private bool canMissile = true;
 
     static int ClampLoop(int min, int max, int value)
     {
@@ -59,7 +68,7 @@ public class WeaponManager : MonoBehaviour
                 break;
             case Armament.GATLING:
                 GatlingBehaviour gatlingBehaviour = armament.GetComponent<GatlingBehaviour>();
-                gatlingBehaviour.Initialize(bullet);
+                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletPerSecond);
                 gatlings.Add(gatlingBehaviour);
                 break;
         }
@@ -69,7 +78,7 @@ public class WeaponManager : MonoBehaviour
     {
         foreach(GatlingBehaviour bodyPart in gatlings)
         {
-            bodyPart.Fire();
+            bodyPart.Fire(target);
         }
     }
 
@@ -89,9 +98,24 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        bool gatling = InputExpose.instance.LTrigger;
+        bool missile = InputExpose.instance.L3Button;
+
+        if (missile && canMissile)
         {
             FireMissile();
+            canMissile = false;
+            StartCoroutine(RefreshMissile());
         }
+        if (gatling)
+        {
+            FireGatling();
+        }
+    }
+
+    private IEnumerator RefreshMissile()
+    {
+        yield return new WaitForSeconds(missileCooldown);
+        canMissile = true;
     }
 }

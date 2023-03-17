@@ -18,14 +18,14 @@ public class MissileLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = transform.position - target.transform.position;
 
         direction.Normalize();
 
         Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
 
         GetComponent<Rigidbody>().angularVelocity = rotateAmount * 5;
-        GetComponent<Rigidbody>().velocity = -transform.forward * accelerationForce;
+        GetComponent<Rigidbody>().velocity = transform.forward * accelerationForce;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -33,6 +33,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "3",
+                    "type": "Value",
+                    "id": "d7865aff-e8cf-4172-90bf-b4da71b26a92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Trigger",
+                    "type": "Value",
+                    "id": "270d68ee-0efd-431f-9fef-51f294aecf06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "ChangePlayer",
                     "type": "Button",
                     "id": "4bc0442d-775e-45b5-9cc1-c628b65f0229",
@@ -115,6 +133,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edb5a35c-7aa7-45f6-9d3b-59eaaeeb62e2",
+                    "path": "<HID::Logitech Logitech Attack 3>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf147b2a-8560-4ae6-a0a1-799d61580459",
+                    "path": "<HID::Logitech Logitech Attack 3>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
