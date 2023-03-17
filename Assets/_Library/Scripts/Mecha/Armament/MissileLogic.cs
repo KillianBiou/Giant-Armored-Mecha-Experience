@@ -14,6 +14,14 @@ public class MissileLogic : MonoBehaviour
         this.target = target;
         this.accelerationForce = accelerationForce;
         this.explosionEffect = explosionEffect;
+
+        StartCoroutine(ArmProjectile());
+    }
+
+    private IEnumerator ArmProjectile()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.layer = LayerMask.NameToLayer("ArmedProjectile");
     }
 
     private void FixedUpdate()
@@ -24,12 +32,13 @@ public class MissileLogic : MonoBehaviour
 
         Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
 
-        GetComponent<Rigidbody>().angularVelocity = rotateAmount * 5;
+        GetComponent<Rigidbody>().angularVelocity = rotateAmount * 10;
         GetComponent<Rigidbody>().velocity = transform.forward * accelerationForce;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Explosion");
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
