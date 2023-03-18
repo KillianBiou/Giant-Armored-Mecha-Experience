@@ -21,6 +21,12 @@ public class DefenseManager : MonoBehaviour
     [Header("Point Defense Parameters")]
     [SerializeField]
     private float detectionRadius;
+    [SerializeField]
+    private GameObject laserBeam;
+    [SerializeField]
+    private Transform laserStart;
+    [SerializeField]
+    private float laserDuration;
 
     private DefenseType nextDefense = DefenseType.NONE;
     private float currentCooldown;
@@ -58,7 +64,7 @@ public class DefenseManager : MonoBehaviour
                 break;
             case DefenseType.POINT_DEFENSE:
                 PointDefenseBehaviour rPoint = gameObject.AddComponent<PointDefenseBehaviour>();
-                rPoint.Initialize(detectionRadius);
+                rPoint.Initialize(detectionRadius, laserBeam, laserStart, laserDuration);
                 break;
         }
 
