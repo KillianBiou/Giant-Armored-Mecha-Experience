@@ -24,6 +24,8 @@ public class SpaceController : MonoBehaviour
     private float deadzoneTilt;
     [SerializeField]
     private float maxSpeed;
+    [SerializeField]
+    private float maxAngularSpeed;
 
     private MechaParts mecha;
     private Rigidbody rb;
@@ -57,15 +59,22 @@ public class SpaceController : MonoBehaviour
             leftY = rightY = (rightY + leftY) / 2;
         }
 
-        if (rb.velocity.magnitude <= maxSpeed)
-        {
-            rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
-            rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
+        rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
+        rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
 
-            rb.AddForce(transform.right * leftX * accelerationStrafFactor);
-        }
+        rb.AddForce(transform.right * leftX * accelerationStrafFactor);
 
         rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
+
+        // Limit Velocity to max
+
+        //rb.velocity = new Vector3(Mathf.Min(rb.velocity.x, maxSpeed), Mathf.Min(rb.velocity.y, maxSpeed), Mathf.Min(rb.velocity.z, maxSpeed));
+        //rb.angularVelocity = new Vector3(Mathf.Min(rb.angularVelocity.x, maxAngularSpeed), Mathf.Min(rb.angularVelocity.y, maxAngularSpeed), Mathf.Min(rb.angularVelocity.z, maxAngularSpeed));
+        
+        if (rb.velocity.magnitude >= maxSpeed)
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        if (rb.angularVelocity.magnitude >= maxAngularSpeed)
+            rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
     }
 
     private void HandleRotation()

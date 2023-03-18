@@ -986,7 +986,7 @@ PrefabInstance:
     - target: {fileID: 608765808891684202, guid: 8db0a48bc76004a47bea9b0d9019dd3e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -23.85
       objectReference: {fileID: 0}
     - target: {fileID: 608765808891684202, guid: 8db0a48bc76004a47bea9b0d9019dd3e,
         type: 3}
@@ -1282,18 +1282,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345081279}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9915af2bf98ed1b4da3c76a110a69656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationFactor: 15
-  accelerationUpFactor: 20
-  accelerationStrafFactor: 15
-  accelerationTorqueFactor: 10
-  deadzone: 0.3
-  deadzoneTilt: 0.5
-  maxSpeed: 10
+  accelerationFactor: 100
+  accelerationUpFactor: 100
+  accelerationStrafFactor: 100
+  accelerationTorqueFactor: 100
+  deadzone: 0.2
+  deadzoneTilt: 0.3
+  maxSpeed: 25
+  maxAngularSpeed: 3
 --- !u!114 &345081281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1344,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &345081284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1377,7 +1378,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345081279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f7e0c1f5e21ec409e2e17712dc5ad8, type: 3}
   m_Name: 
@@ -3212,7 +3213,7 @@ PrefabInstance:
     - target: {fileID: 1437149670140433155, guid: fa1e8f1de7e1ea04e9d7ba4f45350473,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1437149670140661539, guid: fa1e8f1de7e1ea04e9d7ba4f45350473,
         type: 3}
@@ -4960,6 +4961,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d4f40dc4efc9d409b5934cfdd9284f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDefense: 1
+  swapCooldown: 3
+  detectionRadius: 8
 --- !u!1 &1990718298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5127,7 +5131,7 @@ PrefabInstance:
     - target: {fileID: 8731965296509707426, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eaf0681f39d68048a33c7af0e62c522, type: 3}

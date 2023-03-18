@@ -20,7 +20,7 @@ public class MissileLogic : MonoBehaviour
 
     private IEnumerator ArmProjectile()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.layer = LayerMask.NameToLayer("ArmedProjectile");
     }
 
@@ -38,7 +38,12 @@ public class MissileLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Explosion");
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    public void DestroyMissile()
+    {
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
