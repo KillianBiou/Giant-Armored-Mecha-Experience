@@ -37,7 +37,7 @@ public class InitializingControlls : MonoBehaviour
         fadein = 1;
         yield return FadeIn();
         fadein = 0;
-        yield return FadeCompensate();
+        //yield return FadeCompensate();
 
     }
 
