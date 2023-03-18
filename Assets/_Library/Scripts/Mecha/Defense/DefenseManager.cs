@@ -30,7 +30,8 @@ public class DefenseManager : MonoBehaviour
     }
 
     private void Update()
-    {
-        if(Input.GetKeyDown()
+    {/*
+        if (Input.GetKeyDown())
+        { }*/
     }
 }

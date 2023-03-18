@@ -31,6 +31,7 @@ public class EngineStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bg.color = new Color(0.0f, 0.0f, 0.0f);
         StartCoroutine(BootSec());
     }
 

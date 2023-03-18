@@ -32,10 +32,10 @@ public class JoystickExpose : MonoBehaviour
         instance = this;
         playerOne = PlayerInputManager.instance.playerCount == 1 ? true : false;
 
-        if (playerOne)
+        /*if (playerOne)
             GetComponent<JoystickMove>().side = Side.LEFT;
         else
-            GetComponent<JoystickMove>().side = Side.RIGHT;
+            GetComponent<JoystickMove>().side = Side.RIGHT;*/
     }
 
     public void OnX()
@@ -106,11 +106,13 @@ public class JoystickExpose : MonoBehaviour
 
     public void ChangePlayer()
     {
-        playerOne = !playerOne;
+        /*playerOne = !playerOne;
 
         if (GetComponent<JoystickMove>().side == Side.LEFT)
-            GetComponent<JoystickMove>().side = Side.RIGHT;
+            return;
+        //GetComponent<JoystickMove>().side = Side.RIGHT;
         else
-            GetComponent<JoystickMove>().side = Side.LEFT;
+            return;
+            //GetComponent<JoystickMove>().side = Side.LEFT;*/
     }
 }
