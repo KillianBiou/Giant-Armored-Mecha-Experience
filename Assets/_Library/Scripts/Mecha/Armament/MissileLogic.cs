@@ -16,6 +16,7 @@ public class MissileLogic : MonoBehaviour
         this.explosionEffect = explosionEffect;
 
         StartCoroutine(ArmProjectile());
+        StartCoroutine(OutOfFuel());
     }
 
     private IEnumerator ArmProjectile()
@@ -26,6 +27,9 @@ public class MissileLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!target)
+            DestroyMissile();
+
         Vector3 direction = transform.position - target.transform.position;
 
         direction.Normalize();
@@ -38,8 +42,28 @@ public class MissileLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        GetComponent<BoxCollider>().enabled = false;
+
+        MechaParts player = collision.gameObject.GetComponent<MechaParts>();
+        if (player)
+        {
+            player.ProcessDamage(target, Armament.MISSILE);
+        }
+
+        AIData ai = collision.gameObject.GetComponent<AIData>();
+        if (ai)
+        {
+            ai.TakeMissile();
+        }
+
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private IEnumerator OutOfFuel()
+    {
+        yield return new WaitForSeconds(10f);
+        DestroyMissile();
     }
 
     public void DestroyMissile()

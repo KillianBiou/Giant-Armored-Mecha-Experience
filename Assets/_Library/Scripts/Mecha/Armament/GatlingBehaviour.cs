@@ -27,8 +27,6 @@ public class GatlingBehaviour : MonoBehaviour
     {
         if(canFire)
         {
-            Debug.Log("Gatling is firing");
-
             foreach (Transform child in transform)
             {
                 GameObject bulletInstance = Instantiate(bullet, child.position, Quaternion.identity);

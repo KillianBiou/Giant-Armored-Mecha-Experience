@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private int bulletPerSecond;
 
+    [Header("Railgun Parameters")]
+    [SerializeField]
+    private GameObject railgunVFX;
+    [SerializeField]
+    private float railgunCooldown;
+
     [Header("Projectile Prefab")]
     [SerializeField]
     private GameObject bullet;
@@ -43,6 +50,8 @@ public class WeaponManager : MonoBehaviour
 
     private int missileIndex = 0;
     private bool canMissile = true;
+    private bool canRailgun = true;
+    private GameObject dummyTarget;
 
     static int ClampLoop(int min, int max, int value)
     {
@@ -53,12 +62,17 @@ public class WeaponManager : MonoBehaviour
         return value;
     }
 
+    private void Start()
+    {
+        dummyTarget = transform.Find("DummyTarget").gameObject;
+    }
+
     public void RegisterArmament(BodyPart armament) {
         switch (armament.data.weapon)
         {
             case Armament.RAILGUN:
                 RailgunBehaviour railgunBehaviour = armament.GetComponent<RailgunBehaviour>();
-                railgunBehaviour.Initialize(null);
+                railgunBehaviour.Initialize(railgunVFX);
                 railguns.Add(railgunBehaviour);
                 break;
             case Armament.MISSILE:
@@ -74,25 +88,67 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public void UnregisterArmament(BodyPart armament)
+    {
+        switch (armament.data.weapon)
+        {
+            case Armament.RAILGUN:
+                railguns.Remove(armament.GetComponent<RailgunBehaviour>());
+                break;
+            case Armament.MISSILE:
+                missiles.Remove(armament.GetComponent<MissileBehaviour>());
+                break;
+            case Armament.GATLING:
+                gatlings.Remove(armament.GetComponent<GatlingBehaviour>());
+                break;
+        }
+    }
+
     public void FireGatling()
     {
+        GameObject tar;
+        if (!target)
+            tar = dummyTarget;
+        else
+            tar = target;
+
         foreach(GatlingBehaviour bodyPart in gatlings)
         {
-            bodyPart.Fire(target);
+            bodyPart.Fire(tar);
         }
     }
 
     public void FireMissile()
     {
-        missiles[missileIndex].Fire(target);
-        missileIndex = WeaponManager.ClampLoop(0, missiles.Count - 1, missileIndex+1);
+        missileIndex = WeaponManager.ClampLoop(0, missiles.Count - 1, missileIndex + 1);
+
+        GameObject tar;
+        if (!target)
+            tar = dummyTarget;
+        else
+            tar = target;
+
+        try
+        {
+            missiles[missileIndex].Fire(tar);
+        }
+        catch
+        {
+            FireMissile();
+        }
     }
 
     public void FireRailgun()
     {
+        GameObject tar;
+        if (!target)
+            tar = dummyTarget;
+        else
+            tar = target;
+
         foreach (RailgunBehaviour bodyPart in railguns)
         {
-            bodyPart.Fire();
+            bodyPart.Fire(tar);
         }
     }
 
@@ -111,6 +167,12 @@ public class WeaponManager : MonoBehaviour
         {
             FireGatling();
         }
+        if (Input.GetKeyDown(KeyCode.Q) && canRailgun)
+        {
+            FireRailgun();
+            canRailgun = false;
+            StartCoroutine(RefreshRailgun());
+        }
     }
 
     private IEnumerator RefreshMissile()
@@ -118,4 +180,17 @@ public class WeaponManager : MonoBehaviour
         yield return new WaitForSeconds(missileCooldown);
         canMissile = true;
     }
+
+    private IEnumerator RefreshRailgun()
+    {
+        yield return new WaitForSeconds(railgunCooldown);
+        canRailgun = true;
+    }
+
+    /*private GameObject FakeTarget()
+    {
+        GameObject temp = Instantiate(new GameObject(), transform.position + transform.forward * 500, Quaternion.identity);
+        Destroy(temp, 5f);
+        return temp;
+    }*/
 }

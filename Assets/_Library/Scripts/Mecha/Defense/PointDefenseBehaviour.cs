@@ -21,7 +21,7 @@ public class PointDefenseBehaviour : MonoBehaviour
     {
         foreach(Collider collider in Physics.OverlapSphere(transform.position, detectionRadius))
         {
-            if(collider.gameObject.layer == LayerMask.NameToLayer("ArmedProjectile"))
+            if(collider.gameObject.layer == LayerMask.NameToLayer("ArmedProjectile") && collider.gameObject.GetComponent<MissileLogic>())
             {
                 
                 GameObject beam = Instantiate(laserBeam);

@@ -13,11 +13,14 @@ public class MissileBehaviour : MonoBehaviour
 
     private GameObject explosionEffect;
 
-    public void Initialize(GameObject missile, float thrustFactor, GameObject explosionEffect)
+    private bool depleteMunition = true;
+
+    public void Initialize(GameObject missile, float thrustFactor, GameObject explosionEffect, bool depleteMunition = true)
     {
         this.missile = missile;
         this.thrustFactor = thrustFactor;
         this.explosionEffect = explosionEffect;
+        this.depleteMunition = depleteMunition;
     }
 
     public void Fire(GameObject target)
@@ -26,7 +29,8 @@ public class MissileBehaviour : MonoBehaviour
         {
             GameObject IMissile = Instantiate(missile, transform.Find((6 - missileLeft).ToString()).transform.position, transform.Find((6 - missileLeft).ToString()).transform.rotation);
             IMissile.GetComponent<MissileLogic>().InitilizeMissile(target, thrustFactor, explosionEffect);
-            missileLeft--;
+            if(depleteMunition)
+                missileLeft--;
         }
     }
 }
