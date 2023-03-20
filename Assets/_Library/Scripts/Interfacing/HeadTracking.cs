@@ -51,23 +51,34 @@ public class HeadTracking : MonoBehaviour
             Collider[] hit = Physics.OverlapSphere(transform.position, distance, layerMask);
             if (hit.Length > 0)
             {
-                if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[0].transform.position - transform.position)))
+                bool stop = false;
+                for(int i = 0; i < hit.Length && !stop; i++)
                 {
-                    OnTargetFound(hit[0].gameObject);
+                    if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[i].transform.position - transform.position)))
+                    {
+                        OnTargetFound(hit[i].gameObject);
 
-                    lockTarget.SetActive(true);
-                   
-                    RaycastHit castHit;
-                    if(Physics.Raycast(transform.position, hit[0].transform.position - transform.position, out castHit, distance)){//, LayerMask.NameToLayer("UI"))){
-                        if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
-                            lockTarget.transform.position = castHit.point;
+                        lockTarget.SetActive(true);
+
+                        RaycastHit castHit;
+                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance))
+                        {
+                            if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
+                                lockTarget.transform.position = castHit.point;
+                            else
+                            {
+                                SetTarget(null);
+                                lockTarget.SetActive(false);
+                            }
+                        }
+                        Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
+                        stop = true;
                     }
-                    Debug.DrawRay(transform.position, (hit[0].transform.position - transform.position) * 10);
-                }
-                else
-                {
-                    lockTarget.SetActive(false);
-                    SetTarget(null);
+                    else
+                    {
+                        lockTarget.SetActive(false);
+                        SetTarget(null);
+                    }
                 }
             }
             else

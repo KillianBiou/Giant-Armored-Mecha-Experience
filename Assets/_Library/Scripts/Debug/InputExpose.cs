@@ -13,6 +13,8 @@ public class InputExpose : MonoBehaviour
 
     public bool L2Button;
     public bool L3Button;
+    public bool L4Button;
+    public bool L5Button;
     public bool LTrigger;
 
     [Header("Right Joystick")]
@@ -22,14 +24,14 @@ public class InputExpose : MonoBehaviour
     public float RYAxis;
 
     public bool R2Button;
+    public bool R3Button;
+    public bool R4Button;
+    public bool R5Button;
+    public bool RTrigger;
 
     [Header("Pedals")]
     [Tooltip("The pedals value (Left -1, Right 1)")]
     public float Pedals;
-
-    [Header("Special")]
-    [Tooltip("Button for Z tilt")]
-    public float ZTilt;
 
     public static InputExpose instance;
 

@@ -9,11 +9,16 @@ public class AIData : MonoBehaviour
     [SerializeField]
     private float armor;
 
+    public int detectionRange;
+    public GameObject player;
+    public GameObject target;
+
     private int hp;
 
     private void Start()
     {
         hp = maxHP;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void TakeBullet(int damage)

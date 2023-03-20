@@ -54,8 +54,6 @@ public class BodyPart : MonoBehaviour
 
         if (data.weapon != Armament.NONE)
         {
-            WeaponManager weaponManager;
-            transform.parent.TryGetComponent<WeaponManager>(out weaponManager);
             if (weaponManager)
                 weaponManager.RegisterArmament(this);
             else

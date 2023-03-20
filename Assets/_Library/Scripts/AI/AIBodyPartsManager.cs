@@ -1,3 +1,4 @@
+using Oculus.Platform.Samples.VrHoops;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,13 +55,12 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private GameObject railgunVFX;
 
-    [Header("Debug Parameters")]
-    [SerializeField]
-    private GameObject target;
-
     private int nbCouroutine;
 
     private float burstStarted;
+    private AIData data;
+
+
 
     public void Register(BodyPart bodyPart)
     {
@@ -86,6 +86,8 @@ public class AIBodyPartsManager : MonoBehaviour
 
     private void Start()
     {
+        data = GetComponent<AIData>();
+
         if (gatlings.Count > 0)
             StartCoroutine(FireGatling());
         if (missiles.Count > 0)
@@ -96,7 +98,7 @@ public class AIBodyPartsManager : MonoBehaviour
 
     private void Update()
     {
-        if(target && nbCouroutine == 0)
+        if(data.target && nbCouroutine == 0)
         {
             if (gatlings.Count > 0)
                 StartCoroutine(FireGatling());
@@ -105,6 +107,10 @@ public class AIBodyPartsManager : MonoBehaviour
             if (railguns.Count > 0)
                 StartCoroutine(FireRailgun());
         }
+        if (!data.target)
+            ChangeTarget();
+        if (Vector3.Distance(data.player.transform.position, transform.position) >= data.detectionRange)
+            data.target = null;
     }
 
     private IEnumerator FireGatling()
@@ -116,8 +122,8 @@ public class AIBodyPartsManager : MonoBehaviour
         while (Time.time < burstStarted + burstDuration) { 
             foreach(GatlingBehaviour gatlingBehaviour in gatlings)
             {
-                if (target)
-                    gatlingBehaviour.Fire(target);
+                if (data.target)
+                    gatlingBehaviour.Fire(data.target);
             }
             yield return new WaitForSeconds(1 / bulletSeconds);
         }
@@ -125,7 +131,8 @@ public class AIBodyPartsManager : MonoBehaviour
         yield return new WaitForSeconds(burstCooldown);
 
         nbCouroutine--;
-        if(target)
+        ChangeTarget();
+        if (data.target)
             StartCoroutine(FireGatling());
     }
 
@@ -135,14 +142,15 @@ public class AIBodyPartsManager : MonoBehaviour
         Debug.Log("AI Fire missile");
         foreach(MissileBehaviour missileBehaviour in missiles)
         {
-            if (target)
-                missileBehaviour.Fire(target);
+            if (data.target)
+                missileBehaviour.Fire(data.target);
         }
 
         yield return new WaitForSeconds(missileCooldown);
 
         nbCouroutine--;
-        if (target)
+        ChangeTarget();
+        if (data.target)
             StartCoroutine(FireMissile());
     }
 
@@ -152,14 +160,23 @@ public class AIBodyPartsManager : MonoBehaviour
         Debug.Log("AI Fire railgun");
         foreach(RailgunBehaviour railgunBehaviour in railguns)
         {
-            if (target)
-                railgunBehaviour.Fire(target);
+            if (data.target)
+                railgunBehaviour.Fire(data.target);
         }
 
         yield return new WaitForSeconds(railgunCooldown);
 
         nbCouroutine--;
-        if (target)
+        ChangeTarget();
+        if (data.target)
             StartCoroutine(FireRailgun());
+    }
+
+    private void ChangeTarget()
+    {
+        if (Vector3.Distance(data.player.transform.position, transform.position) <= data.detectionRange)
+        {
+            data.target = data.player.GetComponent<MechaParts>().bodyParts[Random.Range(0, data.player.GetComponent<MechaParts>().bodyParts.Count)].gameObject;
+        }
     }
 }

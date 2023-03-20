@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CombatController : MonoBehaviour
 {
@@ -24,19 +25,20 @@ public class CombatController : MonoBehaviour
 
     private MechaParts mecha;
     private Rigidbody rb;
-
-    public GameObject target;
+    private WeaponManager wp;
 
     private void Start()
     {
         mecha = GetComponent<MechaParts>();
         rb = GetComponent<Rigidbody>();
+        wp = GetComponent<WeaponManager>();
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
         HandleRotation();
+        HandleMisc();
     }
 
     private void HandleMovement()
@@ -81,8 +83,27 @@ public class CombatController : MonoBehaviour
     {
     }
 
+    private void HandleMisc()
+    {
+        bool spaceButton = InputExpose.instance.L4Button || InputExpose.instance.R4Button;
+
+        if (spaceButton)
+            mecha.ChangeControllerType(ControllerType.SPACE_CONTROLLER);
+    }
+
     private void Update()
     {
-        transform.LookAt(target.transform.position, transform.up);
+        if (!wp.GetTarget())
+            mecha.ChangeControllerType(ControllerType.SPACE_CONTROLLER);
+
+        Vector3 direction = transform.position - wp.GetTarget().transform.position;
+
+        direction.Normalize();
+
+        Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
+
+        GetComponent<Rigidbody>().angularVelocity += rotateAmount / 4;
+
+        //transform.LookAt(wp.GetTarget().transform.position, transform.up);
     }
 }

@@ -40,6 +40,7 @@ public class SpaceController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+        HandleMisc();
     }
 
     private void HandleMovement()
@@ -90,6 +91,16 @@ public class SpaceController : MonoBehaviour
         if (!mecha.isGrounded && R2Button && Mathf.Abs(RightY) >= deadzoneTilt)
         {
             rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
+        }
+    }
+
+    private void HandleMisc()
+    {
+        bool combatButton = InputExpose.instance.L4Button || InputExpose.instance.R4Button;
+
+        if (combatButton && GetComponent<WeaponManager>().GetTarget())
+        {
+            mecha.ChangeControllerType(ControllerType.COMBAT_CONTROLLER);
         }
     }
 }

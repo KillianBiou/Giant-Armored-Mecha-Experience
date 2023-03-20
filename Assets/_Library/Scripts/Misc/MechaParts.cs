@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+public enum ControllerType
+{
+    SPACE_CONTROLLER = 0,
+    COMBAT_CONTROLLER = 1,
+};
 
 public class MechaParts : MonoBehaviour
 {
@@ -12,7 +19,12 @@ public class MechaParts : MonoBehaviour
     [Header("Other")]
     [SerializeField]
     private bool debugIsGrounded;
-    
+    public ControllerType controllerType;
+
+    public List<BodyPart> bodyParts = new List<BodyPart>();
+
+    private bool changeCooldown = false;
+
     public bool isGrounded {
         get { return debugIsGrounded; }
         set { 
@@ -22,6 +34,16 @@ public class MechaParts : MonoBehaviour
             else
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
+    }
+
+    public void Register(BodyPart part)
+    {
+        bodyParts.Add(part);
+    }
+
+    public void Unregister(BodyPart part)
+    {
+        bodyParts.Remove(part);
     }
 
     public void ProcessDamage(GameObject target, Armament armament, int damage, int armorShred = 0)
@@ -44,5 +66,47 @@ public class MechaParts : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeControllerType(ControllerType newType)
+    {
+        if (newType == controllerType || changeCooldown)
+            return;
+
+        switch (newType)
+        {
+            case ControllerType.SPACE_CONTROLLER:
+                gameObject.GetComponent<SpaceController>().enabled = true;
+                break;
+            case ControllerType.COMBAT_CONTROLLER:
+                CombatController controller =  gameObject.GetComponent<CombatController>();
+                controller.enabled = true;
+                break;
+        }
+
+        DisableOldController();
+
+        controllerType = newType;
+        changeCooldown = true;
+        StartCoroutine(ChangeControllerCooldown());
+    }
+
+    private void DisableOldController()
+    {
+        switch (controllerType)
+        {
+            case ControllerType.SPACE_CONTROLLER:
+                GetComponent<SpaceController>().enabled = false;
+                break;
+            case ControllerType.COMBAT_CONTROLLER:
+                GetComponent<CombatController>().enabled = false;
+                break;
+        }
+    }
+
+    private IEnumerator ChangeControllerCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        changeCooldown = false;
     }
 }

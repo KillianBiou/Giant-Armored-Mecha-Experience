@@ -15,6 +15,8 @@ public class JoystickExpose : MonoBehaviour
     public bool ButtonTwo;
     public bool Trigger;
     public bool ButtonThree;
+    public bool ButtonFour;
+    public bool ButtonFive;
 
     public float Pedals;
 
@@ -68,6 +70,18 @@ public class JoystickExpose : MonoBehaviour
         SynchronizeValue();
     }
 
+    public void On_4()
+    {
+        ButtonFour = input.actions["4"].ReadValue<float>() == 1 ? true : false;
+        SynchronizeValue();
+    }
+
+    public void On_5()
+    {
+        ButtonFive = input.actions["5"].ReadValue<float>() == 1 ? true : false;
+        SynchronizeValue();
+    }
+
     public void OnTrigger()
     {
         Trigger = input.actions["Trigger"].ReadValue<float>() == 1 ? true : false;
@@ -90,17 +104,27 @@ public class JoystickExpose : MonoBehaviour
         {
             InputExpose.instance.LXAxis = XAxis;
             InputExpose.instance.LYAxis = YAxis;
-            InputExpose.instance.Pedals = Pedals;
             InputExpose.instance.L2Button = ButtonTwo;
             InputExpose.instance.L3Button = ButtonThree;
+            InputExpose.instance.L4Button = ButtonFour;
+            InputExpose.instance.L5Button = ButtonFive;
             InputExpose.instance.LTrigger = Trigger;
+
+            if (input.devices.Count == 2)
+                InputExpose.instance.Pedals = Pedals;
         }
         else
         {
             InputExpose.instance.RXAxis = XAxis;
             InputExpose.instance.RYAxis = YAxis;
-            InputExpose.instance.Pedals = Pedals;
             InputExpose.instance.R2Button = ButtonTwo;
+            InputExpose.instance.R3Button = ButtonThree;
+            InputExpose.instance.R4Button = ButtonFour;
+            InputExpose.instance.R5Button = ButtonFive;
+            InputExpose.instance.RTrigger = Trigger;
+
+            if (input.devices.Count == 2)
+                InputExpose.instance.Pedals = Pedals;
         }
     }
 

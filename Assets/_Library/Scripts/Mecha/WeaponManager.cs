@@ -94,7 +94,7 @@ public class WeaponManager : MonoBehaviour
                 gatlings.Add(gatlingBehaviour);
                 break;
         }
-        armament.weaponManager = this;
+        GetComponent<MechaParts>().Register(armament);
     }
 
     public void UnregisterArmament(BodyPart armament)
@@ -111,6 +111,7 @@ public class WeaponManager : MonoBehaviour
                 gatlings.Remove(armament.GetComponent<GatlingBehaviour>());
                 break;
         }
+        GetComponent<MechaParts>().Unregister(armament);
     }
 
     public void FireGatling()
@@ -163,8 +164,9 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        bool gatling = InputExpose.instance.LTrigger;
+        bool gatling = InputExpose.instance.LTrigger || InputExpose.instance.RTrigger;
         bool missile = InputExpose.instance.L3Button;
+        bool railgun = InputExpose.instance.R3Button;
 
         if (missile && canMissile)
         {
@@ -176,7 +178,7 @@ public class WeaponManager : MonoBehaviour
         {
             FireGatling();
         }
-        if (Input.GetKeyDown(KeyCode.Q) && canRailgun)
+        if (railgun && canRailgun)
         {
             FireRailgun();
             canRailgun = false;
@@ -198,7 +200,12 @@ public class WeaponManager : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
-        Debug.Log("azsdjkfnzefiuezfniuzehf");
-        this.target = target;
+        if(!(GetComponent<MechaParts>().controllerType == ControllerType.COMBAT_CONTROLLER))
+            this.target = target;
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
     }
 }

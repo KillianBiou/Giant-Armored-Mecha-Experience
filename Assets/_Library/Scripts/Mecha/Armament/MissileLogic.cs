@@ -41,7 +41,7 @@ public class MissileLogic : MonoBehaviour
 
         Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
 
-        GetComponent<Rigidbody>().angularVelocity = rotateAmount * 10;
+        GetComponent<Rigidbody>().angularVelocity = rotateAmount * 15;
         GetComponent<Rigidbody>().velocity = transform.forward * accelerationForce;
     }
 

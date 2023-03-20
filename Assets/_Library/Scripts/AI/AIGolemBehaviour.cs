@@ -5,8 +5,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class AIGolemBehaviour : MonoBehaviour
 {
+    private AIData aiData;
+
+    private void Start()
+    {
+        aiData = GetComponent<AIData>();
+    }
+
     void Update()
     {
-        transform.LookAt(GetComponent<AIData>().transform.position, transform.up);
+        if(aiData.target)
+            transform.LookAt(aiData.player.transform, transform.up);
     }
 }

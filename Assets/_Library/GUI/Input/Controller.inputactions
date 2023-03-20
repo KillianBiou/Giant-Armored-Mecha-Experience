@@ -42,6 +42,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "4",
+                    "type": "Value",
+                    "id": "6fada4f8-081b-4070-bc36-8b788d538f76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "5",
+                    "type": "Value",
+                    "id": "1221be72-0aaa-4939-9c39-0b2e26e873d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Trigger",
                     "type": "Value",
                     "id": "270d68ee-0efd-431f-9fef-51f294aecf06",
@@ -155,6 +173,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51dda033-9e82-4127-a1ba-7c20429ff4a2",
+                    "path": "<HID::Logitech Logitech Attack 3>/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "483d6431-7491-46f0-9043-f746d3d9abf1",
+                    "path": "<HID::Logitech Logitech Attack 3>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -79,12 +79,14 @@ public class DefenseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)){
-            ScheduleChange(DefenseType.ENERGY_SHIELD);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+        bool changeDefense = InputExpose.instance.R5Button || InputExpose.instance.L5Button;
+
+        if (changeDefense && currentDefense == DefenseType.ENERGY_SHIELD){
             ScheduleChange(DefenseType.POINT_DEFENSE);
+        }
+        if (changeDefense && currentDefense == DefenseType.POINT_DEFENSE)
+        {
+            ScheduleChange(DefenseType.ENERGY_SHIELD);
         }
 
         if (nextDefense != DefenseType.NONE && currentCooldown >= 0f)
