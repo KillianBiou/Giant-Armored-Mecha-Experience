@@ -22,6 +22,10 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private float missileCooldown;
     [SerializeField]
+    private int missileDamage;
+    [SerializeField]
+    private int missileArmorShred;
+    [SerializeField]
     private GameObject missile;
     [SerializeField]
     private GameObject missileTrail;
@@ -38,11 +42,15 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private float burstCooldown;
     [SerializeField]
+    private int bulletDamage;
+    [SerializeField]
     private GameObject bullet;
 
     [Header("Railgun")]
     [SerializeField]
     private float railgunCooldown;
+    [SerializeField]
+    private int railgunDamage;
     [SerializeField]
     private GameObject railgunVFX;
 
@@ -60,17 +68,17 @@ public class AIBodyPartsManager : MonoBehaviour
         {
             case Armament.RAILGUN:
                 RailgunBehaviour railgunBehaviour = bodyPart.GetComponent<RailgunBehaviour>();
-                railgunBehaviour.Initialize(railgunVFX);
+                railgunBehaviour.Initialize(railgunVFX, railgunDamage);
                 railguns.Add(railgunBehaviour);
                 break;
             case Armament.MISSILE:
                 MissileBehaviour missileBehaviour = bodyPart.GetComponent<MissileBehaviour>();
-                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, false);
+                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, false);
                 missiles.Add(missileBehaviour);
                 break;
             case Armament.GATLING:
                 GatlingBehaviour gatlingBehaviour = bodyPart.GetComponent<GatlingBehaviour>();
-                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletSeconds);
+                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletSeconds, bulletDamage);
                 gatlings.Add(gatlingBehaviour);
                 break;
         }

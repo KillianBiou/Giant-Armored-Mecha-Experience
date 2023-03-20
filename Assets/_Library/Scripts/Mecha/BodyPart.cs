@@ -31,8 +31,8 @@ public struct MemberData
 
 public class BodyPart : MonoBehaviour
 {
-    [SerializeField]
     public MemberData data;
+    public WeaponManager weaponManager;
 
     private void Start()
     {
@@ -68,20 +68,25 @@ public class BodyPart : MonoBehaviour
         }
     }
 
-    public void TakeBullet()
+    public void TakeBullet(int damage)
     {
-        int amount = (int)((100f - data.armor) / 100f * 5);
+        int amount = (int)((100f - data.armor) / 100f * damage);
         SubstractHP(amount);
     }
 
-    public void TakeMissile()
+    public void TakeMissile(int damage, int armorShred)
     {
-        data.armor = Mathf.Clamp(data.armor - 10, 0, data.maxArmor);
-        SubstractHP(20);
+        SubstractArmor(armorShred);
+        SubstractHP(damage);
     }
-    public void TakeRailgun()
+    public void TakeRailgun(int damage)
     {
-        SubstractHP(50);
+        SubstractHP(damage);
+    }
+
+    private void SubstractArmor(int amount)
+    {
+        data.armor = Mathf.Clamp(data.armor - amount, 0, data.maxArmor);
     }
 
     private void SubstractHP(int amount)

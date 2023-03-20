@@ -28,13 +28,17 @@ public class DefenseManager : MonoBehaviour
     [SerializeField]
     private float laserDuration;
 
+    [Header("EnergyShield Parameters")]
+    [SerializeField]
+    private float protectionOffset;
+
     private DefenseType nextDefense = DefenseType.NONE;
     private float currentCooldown;
 
     private void Start()
     {
-        ChangeDefense(DefenseType.POINT_DEFENSE);
-        currentDefense = DefenseType.POINT_DEFENSE;
+        ChangeDefense(DefenseType.ENERGY_SHIELD);
+        currentDefense = DefenseType.ENERGY_SHIELD;
     }
 
     private void ScheduleChange(DefenseType newDefense)
@@ -61,6 +65,7 @@ public class DefenseManager : MonoBehaviour
         {
             case DefenseType.ENERGY_SHIELD:
                 EnergyShieldBehaviour rShield = gameObject.AddComponent<EnergyShieldBehaviour>();
+                rShield.Initialize(protectionOffset);
                 break;
             case DefenseType.POINT_DEFENSE:
                 PointDefenseBehaviour rPoint = gameObject.AddComponent<PointDefenseBehaviour>();

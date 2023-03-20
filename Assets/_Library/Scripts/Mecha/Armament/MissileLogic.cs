@@ -9,11 +9,16 @@ public class MissileLogic : MonoBehaviour
 
     private GameObject explosionEffect;
 
-    public void InitilizeMissile(GameObject target, float accelerationForce, GameObject explosionEffect)
+    private int damage;
+    private int armorShred;
+
+    public void InitilizeMissile(GameObject target, float accelerationForce, GameObject explosionEffect, int damage, int armorShred)
     {
         this.target = target;
         this.accelerationForce = accelerationForce;
         this.explosionEffect = explosionEffect;
+        this.damage = damage;
+        this.armorShred = armorShred;
 
         StartCoroutine(ArmProjectile());
         StartCoroutine(OutOfFuel());
@@ -47,13 +52,13 @@ public class MissileLogic : MonoBehaviour
         MechaParts player = collision.gameObject.GetComponent<MechaParts>();
         if (player)
         {
-            player.ProcessDamage(target, Armament.MISSILE);
+            player.ProcessDamage(target, Armament.MISSILE, damage, armorShred);
         }
 
         AIData ai = collision.gameObject.GetComponent<AIData>();
         if (ai)
         {
-            ai.TakeMissile();
+            ai.TakeMissile(damage, armorShred);
         }
 
         Instantiate(explosionEffect, transform.position, Quaternion.identity);

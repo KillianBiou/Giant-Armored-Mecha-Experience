@@ -16,19 +16,38 @@ public class AIData : MonoBehaviour
         hp = maxHP;
     }
 
-    public void TakeBullet()
+    public void TakeBullet(int damage)
     {
-        int amount = (int)((100f - armor) / 100f * 10);
-        hp -= amount;
+        int amount = (int)((100f - armor) / 100f * damage);
+        SubstractHP(amount);
     }
 
-    public void TakeMissile()
+    public void TakeMissile(int damage, int armorShred)
     {
-
+        SubstractArmor(armorShred);
+        SubstractHP(damage);
     }
-    public void TakeRailgun()
+    public void TakeRailgun(int damage)
     {
+        Debug.Log("Took railgiun AI");
+        SubstractHP(damage);
+    }
 
+    private void SubstractArmor(int amount)
+    {
+        armor = Mathf.Clamp(armor - amount, 0, 100);
+    }
+
+    private void SubstractHP(int amount)
+    {
+        hp = Mathf.Clamp(hp - amount, 0, maxHP);
+        if (hp <= 0)
+            DestroyEnemy();
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
 }

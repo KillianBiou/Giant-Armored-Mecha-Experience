@@ -23,18 +23,26 @@ public class WeaponManager : MonoBehaviour
     private GameObject missileTrail;
     [SerializeField]
     private GameObject missileExplosion;
+    [SerializeField]
+    private int missileDamage;
+    [SerializeField]
+    private int missileArmorShred;
 
     [Header("Bullet Parameters")]
     [SerializeField]
     private float bulletSpeed;
     [SerializeField]
     private int bulletPerSecond;
+    [SerializeField]
+    private int bulletDamage;
 
     [Header("Railgun Parameters")]
     [SerializeField]
     private GameObject railgunVFX;
     [SerializeField]
     private float railgunCooldown;
+    [SerializeField]
+    private int railgunDamage;
 
     [Header("Projectile Prefab")]
     [SerializeField]
@@ -72,20 +80,21 @@ public class WeaponManager : MonoBehaviour
         {
             case Armament.RAILGUN:
                 RailgunBehaviour railgunBehaviour = armament.GetComponent<RailgunBehaviour>();
-                railgunBehaviour.Initialize(railgunVFX);
+                railgunBehaviour.Initialize(railgunVFX, railgunDamage);
                 railguns.Add(railgunBehaviour);
                 break;
             case Armament.MISSILE:
                 MissileBehaviour missileBehaviour = armament.GetComponent<MissileBehaviour>();
-                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion);
+                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred);
                 missiles.Add(missileBehaviour);
                 break;
             case Armament.GATLING:
                 GatlingBehaviour gatlingBehaviour = armament.GetComponent<GatlingBehaviour>();
-                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletPerSecond);
+                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletPerSecond, bulletDamage);
                 gatlings.Add(gatlingBehaviour);
                 break;
         }
+        armament.weaponManager = this;
     }
 
     public void UnregisterArmament(BodyPart armament)
@@ -187,10 +196,9 @@ public class WeaponManager : MonoBehaviour
         canRailgun = true;
     }
 
-    /*private GameObject FakeTarget()
+    public void SetTarget(GameObject target)
     {
-        GameObject temp = Instantiate(new GameObject(), transform.position + transform.forward * 500, Quaternion.identity);
-        Destroy(temp, 5f);
-        return temp;
-    }*/
+        Debug.Log("azsdjkfnzefiuezfniuzehf");
+        this.target = target;
+    }
 }

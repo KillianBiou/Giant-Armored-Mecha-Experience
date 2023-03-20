@@ -24,7 +24,7 @@ public class MechaParts : MonoBehaviour
         }
     }
 
-    public void ProcessDamage(GameObject target, Armament armament)
+    public void ProcessDamage(GameObject target, Armament armament, int damage, int armorShred = 0)
     {
         foreach (Transform child in transform)
         {
@@ -33,13 +33,13 @@ public class MechaParts : MonoBehaviour
                 switch (armament)
                 {
                     case Armament.GATLING:
-                        child.GetComponent<BodyPart>().TakeBullet();
+                        child.GetComponent<BodyPart>().TakeBullet(damage);
                         break;
                     case Armament.MISSILE:
-                        child.GetComponent<BodyPart>().TakeMissile();
+                        child.GetComponent<BodyPart>().TakeMissile(damage, armorShred);
                         break;
                     case Armament.RAILGUN:
-                        child.GetComponent<BodyPart>().TakeRailgun();
+                        child.GetComponent<BodyPart>().TakeRailgun(damage);
                         break;
                 }
             }

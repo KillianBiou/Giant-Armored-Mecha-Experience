@@ -9,12 +9,14 @@ public class GatlingBehaviour : MonoBehaviour
     private float bulletSpeed;
     private int bulletPerSecond;
     private bool canFire = true;
+    private int damage;
 
-    public void Initialize(GameObject bullet, float bulletSpeed, int bulletPerSecond)
+    public void Initialize(GameObject bullet, float bulletSpeed, int bulletPerSecond, int damage)
     {
         this.bullet = bullet;
         this.bulletSpeed = bulletSpeed;
         this.bulletPerSecond = bulletPerSecond;
+        this.damage = damage;
     }
 
     private IEnumerator BulletCooldown()
@@ -30,7 +32,7 @@ public class GatlingBehaviour : MonoBehaviour
             foreach (Transform child in transform)
             {
                 GameObject bulletInstance = Instantiate(bullet, child.position, Quaternion.identity);
-                bulletInstance.GetComponent<BulletLogic>().InitilizeBullet(target, bulletSpeed);
+                bulletInstance.GetComponent<BulletLogic>().InitilizeBullet(target, bulletSpeed, damage);
             }
             canFire = false;
             StartCoroutine(BulletCooldown());
