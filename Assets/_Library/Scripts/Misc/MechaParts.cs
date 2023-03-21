@@ -78,14 +78,17 @@ public class MechaParts : MonoBehaviour
         {
             case ControllerType.SPACE_CONTROLLER:
                 gameObject.GetComponent<SpaceController>().enabled = true;
+                GetComponent<Rigidbody>().useGravity = false;
                 break;
             case ControllerType.COMBAT_CONTROLLER:
                 CombatController controller = gameObject.GetComponent<CombatController>();
                 controller.enabled = true;
+                GetComponent<Rigidbody>().useGravity = false;
                 break;
             case ControllerType.GROUND_CONTROLLER:
                 GroundController controllerG = gameObject.GetComponent<GroundController>();
                 controllerG.enabled = true;
+                GetComponent<Rigidbody>().useGravity = true;
                 break;
         }
 
@@ -102,9 +105,11 @@ public class MechaParts : MonoBehaviour
         {
             case ControllerType.SPACE_CONTROLLER:
                 GetComponent<SpaceController>().enabled = false;
+                GetComponent<Rigidbody>().useGravity = false;
                 break;
             case ControllerType.COMBAT_CONTROLLER:
                 GetComponent<CombatController>().enabled = false;
+                GetComponent<Rigidbody>().useGravity = false;
                 break;
             case ControllerType.GROUND_CONTROLLER:
                 GetComponent<GroundController>().enabled = false;
