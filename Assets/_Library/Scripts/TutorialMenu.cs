@@ -1,70 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Video;
 
 public class TutorialMenu : MonoBehaviour
 {
-    [System.Serializable]
-    public struct Buttons
-    {
-        [SerializeField]
-        public GameObject[] _gameObjects;
-    }
+    [SerializeField]
+    private Tutorials tutos;
+
 
     [SerializeField]
-    public GameObject[] tutoControll;
-    [SerializeField]
-    public List<Buttons> tutoButtons;
+    private TMP_Text titleTxt;
 
-    private int i = 0;
+    [SerializeField]
+    private VideoPlayer vidplay;
+
+    [SerializeField]
+    private AudioSource speaker;
+
+
+    [SerializeField]
+    private JoystickMove LeftController;
+
+    [SerializeField]
+    private JoystickMove RightController;
     
+    private Tuto currentTuto;
     
 
     private void OnEnable()
     {
-        if(tutoControll.Length > 0)
-            foreach(GameObject go in tutoButtons[i]._gameObjects)
-                go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
+        currentTuto = tutos.GetCurrentTuto();
+        Actualize();
     }
 
     private void OnDisable()
     {
-        if (tutoControll.Length > 0)
-            foreach (GameObject go in tutoButtons[i]._gameObjects)
-                go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 0.0f);
+        HideTuto();
     }
-
-
 
 
     public void PrevTuto()
     {
-        tutoControll[i].SetActive(false);
-        foreach (GameObject go in tutoButtons[i]._gameObjects)
-            go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 0.0f);
+        HideTuto();
 
-        i--;
-        if (i < 0)
-            i = tutoControll.Length-1;
+        tutos.PrevTuto();
+        currentTuto = tutos.GetCurrentTuto();
 
-        tutoControll[i].SetActive(true);
-        foreach (GameObject go in tutoButtons[i]._gameObjects)
-            go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
+        Actualize();
     }
 
 
     public void NextTuto()
     {
-        tutoControll[i].SetActive(false);
-        foreach (GameObject go in tutoButtons[i]._gameObjects)
-            go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 0.0f);
+        HideTuto();
 
-        i++;
-        if (i >= tutoControll.Length)
-            i = 0;
+        tutos.NextTuto();
+        currentTuto = tutos.GetCurrentTuto();
 
-        tutoControll[i].SetActive(true);
-        foreach (GameObject go in tutoButtons[i]._gameObjects)
-            go.GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
+        Actualize();
+    }
+
+    private void HideTuto()
+    {
+        foreach (But b in currentTuto.usableButtonsL)
+            LeftController.GetButtByBut(b).GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 0.0f);
+        foreach (But b in currentTuto.usableButtonsR)
+            RightController.GetButtByBut(b).GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 0.0f);
+    }
+
+    private void Actualize()
+    {
+        titleTxt.text = currentTuto.title;
+        vidplay.clip = currentTuto.vid;
+        speaker.clip = currentTuto.snd;
+
+        foreach (But b in currentTuto.usableButtonsL)
+            LeftController.GetButtByBut(b).GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
+        foreach (But b in currentTuto.usableButtonsR)
+            RightController.GetButtByBut(b).GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
     }
 }

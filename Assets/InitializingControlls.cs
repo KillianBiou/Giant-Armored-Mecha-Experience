@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InitializingControlls : MonoBehaviour
 {
@@ -16,11 +17,45 @@ public class InitializingControlls : MonoBehaviour
 
 
 
+    [SerializeField]
+    private PlayerInputManager PIM;
+    [SerializeField]
+    private PlayerInput PI;
+
+    [SerializeField]
+    private EngineStart SoftStartL;
+    [SerializeField]
+    private EngineStart SoftStartR;
+
+    private bool Estarted = false;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         m_TpsScreen = TpsScreen.GetComponent<Renderer>().materials[0];
+        m_TpsScreen.SetFloat("_Grid", 1.1f);
+        m_TpsScreen.SetFloat("_Scanner", 0);
         m_FieldScreen = FieldScreen.GetComponent<Renderer>().materials[0];
+        m_FieldScreen.SetFloat("_down", 1);
+        m_FieldScreen.SetFloat("_compensation", 0);
+    }
+
+    void Update()
+    {
+        if(PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
+        {
+            Estarted = true;
+            SoftStartL.enginego();
+            SoftStartR.enginego();
+        }
+    }
+
+
+
+    public void BeginStartup()
+    {
         StartCoroutine(InitSeq());
     }
 
@@ -37,7 +72,10 @@ public class InitializingControlls : MonoBehaviour
         fadein = 1;
         yield return FadeIn();
         fadein = 0;
-        //yield return FadeCompensate();
+        yield return FadeCompensate();
+
+        this.enabled = false;
+        yield return null;
 
     }
 
@@ -82,9 +120,9 @@ public class InitializingControlls : MonoBehaviour
 
     IEnumerator FadeCompensate()
     {
-        while (fadein < 0.5f)
+        while (fadein < 0.2f)
         {
-            fadein += Time.deltaTime * 0.5f;
+            fadein += Time.deltaTime * 0.2f;
             m_FieldScreen.SetFloat("_compensation", fadein);
             yield return new WaitForEndOfFrame();
         }
