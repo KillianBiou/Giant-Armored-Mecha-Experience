@@ -9814,7 +9814,6 @@ GameObject:
   - component: {fileID: 2555459538578282797}
   - component: {fileID: 8310749090224420965}
   - component: {fileID: 8781540519664598132}
-  - component: {fileID: 2988133338733283115}
   m_Layer: 8
   m_Name: scanedView
   m_TagString: Untagged
@@ -9887,19 +9886,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2988133338733283115
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571987889604628540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8021024350616207719
 GameObject:
   m_ObjectHideFlags: 0

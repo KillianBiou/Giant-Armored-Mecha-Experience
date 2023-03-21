@@ -40,7 +40,7 @@ public class GroundCheck : MonoBehaviour
             {
                 float currentPercentage = ((hit.distance - minDist)) / (maxDist - minDist);
                 Quaternion test = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal), currentPercentage);
-                Debug.Log(test.ToString());
+                //Debug.Log(test.ToString());
 
                 //Quaternion deltaRotation = Quaternion.Euler(transform.rotation * Quaternion.FromToRotation(transform.up, hit.normal).eulerAngles * Time.fixedDeltaTime);
 

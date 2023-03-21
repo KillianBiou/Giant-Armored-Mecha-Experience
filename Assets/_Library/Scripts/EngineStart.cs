@@ -32,6 +32,10 @@ public class EngineStart : MonoBehaviour
     void Start()
     {
         bg.color = new Color(0.0f, 0.0f, 0.0f);
+    }
+
+    public void enginego()
+    {
         StartCoroutine(BootSec());
     }
 
@@ -60,7 +64,7 @@ public class EngineStart : MonoBehaviour
         Menu.SetActive(true);
 
         if(initctrl != null)
-            initctrl.enabled = true;
+            initctrl.BeginStartup();
 
         yield return null;
     }
