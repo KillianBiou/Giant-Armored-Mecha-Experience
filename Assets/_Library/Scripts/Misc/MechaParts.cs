@@ -8,6 +8,7 @@ public enum ControllerType
 {
     SPACE_CONTROLLER = 0,
     COMBAT_CONTROLLER = 1,
+    GROUND_CONTROLLER = 2,
 };
 
 public class MechaParts : MonoBehaviour
@@ -79,8 +80,12 @@ public class MechaParts : MonoBehaviour
                 gameObject.GetComponent<SpaceController>().enabled = true;
                 break;
             case ControllerType.COMBAT_CONTROLLER:
-                CombatController controller =  gameObject.GetComponent<CombatController>();
+                CombatController controller = gameObject.GetComponent<CombatController>();
                 controller.enabled = true;
+                break;
+            case ControllerType.GROUND_CONTROLLER:
+                GroundController controllerG = gameObject.GetComponent<GroundController>();
+                controllerG.enabled = true;
                 break;
         }
 
@@ -100,6 +105,9 @@ public class MechaParts : MonoBehaviour
                 break;
             case ControllerType.COMBAT_CONTROLLER:
                 GetComponent<CombatController>().enabled = false;
+                break;
+            case ControllerType.GROUND_CONTROLLER:
+                GetComponent<GroundController>().enabled = false;
                 break;
         }
     }

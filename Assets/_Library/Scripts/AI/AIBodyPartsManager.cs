@@ -55,11 +55,26 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private GameObject railgunVFX;
 
+    [Header("Defense Parameters")]
+    [Header("Point Defense")]
+    [SerializeField]
+    private float laserDetectionRadius;
+    [SerializeField]
+    private GameObject laser;
+    [SerializeField]
+    private Transform laserOrigin;
+    [SerializeField]
+    private float laserDuration;
+
+    [Header("Point Defense")]
+    [SerializeField]
+    private float shieldOffset;
+
+
     private int nbCouroutine;
 
     private float burstStarted;
     private AIData data;
-
 
 
     public void Register(BodyPart bodyPart)
@@ -87,6 +102,13 @@ public class AIBodyPartsManager : MonoBehaviour
     private void Start()
     {
         data = GetComponent<AIData>();
+
+        PointDefenseBehaviour pdb;
+        EnergyShieldBehaviour esb;
+        if (TryGetComponent<PointDefenseBehaviour>(out pdb))
+            pdb.Initialize(laserDetectionRadius, laser, laserOrigin, laserDuration);
+        if (TryGetComponent<EnergyShieldBehaviour>(out esb))
+            esb.Initialize(shieldOffset);
 
         if (gatlings.Count > 0)
             StartCoroutine(FireGatling());

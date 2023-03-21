@@ -8,28 +8,56 @@ public class ThrusterAS : MonoBehaviour
     [SerializeField]
     private AudioSource AS;
 
-    [SerializeField]
-    private JoystickExpose JEx;
+    private InputExpose IEx;
 
     [SerializeField]
     private LoopAudioAB abloop;
 
     [SerializeField]
+    private Side side;
+
+    [SerializeField]
     private float audioOff;
+
+    private void Start()
+    {
+        IEx = InputExpose.instance;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!AS.isPlaying && JEx.YAxis > 0.0f)
+        if(side == Side.LEFT)
         {
-            abloop.enabled = false;
-            AS.Play();
+            if (!AS.isPlaying && Mathf.Abs(IEx.LYAxis) > 0.0f)
+            {
+                Debug.Log("Started Left");
+                abloop.enabled = true;
+                AS.Play();
+            }
+
+            if (AS.isPlaying)
+                AS.volume = Mathf.Lerp(0.2f, 1.4f, Mathf.Abs(IEx.LYAxis));
+
+            if (AS.isPlaying && Mathf.Abs(IEx.LYAxis) < audioOff)
+            {
+                Debug.Log("Ended Left");
+                abloop.enabled = false;
+            }
         }
+        else
+        {
+            if (!AS.isPlaying && Mathf.Abs(IEx.RYAxis) > 0.0f)
+            {
+                abloop.enabled = true;
+                AS.Play();
+            }
 
-        if (AS.isPlaying)
-            AS.volume = Mathf.Lerp(0.2f, 1.4f, JEx.YAxis);
+            if (AS.isPlaying)
+                AS.volume = Mathf.Lerp(0.2f, 1.4f, Mathf.Abs(IEx.RYAxis));
 
-        if (-audioOff < JEx.YAxis && JEx.YAxis < audioOff)
-            abloop.enabled = false;
+            if (AS.isPlaying && Mathf.Abs(IEx.RYAxis) < audioOff)
+                abloop.enabled = false;
+        }
     }
 }

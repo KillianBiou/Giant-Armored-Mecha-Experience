@@ -102,5 +102,8 @@ public class SpaceController : MonoBehaviour
         {
             mecha.ChangeControllerType(ControllerType.COMBAT_CONTROLLER);
         }
+
+        if (mecha.isGrounded)
+            mecha.ChangeControllerType(ControllerType.GROUND_CONTROLLER);
     }
 }
