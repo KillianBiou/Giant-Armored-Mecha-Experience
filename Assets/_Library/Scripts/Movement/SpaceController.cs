@@ -30,6 +30,11 @@ public class SpaceController : MonoBehaviour
     private MechaParts mecha;
     private Rigidbody rb;
 
+    private void Awake()
+    {
+        GetComponent<Rigidbody>().useGravity = false;
+    }
+
     private void Start()
     {
         mecha = GetComponent<MechaParts>();
@@ -41,6 +46,7 @@ public class SpaceController : MonoBehaviour
         HandleMovement();
         HandleRotation();
         HandleMisc();
+        GetComponent<Rigidbody>().useGravity = false;
     }
 
     private void HandleMovement()
@@ -74,8 +80,6 @@ public class SpaceController : MonoBehaviour
         
         if (rb.velocity.magnitude >= maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
-        if (rb.angularVelocity.magnitude >= maxAngularSpeed)
-            rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
     }
 
     private void HandleRotation()
@@ -92,6 +96,9 @@ public class SpaceController : MonoBehaviour
         {
             rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
         }
+
+        if (rb.angularVelocity.magnitude >= maxAngularSpeed)
+            rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
     }
 
     private void HandleMisc()

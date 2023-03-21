@@ -11,9 +11,13 @@ public class GroundCheck : MonoBehaviour
     private float maxDist;
     [SerializeField]
     private float minDist;
+    [SerializeField]
+    private float gravityPower;
 
     private RaycastHit hit;
     private Quaternion baseRotation;
+    private Vector3 targetPos;
+    public Rigidbody mecha;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,20 +42,24 @@ public class GroundCheck : MonoBehaviour
 
             if(hit.distance >= minDist && hit.distance <= maxDist)
             {
-                float currentPercentage = ((hit.distance - minDist)) / (maxDist - minDist);
-                Quaternion test = Quaternion.Slerp(transform.rotation, Quaternion.FromToRotation(transform.up, hit.normal), currentPercentage);
-                //Debug.Log(test.ToString());
+                targetPos = hit.normal;
+                Physics.gravity = -hit.normal * gravityPower;
 
                 //Quaternion deltaRotation = Quaternion.Euler(transform.rotation * Quaternion.FromToRotation(transform.up, hit.normal).eulerAngles * Time.fixedDeltaTime);
 
                 //transform.GetComponentInParent<Rigidbody>().MoveRotation(test * transform.rotation);
-                transform.GetComponentInParent<Rigidbody>().MoveRotation(Quaternion.FromToRotation(transform.up, hit.normal) * (transform.rotation));
+                //transform.GetComponentInParent<Rigidbody>().MoveRotation(Quaternion.FromToRotation(transform.up, hit.normal) * (transform.rotation));
                 //transform.GetComponentInParent<Rigidbody>().MoveRotation(deltaRotation * (transform.rotation));
             }
         }
-        else
-        {
-            baseRotation = new Quaternion(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
-        }
+
+        /*Vector3 direction = transform.position - targetPos;
+
+        direction.Normalize();
+
+        Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
+        rotateAmount.y = 0f;
+
+        mecha.angularVelocity += rotateAmount / 4;*/
     }
 }

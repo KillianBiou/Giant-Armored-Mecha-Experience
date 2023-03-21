@@ -33,6 +33,7 @@ public class BodyPart : MonoBehaviour
 {
     public MemberData data;
     public WeaponManager weaponManager;
+    public AIBodyPartsManager aiManager;
 
     private void Start()
     {
@@ -56,13 +57,8 @@ public class BodyPart : MonoBehaviour
         {
             if (weaponManager)
                 weaponManager.RegisterArmament(this);
-            else
-            {
-                AIBodyPartsManager aiManager;
-                transform.parent.TryGetComponent<AIBodyPartsManager>(out aiManager);
-                if (aiManager)
-                    aiManager.Register(this);
-            }
+            if(aiManager)
+                aiManager.Register(this);
         }
     }
 
