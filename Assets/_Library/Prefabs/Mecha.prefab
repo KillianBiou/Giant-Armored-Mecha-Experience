@@ -111,8 +111,11 @@ MonoBehaviour:
   data:
     part: 1
     weapon: 1
-    maxHP: 100
-  currentHP: 0
+    maxHp: 0
+    hp: 0
+    maxArmor: 0
+    armor: 0
+  weaponManager: {fileID: 0}
 --- !u!1 &1477756611145299568
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +210,7 @@ GameObject:
   - component: {fileID: 1829940902678535194}
   - component: {fileID: 6284189598439469185}
   - component: {fileID: 6304051121900912447}
+  - component: {fileID: 4646445622071345403}
   m_Layer: 6
   m_Name: Rockets
   m_TagString: Untagged
@@ -340,6 +344,22 @@ MonoBehaviour:
   A: 2.5
   B: 3.1
   AS: {fileID: 6284189598439469185}
+--- !u!114 &4646445622071345403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374700392474360302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af64bc8107bd5c0438c4286893ab1732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AS: {fileID: 6284189598439469185}
+  JEx: {fileID: 4655075216797750937}
+  abloop: {fileID: 6304051121900912447}
+  audioOff: 0.2
 --- !u!1 &4897225828865413961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1285,8 @@ MonoBehaviour:
   leftThruster: {fileID: 7520614345496143632}
   rightThruster: {fileID: 7520614344548860478}
   debugIsGrounded: 0
+  controllerType: 0
+  bodyParts: []
 --- !u!114 &7520614344795281356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,8 +1649,14 @@ MonoBehaviour:
     type: 3}
   missileExplosion: {fileID: 4232285359161398352, guid: 32739841c39d12841a49d83e9e73331e,
     type: 3}
+  missileDamage: 0
+  missileArmorShred: 0
   bulletSpeed: 150
   bulletPerSecond: 10
+  bulletDamage: 0
+  railgunVFX: {fileID: 0}
+  railgunCooldown: 0
+  railgunDamage: 0
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
   missile: {fileID: 8129323822110653699, guid: 9859e003dbea4b041845189ed203ef7b, type: 3}
   missileCooldown: 1
@@ -1743,12 +1771,17 @@ MonoBehaviour:
   LYAxis: 0
   L2Button: 0
   L3Button: 0
+  L4Button: 0
+  L5Button: 0
   LTrigger: 0
   RXAxis: 0
   RYAxis: 0
   R2Button: 0
+  R3Button: 0
+  R4Button: 0
+  R5Button: 0
+  RTrigger: 0
   Pedals: 0
-  ZTilt: 0
 --- !u!1 &8431106649074606984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,12 +1985,12 @@ PrefabInstance:
     - target: {fileID: 2927385310876472240, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2927385310876472240, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 3238260939072870516, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -2087,22 +2120,22 @@ PrefabInstance:
     - target: {fileID: 6416678224728132768, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6416678224728132768, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6416678224728132768, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6416678224728132768, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6512473856989560369, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -2232,12 +2265,12 @@ PrefabInstance:
     - target: {fileID: 7971874762770357390, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7971874762770357390, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8002237764221967542, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
