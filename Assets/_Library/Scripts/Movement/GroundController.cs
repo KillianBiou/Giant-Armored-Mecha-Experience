@@ -49,7 +49,7 @@ public class GroundController : MonoBehaviour
 
         float verticalThrust = InputExpose.instance.Pedals;
 
-
+        rb.AddForce(transform.up * verticalThrust * accelerationFactor);
     }
 
     private void HandleRotation()
@@ -58,23 +58,18 @@ public class GroundController : MonoBehaviour
         float RightY = InputExpose.instance.RYAxis;
         bool R2Button = InputExpose.instance.R2Button;
 
-        if(!mecha.isGrounded && Mathf.Abs(RightX) >= deadzoneTilt)
-        {
-            rb.AddTorque(-transform.forward * accelerationTorqueFactor * RightX);
-        }
-        if (!mecha.isGrounded && R2Button && Mathf.Abs(RightY) >= deadzoneTilt)
-        {
-            rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
-        }
     }
 
     private void HandleMisc()
     {
         bool combatButton = InputExpose.instance.L4Button || InputExpose.instance.R4Button;
 
-        if (combatButton && GetComponent<WeaponManager>().GetTarget())
+        /*if (combatButton && GetComponent<WeaponManager>().GetTarget())
         {
             mecha.ChangeControllerType(ControllerType.COMBAT_CONTROLLER);
-        }
+        }*/
+
+        if (!mecha.isGrounded)
+            mecha.ChangeControllerType(ControllerType.GROUND_CONTROLLER);
     }
 }
