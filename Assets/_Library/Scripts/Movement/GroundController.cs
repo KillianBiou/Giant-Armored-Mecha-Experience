@@ -92,6 +92,7 @@ public class GroundController : MonoBehaviour
 
         if (rb.angularVelocity.magnitude >= maxAngularSpeed)
             rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
     }
 
     private void HandleMisc()

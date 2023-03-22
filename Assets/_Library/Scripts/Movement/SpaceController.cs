@@ -58,6 +58,9 @@ public class SpaceController : MonoBehaviour
         float leftY = InputExpose.instance.LYAxis;
         float rightY = InputExpose.instance.RYAxis;
         float leftX = InputExpose.instance.LXAxis;
+        float rightX = InputExpose.instance.RXAxis;
+
+        float strafVector = (leftX + rightX) / 2f;
 
         float verticalThrust = InputExpose.instance.Pedals;
 
@@ -73,7 +76,7 @@ public class SpaceController : MonoBehaviour
         rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
         rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
 
-        rb.AddForce(transform.right * leftX * accelerationStrafFactor);
+        rb.AddForce(transform.right * strafVector * accelerationStrafFactor);
 
         rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
 
@@ -92,11 +95,7 @@ public class SpaceController : MonoBehaviour
         float RightY = InputExpose.instance.RYAxis;
         bool R2Button = InputExpose.instance.R2Button;
 
-        Debug.Log(360 - transform.rotation.eulerAngles.x);
-        Debug.Log(360 - transform.rotation.eulerAngles.x >= maxXTilt && 360 - transform.rotation.eulerAngles.x <= 360 - maxXTilt);
-        //Debug.Log(360 - transform.rotation.eulerAngles.x);
-
-        if(!mecha.isGrounded && Mathf.Abs(RightX) >= deadzoneTilt)// && transform.rotat ion.eulerAngles.x <= maxXTilt)
+        if(!mecha.isGrounded && R2Button && Mathf.Abs(RightX) >= deadzoneTilt )// && transform.rotat ion.eulerAngles.x <= maxXTilt)
         {
             transform.rotation = Quaternion.Euler(new Vector3(((360 - transform.rotation.eulerAngles.x > 180) ? maxXTilt : -maxXTilt), transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
             if (RightX < 0 && (360 - transform.rotation.eulerAngles.x > 180))
