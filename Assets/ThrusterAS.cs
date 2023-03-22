@@ -37,7 +37,7 @@ public class ThrusterAS : MonoBehaviour
             }
 
             if (AS.isPlaying)
-                AS.volume = Mathf.Lerp(0.2f, 1.4f, Mathf.Abs(IEx.LYAxis));
+                AS.volume = Mathf.Lerp(0f, 0.5f, Mathf.Abs(IEx.LYAxis));
 
             if (AS.isPlaying && Mathf.Abs(IEx.LYAxis) < audioOff)
             {
@@ -54,7 +54,7 @@ public class ThrusterAS : MonoBehaviour
             }
 
             if (AS.isPlaying)
-                AS.volume = Mathf.Lerp(0.2f, 1.4f, Mathf.Abs(IEx.RYAxis));
+                AS.volume = Mathf.Lerp(0f, 0.8f, Mathf.Abs(IEx.RYAxis));
 
             if (AS.isPlaying && Mathf.Abs(IEx.RYAxis) < audioOff)
                 abloop.enabled = false;

@@ -31,7 +31,7 @@ public class RocketsAS : MonoBehaviour
         }
         
         if(AS.isPlaying)
-            AS.volume = Mathf.Lerp(0.2f, 1f, Mathf.Abs(IEx.Pedals));
+            AS.volume = Mathf.Lerp(0.2f, 3f, Mathf.Abs(IEx.Pedals));
 
         if (AS.isPlaying && Mathf.Abs(IEx.Pedals) < audioOff)
             abloop.enabled = false;
