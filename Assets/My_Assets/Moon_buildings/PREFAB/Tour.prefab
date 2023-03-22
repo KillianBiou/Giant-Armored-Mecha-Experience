@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1439814916818952740}
   - component: {fileID: 2617888380230462849}
   - component: {fileID: 265832042234812747}
-  m_Layer: 0
+  - component: {fileID: -4031711981395935173}
+  - component: {fileID: 4662439474390916317}
+  m_Layer: 3
   m_Name: Tour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-4031711981395935173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779080892396681374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22.716415, y: 64.821785, z: 24.152863}
+  m_Center: {x: 2.66391, y: 32.383244, z: -2.9235687}
+--- !u!65 &4662439474390916317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779080892396681374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 35.016415, y: 7.655405, z: 34.72153}
+  m_Center: {x: 0.7360134, y: 3.8000536, z: 22.883451}

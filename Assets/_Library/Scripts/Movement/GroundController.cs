@@ -26,6 +26,8 @@ public class GroundController : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float maxAngularSpeed;
+    [SerializeField]
+    private bool canFly;
 
     [SerializeField]
     private LayerMask layers;
@@ -48,7 +50,6 @@ public class GroundController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, -transform.up, out hit, 10, layers))
         {
-            Debug.Log(Vector3.Distance(transform.position, hit.point));
             if (Vector3.Distance(transform.position, hit.point) <= 2)
             {
                 rb.AddForce(transform.up * accelerationFactor);
@@ -71,7 +72,8 @@ public class GroundController : MonoBehaviour
 
         float verticalThrust = Mathf.Clamp(InputExpose.instance.Pedals, 0, 1);
 
-        rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
+        if(canFly)
+            rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
         rb.AddForce(transform.forward * leftY * accelerationFactor);
         rb.AddForce(transform.right * leftX * accelerationStrafFactor);
 
@@ -105,7 +107,7 @@ public class GroundController : MonoBehaviour
             mecha.ChangeControllerType(ControllerType.COMBAT_CONTROLLER);
         }*/
 
-        if (!mecha.isGrounded && verticalThrust > 0f)
+        if (canFly && !mecha.isGrounded && verticalThrust > 0f)
         {
             mecha.ChangeControllerType(ControllerType.SPACE_CONTROLLER);
             rb.useGravity = false;

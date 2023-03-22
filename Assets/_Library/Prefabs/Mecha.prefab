@@ -3515,7 +3515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7520614344548860478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3736,9 +3736,9 @@ MonoBehaviour:
   deadzone: 0.3
   deadzoneTilt: 0.2
   maxSpeed: 100
-  maxAngularSpeed: 200
-  maxZTilt: 0
-  maxXTilt: 0
+  maxAngularSpeed: 1
+  maxZTilt: 60
+  maxXTilt: 60
 --- !u!54 &7520614344795281359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3861,7 +3861,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7520614344795281331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f34edd3dc2d05354494ede2c2e247522, type: 3}
   m_Name: 
@@ -3874,6 +3874,7 @@ MonoBehaviour:
   deadzoneTilt: 0.1
   maxSpeed: 100
   maxAngularSpeed: 100
+  canFly: 0
   layers:
     serializedVersion: 2
     m_Bits: 8
@@ -4002,7 +4003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7520614345496143632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
