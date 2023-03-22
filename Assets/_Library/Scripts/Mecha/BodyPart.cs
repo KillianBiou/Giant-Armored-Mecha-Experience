@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum MemberPart
 {
-    HEAD = 0,
-    TORSO = 1,
-    ARM = 2,
-    LEG = 3,
+    TORSO = 0,
+    LEFT_ARM = 1,
+    RIGHT_ARM = 2,
+    LEFT_LEG = 3,
+    RIGHT_LEG = 4,
 }
 
 public enum Armament

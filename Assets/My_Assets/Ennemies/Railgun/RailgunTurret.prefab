@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212481438}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 847301875}
   - component: {fileID: 847301876}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Railgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 139016342}
   - component: {fileID: 139016341}
   - component: {fileID: 139016343}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RailgunTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,6 +271,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 042342197cb51ef4288f9014c5cdb494, type: 2}
+    - target: {fileID: -5872899299151683280, guid: 375dad8277c893f459e8e83273891640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -3404458829510325481, guid: 375dad8277c893f459e8e83273891640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 493056586221799676, guid: 375dad8277c893f459e8e83273891640,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -281,11 +291,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: turret2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 375dad8277c893f459e8e83273891640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144680567483025419, guid: 375dad8277c893f459e8e83273891640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4399924999072612064, guid: 375dad8277c893f459e8e83273891640,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 042342197cb51ef4288f9014c5cdb494, type: 2}
+    - target: {fileID: 8083461110960297739, guid: 375dad8277c893f459e8e83273891640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8889916611158527580, guid: 375dad8277c893f459e8e83273891640,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

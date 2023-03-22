@@ -77,6 +77,9 @@ public class GroundController : MonoBehaviour
         rb.AddForce(transform.forward * leftY * accelerationFactor);
         rb.AddForce(transform.right * leftX * accelerationStrafFactor);
 
+        mecha.mechaAnim.SetFloat("X", leftX);
+        mecha.mechaAnim.SetFloat("Y", leftY);
+
         if (rb.velocity.magnitude >= maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
     }

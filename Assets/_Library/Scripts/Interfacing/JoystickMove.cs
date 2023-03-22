@@ -23,6 +23,8 @@ public enum But
     BUT10 = 10,
     BUT11 = 11,
     TRIGG = 12,
+    LPEDA = 13,
+    RPEDA = 14
 };
 
 [System.Serializable]
@@ -41,6 +43,9 @@ public class JoystickMove : MonoBehaviour
     private GameObject handle;
 
     [SerializeField]
+    private GameObject Lpedal, Rpedal;
+
+    [SerializeField]
     public Side side;
 
     [SerializeField]
@@ -54,11 +59,20 @@ public class JoystickMove : MonoBehaviour
 
             //handle.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + Vector3.forward * InputExpose.instance.LXAxis * maxAngle);
             handle.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + -Vector3.forward * InputExpose.instance.LXAxis * maxAngle);
+            if(InputExpose.instance.Pedals > 0)
+            {
+                Rpedal.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.Pedals * maxAngle);
+            }
+            else if(InputExpose.instance.Pedals < 0)
+            {
+                Lpedal.transform.localRotation = Quaternion.Euler(Vector3.left * Mathf.Abs(InputExpose.instance.Pedals) * maxAngle);
+            }
         }
         if (side == Side.RIGHT)
         {
             handle.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.RYAxis * maxAngle + Vector3.forward * InputExpose.instance.RXAxis * maxAngle);
         }
+
         /*if(side == Side.LEFT)
         {
             //handle.transform.rotation = Quaternion.AngleAxis(InputExpose.instance.LXAxis * maxAngle, transform.forward) * transform.up;
