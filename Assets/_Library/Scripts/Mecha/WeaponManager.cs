@@ -59,6 +59,7 @@ public class WeaponManager : MonoBehaviour
     private int missileIndex = 0;
     private bool canMissile = true;
     private bool canRailgun = true;
+    private bool gatlingMemory = false;
     private GameObject dummyTarget;
 
     static int ClampLoop(int min, int max, int value)
@@ -177,12 +178,23 @@ public class WeaponManager : MonoBehaviour
         if (gatling)
         {
             FireGatling();
+            if(!gatlingMemory)
+            {
+                gatlingMemory = true;
+                Boureau.instance.SetGatling(true);
+            }
         }
         if (railgun && canRailgun)
         {
             FireRailgun();
             canRailgun = false;
             StartCoroutine(RefreshRailgun());
+        }
+
+        if (!gatling && gatlingMemory)
+        {
+            gatlingMemory = false;
+            Boureau.instance.SetGatling(false);
         }
     }
 

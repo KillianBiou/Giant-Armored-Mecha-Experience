@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System.IO.Ports;
 
 
-
+[System.Serializable]
 public struct Vibratation
 {
 	public int intensity;
@@ -39,6 +39,8 @@ public class Boureau : MonoBehaviour
 	private int currentIntensity = 0;
 
 	private bool connected = false;
+
+	private bool gatling = false;
 
 	public static Boureau instance;
 
@@ -77,9 +79,11 @@ public class Boureau : MonoBehaviour
 	void Update()
 	{
 
-		for(int i=vibers.Count-1; i>0; i--)
+		for(int i=vibers.Count-1; i>=0; i--)
         {
-			vibers[i].SubTime(Time.deltaTime);
+			Vibratation temp = vibers[i];
+			temp.duration -= Time.deltaTime * 1000;
+			vibers[i] = temp;
 
 			if (vibers[i].duration <= 0.0f)
 			{
@@ -94,8 +98,16 @@ public class Boureau : MonoBehaviour
 
 		if (vibers.Count == 0)
         {
-			Vibre(0, 0);
-			currentIntensity = 0;
+			if (gatling)
+			{
+                RegisterViber(10, 100);
+				currentIntensity = 10;
+            }
+			else
+			{
+                Vibre(0, 0);
+                currentIntensity = 0;
+            }
 		}
 	}
 
@@ -131,7 +143,10 @@ public class Boureau : MonoBehaviour
 		}
 	}
 
-
+	public void SetGatling(bool value)
+	{
+		gatling = value;
+	}
 
 
 
