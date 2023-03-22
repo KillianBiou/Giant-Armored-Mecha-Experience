@@ -70,7 +70,13 @@ public class SpaceController : MonoBehaviour
         float verticalThrust = InputExpose.instance.Pedals;
 
         if (InputExpose.instance.R2Button)
+        {
             rightY = leftY;
+        }
+        else
+        {
+            mecha.mechaAnim.SetFloat("X", leftX);
+        }
 
         // Want straight forward
         if (Mathf.Abs(rightY - leftY) < deadzone)
@@ -85,11 +91,13 @@ public class SpaceController : MonoBehaviour
 
         rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
 
+        mecha.mechaAnim.SetFloat("Y", Mathf.Clamp(leftY + rightY, -1, 1));
+
         // Limit Velocity to max
 
         //rb.velocity = new Vector3(Mathf.Min(rb.velocity.x, maxSpeed), Mathf.Min(rb.velocity.y, maxSpeed), Mathf.Min(rb.velocity.z, maxSpeed));
         //rb.angularVelocity = new Vector3(Mathf.Min(rb.angularVelocity.x, maxAngularSpeed), Mathf.Min(rb.angularVelocity.y, maxAngularSpeed), Mathf.Min(rb.angularVelocity.z, maxAngularSpeed));
-        
+
         if (rb.velocity.magnitude >= maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
     }

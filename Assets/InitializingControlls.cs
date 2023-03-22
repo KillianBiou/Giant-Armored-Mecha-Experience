@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class InitializingControlls : MonoBehaviour
 {
+    [SerializeField]
+    private Light mainLight;
+
 
     [SerializeField]
     private GameObject TpsScreen;
@@ -40,12 +43,16 @@ public class InitializingControlls : MonoBehaviour
         m_FieldScreen = FieldScreen.GetComponent<Renderer>().materials[0];
         m_FieldScreen.SetFloat("_down", 1);
         m_FieldScreen.SetFloat("_compensation", 0);
+
+        mainLight.intensity = 0;
     }
 
     void Update()
     {
         if(PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
         {
+            StartCoroutine(OnLight());
+            StartCoroutine(InitSeq());
             Estarted = true;
             SoftStartL.enginego();
             SoftStartR.enginego();
@@ -60,7 +67,24 @@ public class InitializingControlls : MonoBehaviour
     }
 
 
-    IEnumerator InitSeq()
+
+
+
+
+
+
+    IEnumerator OnLight()
+    {
+        if (mainLight.intensity < 1.0f)
+        {
+            mainLight.intensity += 2.0f * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+
+
+        IEnumerator InitSeq()
     {
         fadein = 1.1f;
         yield return DrawGrid();
