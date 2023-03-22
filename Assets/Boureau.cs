@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System.IO.Ports;
 
 
-
+[System.Serializable]
 public struct Vibratation
 {
 	public int intensity;
@@ -32,6 +32,7 @@ public struct Vibratation
 
 public class Boureau : MonoBehaviour
 {
+	public static Boureau instance;
 
 	[SerializeField]
 	private List<Vibratation> vibers = new List<Vibratation>();
@@ -40,7 +41,7 @@ public class Boureau : MonoBehaviour
 
 	private bool connected = false;
 
-	public static Boureau instance;
+	
 
 	SerialPort serial;
 
@@ -77,9 +78,11 @@ public class Boureau : MonoBehaviour
 	void Update()
 	{
 
-		for(int i=vibers.Count-1; i>0; i--)
-        {
-			vibers[i].SubTime(Time.deltaTime);
+		for (int i = vibers.Count - 1; i >= 0; i--)
+		{
+			Vibratation temp = vibers[i];
+			temp.duration -= Time.deltaTime * 1000;
+			vibers[i] = temp;
 
 			if (vibers[i].duration <= 0.0f)
 			{
@@ -139,12 +142,14 @@ public class Boureau : MonoBehaviour
 
 	public Vibratation RegisterViber(int intensity, int time)
     {
+		Debug.Log(intensity + " ; " + time);
 		Vibratation v = new Vibratation(intensity, time);
 		vibers.Add(v);
 		vibers.Sort(SortByIntensity);
 		vibers.Reverse();
 		if (vibers[0].intensity > currentIntensity)
 		{
+			Debug.Log("VIBRRATE");
 			currentIntensity = vibers[0].intensity;
 			Vibre(vibers[0].intensity, (int)vibers[0].duration);
 		}

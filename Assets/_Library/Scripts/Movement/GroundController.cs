@@ -48,7 +48,6 @@ public class GroundController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, -transform.up, out hit, 10, layers))
         {
-            Debug.Log(Vector3.Distance(transform.position, hit.point));
             if (Vector3.Distance(transform.position, hit.point) <= 2)
             {
                 rb.AddForce(transform.up * accelerationFactor);
@@ -74,6 +73,9 @@ public class GroundController : MonoBehaviour
         rb.AddForce(transform.up * verticalThrust * accelerationUpFactor);
         rb.AddForce(transform.forward * leftY * accelerationFactor);
         rb.AddForce(transform.right * leftX * accelerationStrafFactor);
+
+        mecha.mechaAnim.SetFloat("X", leftX);
+        mecha.mechaAnim.SetFloat("Y", leftY);
 
         if (rb.velocity.magnitude >= maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;

@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class MissionElement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    public Mission dady;
+
+    [SerializeField]
+    private MissionType type;
+
+
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Player")
+        {
+            dady.ChkEnd();
+            this.enabled = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ImDead()
     {
-        
+        dady.ChkEnd();
+        this.enabled = false;
     }
 }

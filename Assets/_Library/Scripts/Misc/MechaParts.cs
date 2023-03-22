@@ -22,6 +22,8 @@ public class MechaParts : MonoBehaviour
     private bool debugIsGrounded;
     public ControllerType controllerType;
 
+    public Animator mechaAnim;
+
     public List<BodyPart> bodyParts = new List<BodyPart>();
 
     private bool changeCooldown = false;
@@ -49,9 +51,9 @@ public class MechaParts : MonoBehaviour
 
     public void ProcessDamage(GameObject target, Armament armament, int damage, int armorShred = 0)
     {
-        foreach (Transform child in transform)
+        foreach (BodyPart child in bodyParts)
         {
-            if(child.gameObject == target)
+            if (child.gameObject == target)
             {
                 switch (armament)
                 {
@@ -60,6 +62,7 @@ public class MechaParts : MonoBehaviour
                         break;
                     case Armament.MISSILE:
                         child.GetComponent<BodyPart>().TakeMissile(damage, armorShred);
+                        Debug.Log("Vibrate Missile");
                         Boureau.instance.RegisterViber(20, 500);
                         break;
                     case Armament.RAILGUN:
@@ -80,16 +83,19 @@ public class MechaParts : MonoBehaviour
             case ControllerType.SPACE_CONTROLLER:
                 gameObject.GetComponent<SpaceController>().enabled = true;
                 GetComponent<Rigidbody>().useGravity = false;
+                mechaAnim.SetBool("isFlying", true);
                 break;
             case ControllerType.COMBAT_CONTROLLER:
                 CombatController controller = gameObject.GetComponent<CombatController>();
                 controller.enabled = true;
                 GetComponent<Rigidbody>().useGravity = false;
+                mechaAnim.SetBool("isFlying", false);
                 break;
             case ControllerType.GROUND_CONTROLLER:
                 GroundController controllerG = gameObject.GetComponent<GroundController>();
                 controllerG.enabled = true;
                 GetComponent<Rigidbody>().useGravity = true;
+                mechaAnim.SetBool("isFlying", false);
                 break;
         }
 

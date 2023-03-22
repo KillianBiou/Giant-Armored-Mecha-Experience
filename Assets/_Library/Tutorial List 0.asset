@@ -13,7 +13,28 @@ MonoBehaviour:
   m_Name: Tutorial List 0
   m_EditorClassIdentifier: 
   tutorials:
-  - usableButtons: []
+  - usableButtonsL: 00000000
+    usableButtonsR: 00000000
     title: propulsion - forward/backward
+    vid: {fileID: 0}
+    snd: {fileID: 8300000, guid: 9e29fe92718c4be4cbe1a10ff9b3ae83, type: 3}
+  - usableButtonsL: 0c000000
+    usableButtonsR: 0c000000
+    title: Shoot - Gatling gun
+    vid: {fileID: 0}
+    snd: {fileID: 8300000, guid: 9e29fe92718c4be4cbe1a10ff9b3ae83, type: 3}
+  - usableButtonsL: 03000000
+    usableButtonsR: 
+    title: Shoot - Missile
+    vid: {fileID: 0}
+    snd: {fileID: 8300000, guid: 9e29fe92718c4be4cbe1a10ff9b3ae83, type: 3}
+  - usableButtonsL: 
+    usableButtonsR: 03000000
+    title: Shoot - Railgun
+    vid: {fileID: 0}
+    snd: {fileID: 8300000, guid: 9e29fe92718c4be4cbe1a10ff9b3ae83, type: 3}
+  - usableButtonsL: 05000000
+    usableButtonsR: 05000000
+    title: Defense - Swap shiel type
     vid: {fileID: 0}
     snd: {fileID: 8300000, guid: 9e29fe92718c4be4cbe1a10ff9b3ae83, type: 3}
