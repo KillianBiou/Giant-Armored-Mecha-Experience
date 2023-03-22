@@ -88,7 +88,7 @@ public class AIBodyPartsManager : MonoBehaviour
                 break;
             case Armament.MISSILE:
                 MissileBehaviour missileBehaviour = bodyPart.GetComponent<MissileBehaviour>();
-                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, false);
+                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, false, 4);
                 missiles.Add(missileBehaviour);
                 break;
             case Armament.GATLING:

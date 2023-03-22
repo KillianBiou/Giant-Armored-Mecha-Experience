@@ -7,7 +7,7 @@ public class MissileBehaviour : MonoBehaviour
 
     private GameObject missile;
 
-    private int missileLeft = 6;
+    private int missileLeft;
 
     private float thrustFactor;
 
@@ -17,8 +17,9 @@ public class MissileBehaviour : MonoBehaviour
 
     private int damage;
     private int armorShred;
+    private int maxMissile;
 
-    public void Initialize(GameObject missile, float thrustFactor, GameObject explosionEffect, int damage, int armorShred , bool depleteMunition = true)
+    public void Initialize(GameObject missile, float thrustFactor, GameObject explosionEffect, int damage, int armorShred, bool depleteMunition = true, int maxMissile = 6)
     {
         this.missile = missile;
         this.thrustFactor = thrustFactor;
@@ -26,16 +27,19 @@ public class MissileBehaviour : MonoBehaviour
         this.depleteMunition = depleteMunition;
         this.damage = damage;
         this.armorShred = armorShred;
+        this.maxMissile = maxMissile;
+        missileLeft = maxMissile;
     }
 
     public void Fire(GameObject target)
     {
         if(missileLeft > 0)
         {
-            GameObject IMissile = Instantiate(missile, transform.Find((6 - missileLeft).ToString()).transform.position, transform.Find((6 - missileLeft).ToString()).transform.rotation);
+            GameObject IMissile = Instantiate(missile, transform.Find((maxMissile - missileLeft).ToString()).transform.position, transform.Find((maxMissile - missileLeft).ToString()).transform.rotation);
             IMissile.GetComponent<MissileLogic>().InitilizeMissile(target, thrustFactor, explosionEffect, damage, armorShred);
-            if(depleteMunition)
-                missileLeft--;
+            missileLeft--;
+            if (!depleteMunition && missileLeft == 0)
+                missileLeft = maxMissile;
         }
     }
 }

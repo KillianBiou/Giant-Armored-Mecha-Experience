@@ -26,6 +26,10 @@ public class SpaceController : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float maxAngularSpeed;
+    [SerializeField]
+    private float maxZTilt;
+    [SerializeField]
+    private float maxXTilt;
 
     private MechaParts mecha;
     private Rigidbody rb;
@@ -88,17 +92,38 @@ public class SpaceController : MonoBehaviour
         float RightY = InputExpose.instance.RYAxis;
         bool R2Button = InputExpose.instance.R2Button;
 
-        if(!mecha.isGrounded && Mathf.Abs(RightX) >= deadzoneTilt)
+        Debug.Log(360 - transform.rotation.eulerAngles.x);
+        Debug.Log(360 - transform.rotation.eulerAngles.x >= maxXTilt && 360 - transform.rotation.eulerAngles.x <= 360 - maxXTilt);
+        //Debug.Log(360 - transform.rotation.eulerAngles.x);
+
+        if(!mecha.isGrounded && Mathf.Abs(RightX) >= deadzoneTilt)// && transform.rotat ion.eulerAngles.x <= maxXTilt)
         {
-            rb.AddTorque(-transform.forward * accelerationTorqueFactor * RightX);
+            transform.rotation = Quaternion.Euler(new Vector3(((360 - transform.rotation.eulerAngles.x > 180) ? maxXTilt : -maxXTilt), transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+            if (RightX < 0 && (360 - transform.rotation.eulerAngles.x > 180))
+                rb.AddTorque(transform.right * accelerationTorqueFactor * RightX);
+            if (RightX > 0 && (360 - transform.rotation.eulerAngles.x < 180))
+                rb.AddTorque(transform.right * accelerationTorqueFactor * RightX);
         }
         if (!mecha.isGrounded && R2Button && Mathf.Abs(RightY) >= deadzoneTilt)
         {
-            rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
+            if (360 - transform.rotation.eulerAngles.x > maxXTilt && 360 - transform.rotation.eulerAngles.x < 360 - maxXTilt)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(((360 - transform.rotation.eulerAngles.x > 180) ? maxXTilt : -maxXTilt), transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+                if(RightY < 0 && (360 - transform.rotation.eulerAngles.x > 180))
+                    rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
+                if (RightY > 0 && (360 - transform.rotation.eulerAngles.x < 180))
+                    rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
+            }
+            else
+            {
+                rb.AddTorque(transform.right * accelerationTorqueFactor * RightY);
+            }
         }
 
         if (rb.angularVelocity.magnitude >= maxAngularSpeed)
             rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
+
+        //transform.rotation = Quaternion.Euler(new Vector3(Mathf.Clamp(transform.rotation.eulerAngles.x, -maxXTilt, maxXTilt), transform.rotation.eulerAngles.y, Mathf.Clamp(transform.rotation.eulerAngles.z, -maxZTilt, maxZTilt)));
     }
 
     private void HandleMisc()
