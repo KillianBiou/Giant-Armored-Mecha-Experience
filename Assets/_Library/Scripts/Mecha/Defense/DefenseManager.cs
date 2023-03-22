@@ -14,6 +14,8 @@ public class DefenseManager : MonoBehaviour
     [Header("General Parameters")]
     [SerializeField]
     private DefenseType currentDefense;
+    [SerializeField]
+    private GameObject bigScreen;
 
     [SerializeField]
     private float swapCooldown;
@@ -27,10 +29,14 @@ public class DefenseManager : MonoBehaviour
     private Transform laserStart;
     [SerializeField]
     private float laserDuration;
+    [SerializeField]
+    private Color pdColor;
 
     [Header("EnergyShield Parameters")]
     [SerializeField]
     private float protectionOffset;
+    [SerializeField]
+    private Color esColor;
 
     private DefenseType nextDefense = DefenseType.NONE;
     private float currentCooldown;
@@ -66,10 +72,12 @@ public class DefenseManager : MonoBehaviour
             case DefenseType.ENERGY_SHIELD:
                 EnergyShieldBehaviour rShield = gameObject.AddComponent<EnergyShieldBehaviour>();
                 rShield.Initialize(protectionOffset);
+                bigScreen.GetComponent<Renderer>().materials[0].SetColor("_ShieldColor", esColor);
                 break;
             case DefenseType.POINT_DEFENSE:
                 PointDefenseBehaviour rPoint = gameObject.AddComponent<PointDefenseBehaviour>();
                 rPoint.Initialize(detectionRadius, laserBeam, laserStart, laserDuration);
+                bigScreen.GetComponent<Renderer>().materials[0].SetColor("_ShieldColor", pdColor);
                 break;
         }
 
