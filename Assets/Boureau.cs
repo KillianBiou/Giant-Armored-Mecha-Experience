@@ -34,17 +34,20 @@ public class Boureau : MonoBehaviour
 {
 
 	[SerializeField]
-	private List<Vibratation> vibers;
+	private List<Vibratation> vibers = new List<Vibratation>();
 
 	private int currentIntensity = 0;
 
 	private bool connected = false;
+
+	public static Boureau instance;
 
 	SerialPort serial;
 
 
 	void Start()
 	{
+		instance = this;
 		string the_com = "C";
 
 
