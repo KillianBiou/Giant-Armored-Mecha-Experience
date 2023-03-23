@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct Tuto
@@ -18,7 +19,8 @@ public struct Tuto
 
     [SerializeField]
     public VideoClip vid;
-
+    [SerializeField]
+    public Sprite img;
     [SerializeField]
     public AudioClip snd;
 }
