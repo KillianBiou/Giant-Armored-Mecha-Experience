@@ -5,7 +5,7 @@ using UnityEngine;
 public class MissionElement : MonoBehaviour
 {
     [SerializeField]
-    public Mission dady;
+    public MissionFrag dady;
 
     [SerializeField]
     private MissionType type;
