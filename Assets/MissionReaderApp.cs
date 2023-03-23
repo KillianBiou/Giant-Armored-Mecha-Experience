@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class MissionReaderApp : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static MissionReaderApp instance;
+
+    [SerializeField]
+    public AudioSource Speaker;
+
+    public GameObject target;
+
     void Start()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+
+
+    void SetTarget()
     {
-        
+        GpsTridi.instance.SetTarget(target);
+    }
+
+    void UnsetTarget()
+    {
+        GpsTridi.instance.SetTarget(null);
     }
 }
