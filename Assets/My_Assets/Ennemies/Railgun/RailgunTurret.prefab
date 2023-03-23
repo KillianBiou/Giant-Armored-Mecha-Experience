@@ -150,6 +150,7 @@ MonoBehaviour:
   railguns: []
   gatlings: []
   missileThrustFactor: 50
+  missileFireSound: {fileID: 8300000, guid: 7a1d2859f91bb1f4082011c36bacf627, type: 3}
   missileCooldown: 5
   missileDamage: 20
   missileArmorShred: 10
@@ -159,12 +160,14 @@ MonoBehaviour:
   missileExplosion: {fileID: 4232285359161398352, guid: 32739841c39d12841a49d83e9e73331e,
     type: 3}
   bulletSpeed: 150
+  gatlingFireSound: {fileID: 8300000, guid: 3f74eb28ec62e0645bbb5c5f89f11ae2, type: 3}
   bulletSeconds: 1
   burstDuration: 2
   burstCooldown: 5
   bulletDamage: 5
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
   railgunCooldown: 5
+  railgunFireSound: {fileID: 8300000, guid: 6ec7cff01ab5e2647ab67c263efa50a8, type: 3}
   railgunDamage: 10
   railgunVFX: {fileID: 6123301593806592882, guid: dbeb9536772114a4e95654aaabb96541,
     type: 3}

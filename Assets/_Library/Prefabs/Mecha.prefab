@@ -3664,8 +3664,6 @@ MonoBehaviour:
   deadzoneTilt: 0.2
   maxSpeed: 100
   maxAngularSpeed: 200
-  maxZTilt: 0
-  maxXTilt: 0
 --- !u!114 &2066262284070084444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3730,6 +3728,7 @@ MonoBehaviour:
   railguns: []
   gatlings: []
   missileThrustFactor: 50
+  missileFireSound: {fileID: 8300000, guid: 7a1d2859f91bb1f4082011c36bacf627, type: 3}
   missileTrail: {fileID: 6527256424263530757, guid: 2f11888ba8cc02d4186a5a4e4cf84a5c,
     type: 3}
   missileExplosion: {fileID: 4232285359161398352, guid: 32739841c39d12841a49d83e9e73331e,
@@ -3737,10 +3736,12 @@ MonoBehaviour:
   missileDamage: 20
   missileArmorShred: 10
   bulletSpeed: 500
+  gatlingFireSound: {fileID: 8300000, guid: 3f74eb28ec62e0645bbb5c5f89f11ae2, type: 3}
   bulletPerSecond: 10
   bulletDamage: 10
   railgunVFX: {fileID: 6123301593806592882, guid: dbeb9536772114a4e95654aaabb96541,
     type: 3}
+  railgunFireSound: {fileID: 8300000, guid: 6ec7cff01ab5e2647ab67c263efa50a8, type: 3}
   railgunCooldown: 3
   railgunDamage: 10
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
@@ -5368,12 +5369,12 @@ PrefabInstance:
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0011499238
+      value: 0.032806713
       objectReference: {fileID: 0}
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 299.9994
+      value: 0.039138176
       objectReference: {fileID: 0}
     - target: {fileID: 3825007852800526622, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5623,12 +5624,12 @@ PrefabInstance:
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.99999183
       objectReference: {fileID: 0}
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6947285762237822200, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5683,12 +5684,12 @@ PrefabInstance:
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999984
+      value: 0.99999124
       objectReference: {fileID: 0}
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: -0.29411766
+      value: -1.2663044
       objectReference: {fileID: 0}
     - target: {fileID: 7473018552078148981, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}

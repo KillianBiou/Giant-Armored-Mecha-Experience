@@ -59,7 +59,6 @@ public class MechaParts : MonoBehaviour
                 {
                     case Armament.GATLING:
                         child.GetComponent<BodyPart>().TakeBullet(damage);
-                        //Boureau.instance.RegisterViber(15, 200);
                         break;
                     case Armament.MISSILE:
                         child.GetComponent<BodyPart>().TakeMissile(damage, armorShred);
