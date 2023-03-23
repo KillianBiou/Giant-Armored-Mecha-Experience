@@ -67,8 +67,8 @@ public class MechaParts : MonoBehaviour
                         break;
                     case Armament.RAILGUN:
                         child.GetComponent<BodyPart>().TakeRailgun(damage);
-                        Debug.Log("TOOK RAILGUN");
                         Boureau.instance.RegisterViber(30, 1000);
+                        Boureau.instance.Airblow(20);
                         break;
                 }
             }

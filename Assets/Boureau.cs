@@ -35,6 +35,9 @@ public class Boureau : MonoBehaviour
 	public static Boureau instance;
 
 	[SerializeField]
+	private int maxAirblow;
+
+	[SerializeField]
 	private List<Vibratation> vibers = new List<Vibratation>();
 
 	private int currentIntensity = 0;
@@ -125,9 +128,9 @@ public class Boureau : MonoBehaviour
 		serial.Write("Vibrate" + intensity + "_" + time + "\n");
 	}
 
-	private void Airblow(int id, int time)
+	public void Airblow(int time)
 	{
-		serial.Write("Airshoot" + id + "_" + time + "\n");
+		serial.Write("Airshoot" + Random.Range(0, maxAirblow) + "_" + time + "\n");
 	}
 
 
