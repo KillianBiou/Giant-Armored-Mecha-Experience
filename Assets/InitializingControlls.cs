@@ -63,7 +63,7 @@ public class InitializingControlls : MonoBehaviour
 
     public void BeginStartup()
     {
-        StartCoroutine(InitSeq());
+        StartCoroutine(OnLight());
     }
 
 
@@ -84,7 +84,7 @@ public class InitializingControlls : MonoBehaviour
 
 
 
-        IEnumerator InitSeq()
+    IEnumerator InitSeq()
     {
         fadein = 1.1f;
         yield return DrawGrid();
