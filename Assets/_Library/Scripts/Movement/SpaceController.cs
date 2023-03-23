@@ -26,10 +26,6 @@ public class SpaceController : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float maxAngularSpeed;
-    [SerializeField]
-    private float maxZTilt;
-    [SerializeField]
-    private float maxXTilt;
 
     private MechaParts mecha;
     private Rigidbody rb;
@@ -86,6 +82,7 @@ public class SpaceController : MonoBehaviour
 
         rb.AddForceAtPosition(mecha.leftThruster.transform.forward * leftY * accelerationFactor, mecha.leftThruster.transform.position);
         rb.AddForceAtPosition(mecha.rightThruster.transform.forward * rightY * accelerationFactor, mecha.rightThruster.transform.position);
+        Debug.Log(rb.velocity);
 
         rb.AddForce(transform.right * strafVector * accelerationStrafFactor);
 
@@ -108,7 +105,11 @@ public class SpaceController : MonoBehaviour
         float RightY = InputExpose.instance.RYAxis;
         bool R2Button = InputExpose.instance.R2Button;
 
-        transform.Rotate(Vector3.forward * RightX * accelerationTorqueFactor + Vector3.right * RightY * accelerationTorqueFactor);
+        if (R2Button)
+        {
+            transform.Rotate(Vector3.forward * -RightX * accelerationTorqueFactor);
+            transform.Rotate(Vector3.right * RightY * accelerationTorqueFactor);
+        }
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Clamp(180 - transform.eulerAngles.z, -maxZTilt + 180, maxZTilt + 180));
 
         /*if (!mecha.isGrounded && R2Button && Mathf.Abs(RightX) >= deadzoneTilt )// && transform.rotat ion.eulerAngles.x <= maxXTilt)
@@ -140,8 +141,8 @@ public class SpaceController : MonoBehaviour
             }
         }*/
 
-        if (rb.angularVelocity.magnitude >= maxAngularSpeed)
-            rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;
+        /*if (rb.angularVelocity.magnitude >= maxAngularSpeed)
+            rb.angularVelocity = rb.angularVelocity.normalized * maxAngularSpeed;*/
 
         //transform.rotation = Quaternion.Euler(new Vector3(Mathf.Clamp(transform.rotation.eulerAngles.x, -maxXTilt, maxXTilt), transform.rotation.eulerAngles.y, Mathf.Clamp(transform.rotation.eulerAngles.z, -maxZTilt, maxZTilt)));
     }

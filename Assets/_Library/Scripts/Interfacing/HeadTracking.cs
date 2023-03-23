@@ -54,17 +54,20 @@ public class HeadTracking : MonoBehaviour
                 bool stop = false;
                 for(int i = 0; i < hit.Length && !stop; i++)
                 {
-                    if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[i].transform.position - transform.position)))
-                    {
-                        OnTargetFound(hit[i].gameObject);
-
-                        lockTarget.SetActive(true);
+                    /*if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[i].transform.position - transform.position)))
+                    {*/
 
                         RaycastHit castHit;
                         if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance))
                         {
                             if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
+                            {
+                                OnTargetFound(hit[i].gameObject);
+
+                                lockTarget.SetActive(true);
                                 lockTarget.transform.position = castHit.point;
+                                stop = true;
+                            }
                             else
                             {
                                 SetTarget(null);
@@ -72,13 +75,12 @@ public class HeadTracking : MonoBehaviour
                             }
                         }
                         Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
-                        stop = true;
-                    }
+                    /*}
                     else
                     {
                         lockTarget.SetActive(false);
                         SetTarget(null);
-                    }
+                    }*/
                 }
             }
             else

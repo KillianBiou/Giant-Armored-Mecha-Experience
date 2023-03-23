@@ -80,6 +80,10 @@ public class Boureau : MonoBehaviour
 
 	void Update()
 	{
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			Airblow(20);
+		}
 		Debug.Log("Current Vibration Intensity : " + currentIntensity);
 		for (int i = vibers.Count - 1; i >= 0; i--)
 		{
@@ -102,7 +106,7 @@ public class Boureau : MonoBehaviour
         {
 			if (gatling)
 			{
-                RegisterViber(10, 100);
+                RegisterViber(10, 200);
 				currentIntensity = 10;
             }
 			else
@@ -130,7 +134,7 @@ public class Boureau : MonoBehaviour
 
 	public void Airblow(int time)
 	{
-		serial.Write("Airshoot" + Random.Range(0, maxAirblow) + "_" + time + "\n");
+		serial.Write("Airshoot" + Random.Range(0 + 1, maxAirblow + 1) + "_" + time + "\n");
 	}
 
 
