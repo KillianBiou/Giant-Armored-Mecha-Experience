@@ -43,8 +43,6 @@ public class Boureau : MonoBehaviour
 
 	private bool gatling = false;
 
-	public static Boureau instance;
-
 	SerialPort serial;
 
 
