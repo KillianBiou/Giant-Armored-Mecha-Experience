@@ -29,6 +29,8 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private int missileArmorShred;
     [SerializeField]
+    private int missileNumber;
+    [SerializeField]
     private GameObject missile;
     [SerializeField]
     private GameObject missileTrail;
@@ -94,7 +96,7 @@ public class AIBodyPartsManager : MonoBehaviour
                 break;
             case Armament.MISSILE:
                 MissileBehaviour missileBehaviour = bodyPart.GetComponent<MissileBehaviour>();
-                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, missileFireSound, false, 4);
+                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, missileFireSound, false, missileNumber);
                 missiles.Add(missileBehaviour);
                 break;
             case Armament.GATLING:
