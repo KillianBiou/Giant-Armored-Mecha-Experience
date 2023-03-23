@@ -215,6 +215,16 @@
                     "devicePath": "<HID::Enzo PC-PS2 RW>",
                     "isOptional": true,
                     "isOR": false
+                },
+                {
+                    "devicePath": "<HID>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
                 }
             ]
         }

@@ -1,21 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class AIComplexBehaviou : MonoBehaviour
 {
 
-    [SerializeField]
+    /*[SerializeField]
     private float movementRadius;
     [SerializeField]
     private float minPatrolDistance;
     [SerializeField]
-    private float waitTime;
+    private float waitTime;*/
     [SerializeField]
     private float speed;
+    /*[SerializeField]
+    private float rotationSpeed;*/
+
     [SerializeField]
-    private float rotationSpeed;
+    private float preferedDistance;
 
 
     private bool fetchNew = false;
@@ -33,7 +34,17 @@ public class AIComplexBehaviou : MonoBehaviour
 
     private void Update()
     {
-        if (!aiData.target)
+        transform.LookAt(aiData.player.transform.position);
+        if(Vector3.Distance(aiData.player.transform.position, transform.position) >= preferedDistance)
+        {
+            transform.Translate(transform.forward * speed * Time.deltaTime);
+        }
+        else if(Vector3.Distance(aiData.player.transform.position, transform.position) <= preferedDistance * 0.8f)
+        {
+            transform.Translate(-transform.forward * speed * Time.deltaTime);
+        }
+
+        /*if (!aiData.target)
         {
             if (!fetchNew && Vector3.Distance(targetPos, transform.position) <= 5)
             {
@@ -60,10 +71,12 @@ public class AIComplexBehaviou : MonoBehaviour
         else
         {
 
-        }
+        }*/
+
+
     }
 
-    private IEnumerator FetchCooldown()
+    /*private IEnumerator FetchCooldown()
     {
         wait = true;
         yield return new WaitForSeconds(waitTime);
@@ -79,5 +92,5 @@ public class AIComplexBehaviou : MonoBehaviour
     private Vector3 GenerateNewTargetPatrol()
     {
         return initialPosition + Random.insideUnitSphere * movementRadius;
-    }
+    }*/
 }

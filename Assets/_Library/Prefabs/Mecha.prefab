@@ -3655,8 +3655,6 @@ MonoBehaviour:
   deadzoneTilt: 0.2
   maxSpeed: 100
   maxAngularSpeed: 200
-  maxZTilt: 0
-  maxXTilt: 0
 --- !u!114 &2066262284070084444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,7 +3688,7 @@ MonoBehaviour:
   rightThruster: {fileID: 7520614344548860478}
   debugIsGrounded: 0
   controllerType: 0
-  mechaAnim: {fileID: 0}
+  mechaAnim: {fileID: 4419158809371623109}
   bodyParts: []
 --- !u!114 &936034332
 MonoBehaviour:
@@ -3721,6 +3719,7 @@ MonoBehaviour:
   railguns: []
   gatlings: []
   missileThrustFactor: 50
+  missileFireSound: {fileID: 0}
   missileTrail: {fileID: 6527256424263530757, guid: 2f11888ba8cc02d4186a5a4e4cf84a5c,
     type: 3}
   missileExplosion: {fileID: 4232285359161398352, guid: 32739841c39d12841a49d83e9e73331e,
@@ -3728,10 +3727,12 @@ MonoBehaviour:
   missileDamage: 20
   missileArmorShred: 10
   bulletSpeed: 500
+  gatlingFireSound: {fileID: 0}
   bulletPerSecond: 10
   bulletDamage: 10
   railgunVFX: {fileID: 6123301593806592882, guid: dbeb9536772114a4e95654aaabb96541,
     type: 3}
+  railgunFireSound: {fileID: 0}
   railgunCooldown: 3
   railgunDamage: 10
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
@@ -3786,6 +3787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbfe283f37151469700b561c2e4bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GndCtrl: {fileID: 0}
   SpCtrl: {fileID: 7520614344795281356}
   WpnManager: {fileID: 949876443746935263}
   DefManager: {fileID: 1093903183829951848}
@@ -5359,12 +5361,12 @@ PrefabInstance:
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0011499238
+      value: 0.0342767
       objectReference: {fileID: 0}
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0002650075
+      value: -0.019176187
       objectReference: {fileID: 0}
     - target: {fileID: 3825007852800526622, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5614,7 +5616,7 @@ PrefabInstance:
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999937
+      value: 0.9999921
       objectReference: {fileID: 0}
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5674,12 +5676,12 @@ PrefabInstance:
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999982
+      value: 0.99999124
       objectReference: {fileID: 0}
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 0.13157895
+      value: 0.7282609
       objectReference: {fileID: 0}
     - target: {fileID: 7473018552078148981, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
