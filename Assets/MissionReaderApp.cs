@@ -17,12 +17,12 @@ public class MissionReaderApp : MonoBehaviour
     }
 
 
-    void SetTarget()
+    public void SetTarget()
     {
         GpsTridi.instance.SetTarget(target);
     }
 
-    void UnsetTarget()
+    public void UnsetTarget()
     {
         GpsTridi.instance.SetTarget(null);
     }
