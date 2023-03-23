@@ -6,8 +6,13 @@ using UnityEngine;
 public class MissionPoints : MonoBehaviour
 {
     [SerializeField]
-    private Mission dady;
+    private bool activateFlymode;
+    [SerializeField]
+    private bool activateWeapons;
+
+    public Mission dady;
     public MissionFrag[] conditions;
+    public GameObject walls;
     private int checks;
 
     void Start()
@@ -25,14 +30,23 @@ public class MissionPoints : MonoBehaviour
         checks++;
 
         if (checks >= conditions.Length)
+        {
+            if (activateFlymode)
+                Activator.instance.ActivateFlymode();
+            if (activateWeapons)
+                Activator.instance.ActivateWeapon();
+
+
             dady.ChkEnd();
+            if(walls != null)
+                walls.SetActive(false);
+        }
         else
         {
             foreach (MissionElement ME in conditions[checks].objs)
             {
                 ME.gameObject.SetActive(true);
             }
-            conditions[checks].walls.SetActive(true);
         }
     }
 }

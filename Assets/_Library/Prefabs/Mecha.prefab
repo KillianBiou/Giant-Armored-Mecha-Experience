@@ -2288,7 +2288,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5634853942376202538}
   - component: {fileID: 5634853942376202533}
-  - component: {fileID: 5634853942376202532}
   - component: {fileID: 5634853942376202535}
   - component: {fileID: 5634853942376202539}
   m_Layer: 6
@@ -2356,14 +2355,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5634853942376202532
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634853942376202534}
-  m_Enabled: 0
 --- !u!114 &5634853942376202535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5358,7 +5349,7 @@ PrefabInstance:
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 299.9994
+      value: -0.0002650075
       objectReference: {fileID: 0}
     - target: {fileID: 3825007852800526622, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5608,7 +5599,7 @@ PrefabInstance:
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.9999937
       objectReference: {fileID: 0}
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -5668,12 +5659,12 @@ PrefabInstance:
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999984
+      value: 0.9999982
       objectReference: {fileID: 0}
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: -0.29411766
+      value: 0.13157895
       objectReference: {fileID: 0}
     - target: {fileID: 7473018552078148981, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}

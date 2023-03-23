@@ -6,6 +6,10 @@ public class Activator : MonoBehaviour
 {
     public static Activator instance;
 
+
+
+    [SerializeField]
+    private GroundController GndCtrl;
     [SerializeField]
     private SpaceController SpCtrl;
     [SerializeField]
@@ -23,6 +27,12 @@ public class Activator : MonoBehaviour
     {
         SpCtrl.enabled = true;
     }
+
+    public void ActivateFlymode()
+    {
+        GndCtrl.canFly = true;
+    }
+
 
     public void ActivateWeapon()
     {

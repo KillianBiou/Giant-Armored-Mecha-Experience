@@ -27,9 +27,12 @@ public class MissionManager : MonoBehaviour
         foreach (MissionPoints mp in currentMission.chapters)
         {
             //mp.dady = currentMission;
-            foreach(MissionFrag mf in mp.conditions)
+            if(mp.walls != null)
+                mp.walls.SetActive(false);
+
+            foreach (MissionFrag mf in mp.conditions)
             {
-                //mf.dady = mp;
+                mf.dady = mp;
                 foreach(MissionElement go in mf.objs)
                 {
                     go.gameObject.SetActive(false);
@@ -39,6 +42,8 @@ public class MissionManager : MonoBehaviour
 
         foreach (MissionElement ME in currentMission.chapters[0].conditions[0].objs)
             ME.gameObject.SetActive(true);
+
+        currentMission.chapters[0].walls.SetActive(true);
 
     }
 

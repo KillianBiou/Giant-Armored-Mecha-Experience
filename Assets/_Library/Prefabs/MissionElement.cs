@@ -12,10 +12,19 @@ public class MissionElement : MonoBehaviour
 
 
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
+        {
+            dady.ChkEnd();
+            this.enabled = false;
+        }
+    }*/
+
+    public void CallDady()
+    {
+        if(dady != null)
         {
             dady.ChkEnd();
             this.enabled = false;
