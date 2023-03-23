@@ -18,6 +18,8 @@ public class AIComplexBehaviou : MonoBehaviour
     [SerializeField]
     private float preferedDistance;
 
+    private float currentX;
+    private float currentY;
 
     private bool fetchNew = false;
     private bool wait;
@@ -30,18 +32,44 @@ public class AIComplexBehaviou : MonoBehaviour
         initialPosition = transform.position;
         targetPos = transform.position;
         aiData = GetComponent<AIData>();
+        currentX = 0;
+        currentY = 0;
     }
 
     private void Update()
     {
-        transform.LookAt(aiData.player.transform.position);
+        transform.LookAt(aiData.player.transform.position, transform.up);
         if(Vector3.Distance(aiData.player.transform.position, transform.position) >= preferedDistance)
         {
-            transform.Translate(transform.forward * speed * Time.deltaTime);
+            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+
+            currentY += 0.05f;
+            currentY = Mathf.Clamp(currentY, -1, 1);
+            GetComponent<Animator>().SetFloat("Y", currentY);
         }
         else if(Vector3.Distance(aiData.player.transform.position, transform.position) <= preferedDistance * 0.8f)
         {
-            transform.Translate(-transform.forward * speed * Time.deltaTime);
+            transform.Translate(-transform.forward * speed * Time.deltaTime, Space.World);
+            
+            currentY -= 0.05f;
+            currentY = Mathf.Clamp(currentY, -1, 1);
+            GetComponent<Animator>().SetFloat("Y", currentY);
+        }
+        else
+        {
+            if(currentY > 0)
+            {
+                currentY -= 0.05f;
+                currentY = Mathf.Clamp(currentY, -1, 1);
+            }
+            else if(currentY < 0)
+            {
+                currentY += 0.05f;
+                currentY = Mathf.Clamp(currentY, -1, 1);
+            }
+            if (Mathf.Abs(currentY) <= 0.1)
+                currentY = 0;
+            GetComponent<Animator>().SetFloat("Y", currentY);
         }
 
         /*if (!aiData.target)

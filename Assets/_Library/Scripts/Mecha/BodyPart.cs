@@ -91,7 +91,7 @@ public class BodyPart : MonoBehaviour
         data.hp = Mathf.Clamp(data.hp - amount, 0, data.maxHp);
         if (data.hp <= 0)
             DisablePart();
-        Debug.Log((float)data.hp / (float)data.maxHp);
+
         StatReader.instance.Actualize(data.part, (data.hp / data.maxHp), (data.armor / data.maxArmor));
     }
 

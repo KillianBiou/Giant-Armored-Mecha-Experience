@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  preferedDistance: 500
+  preferedDistance: 400
 --- !u!65 &3220626802347538758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 500
   armor: 80
-  detectionRange: 500
+  detectionRange: 0
   player: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &1456779481
@@ -1751,9 +1751,9 @@ MonoBehaviour:
   missiles: []
   railguns: []
   gatlings: []
-  missileThrustFactor: 50
+  missileThrustFactor: 100
   missileFireSound: {fileID: 8300000, guid: 7a1d2859f91bb1f4082011c36bacf627, type: 3}
-  missileCooldown: 5
+  missileCooldown: 6
   missileDamage: 20
   missileArmorShred: 10
   missileNumber: 1
@@ -1764,9 +1764,9 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 150
   gatlingFireSound: {fileID: 8300000, guid: 3f74eb28ec62e0645bbb5c5f89f11ae2, type: 3}
-  bulletSeconds: 1
+  bulletSeconds: 3
   burstDuration: 2
-  burstCooldown: 5
+  burstCooldown: 3
   bulletDamage: 5
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
   railgunCooldown: 5
@@ -1789,7 +1789,7 @@ Animator:
   m_GameObject: {fileID: 6974704572187243616}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cd5f9404bf5cff46b753a4d7c6e1944, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
