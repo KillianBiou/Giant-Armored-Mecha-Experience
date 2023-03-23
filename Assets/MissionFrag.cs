@@ -7,6 +7,7 @@ public class MissionFrag : MonoBehaviour
 {
     public MissionPoints dady;
     public MissionElement[] objs;
+    public GameObject walls;
     private int checks;
 
     void Start()
@@ -16,6 +17,7 @@ public class MissionFrag : MonoBehaviour
         {
             ME.dady = this;
         }
+        walls.SetActive(false);
     }
 
     public void ChkEnd()

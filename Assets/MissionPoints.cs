@@ -32,6 +32,7 @@ public class MissionPoints : MonoBehaviour
             {
                 ME.gameObject.SetActive(true);
             }
+            conditions[checks].walls.SetActive(true);
         }
     }
 }
