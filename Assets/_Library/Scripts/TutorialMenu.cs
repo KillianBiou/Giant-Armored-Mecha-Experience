@@ -76,7 +76,7 @@ public class TutorialMenu : MonoBehaviour
     private void Actualize()
     {
         titleTxt.text = currentTuto.title;
-        //img.sprite = currentTuto.img;
+        img.sprite = currentTuto.img;
         vidplay.clip = currentTuto.vid;
         speaker.clip = currentTuto.snd;
 
