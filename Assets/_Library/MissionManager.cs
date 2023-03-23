@@ -10,32 +10,10 @@ public enum MissionType
     RETRIEVE = 2
 }
 
-public struct MissionPoints
-{
-    public MissionElement[] conditions;
-}
 
-[System.Serializable]
-public struct Mission
-{
-    public MissionManager MissMana;
-    public MissionElement[] objectives;
-    public int checks;
-
-    public void ChkEnd()
-    {
-        checks++;
-        if (checks >= objectives.Length)
-            MissMana.QuestFinish();
-    }
-}
 
 public class MissionManager : MonoBehaviour
 {
-
-
-    //[SerializeField]
-    //private Mission[] missions;
 
     [SerializeField]
     private Mission currentMission;
@@ -46,8 +24,27 @@ public class MissionManager : MonoBehaviour
         currentMission.MissMana = this;
         currentMission.checks = 0;
 
-        foreach (MissionElement me in currentMission.objectives)
-            me.dady = currentMission;
+        foreach (MissionPoints mp in currentMission.chapters)
+        {
+            //mp.dady = currentMission;
+            if(mp.walls != null)
+                mp.walls.SetActive(false);
+
+            foreach (MissionFrag mf in mp.conditions)
+            {
+                mf.dady = mp;
+                foreach(MissionElement go in mf.objs)
+                {
+                    go.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        foreach (MissionElement ME in currentMission.chapters[0].conditions[0].objs)
+            ME.gameObject.SetActive(true);
+
+        currentMission.chapters[0].walls.SetActive(true);
+
     }
 
     public void QuestFinish()

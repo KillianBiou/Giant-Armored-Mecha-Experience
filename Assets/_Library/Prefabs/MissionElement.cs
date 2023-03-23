@@ -5,17 +5,26 @@ using UnityEngine;
 public class MissionElement : MonoBehaviour
 {
     [SerializeField]
-    public Mission dady;
+    public MissionFrag dady;
 
     [SerializeField]
     private MissionType type;
 
 
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
+        {
+            dady.ChkEnd();
+            this.enabled = false;
+        }
+    }*/
+
+    public void CallDady()
+    {
+        if(dady != null)
         {
             dady.ChkEnd();
             this.enabled = false;

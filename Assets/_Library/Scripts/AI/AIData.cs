@@ -53,6 +53,9 @@ public class AIData : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+        MissionElement me;
+        if ((me = gameObject.GetComponent<MissionElement>()) != null)
+            me.ImDead();
     }
 
 }

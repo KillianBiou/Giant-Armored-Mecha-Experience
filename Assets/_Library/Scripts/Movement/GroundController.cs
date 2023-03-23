@@ -27,7 +27,7 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private float maxAngularSpeed;
     [SerializeField]
-    private bool canFly;
+    public bool canFly;
 
     [SerializeField]
     private LayerMask layers;
