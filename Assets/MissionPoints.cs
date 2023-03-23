@@ -10,6 +10,12 @@ public class MissionPoints : MonoBehaviour
     [SerializeField]
     private bool activateWeapons;
 
+    [SerializeField]
+    private MissionHolder MH;
+
+    [SerializeField]
+    private AudioClip AC;
+
     public Mission dady;
     public MissionFrag[] conditions;
     public GameObject walls;
@@ -19,6 +25,13 @@ public class MissionPoints : MonoBehaviour
     {
         checks = 0;
     }
+
+    public void StartPoint()
+    {
+        conditions[0].StartFrag();
+        walls.SetActive(true);
+    }
+
 
     public void ChkEnd()
     {
@@ -35,7 +48,6 @@ public class MissionPoints : MonoBehaviour
                 Activator.instance.ActivateFlymode();
             if (activateWeapons)
                 Activator.instance.ActivateWeapon();
-
 
             dady.ChkEnd();
             if(walls != null)

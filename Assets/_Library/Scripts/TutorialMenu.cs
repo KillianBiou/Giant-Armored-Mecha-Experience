@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Video;
 
@@ -13,6 +14,8 @@ public class TutorialMenu : MonoBehaviour
     [SerializeField]
     private TMP_Text titleTxt;
 
+    [SerializeField]
+    private Image img;
     [SerializeField]
     private VideoPlayer vidplay;
 
@@ -73,6 +76,7 @@ public class TutorialMenu : MonoBehaviour
     private void Actualize()
     {
         titleTxt.text = currentTuto.title;
+        //img.sprite = currentTuto.img;
         vidplay.clip = currentTuto.vid;
         speaker.clip = currentTuto.snd;
 
