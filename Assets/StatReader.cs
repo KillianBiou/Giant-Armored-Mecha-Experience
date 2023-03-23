@@ -18,16 +18,13 @@ public class StatReader : MonoBehaviour
     [SerializeField]
     private MechaParts MechParts;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    public static StatReader instance;
+
+    private void Start()
     {
-        
+        instance = this;
     }
 
 
