@@ -15,5 +15,6 @@ public class MissionHolder : ScriptableObject
     {
         MissionReaderApp.instance.Speaker.clip = AC;
         MissionReaderApp.instance.target = target;
+        MissionReaderApp.instance.Speaker.Play();
     }
 }

@@ -6,7 +6,7 @@ public class MissionReaderApp : MonoBehaviour
 {
     public static MissionReaderApp instance;
 
-    [SerializeField]
+
     public AudioSource Speaker;
 
     public GameObject target;
@@ -15,10 +15,6 @@ public class MissionReaderApp : MonoBehaviour
     {
         instance = this;
     }
-
-
-
-
 
 
     void SetTarget()

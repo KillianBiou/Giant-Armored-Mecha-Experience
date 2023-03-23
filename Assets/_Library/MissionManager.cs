@@ -19,6 +19,7 @@ public class MissionManager : MonoBehaviour
     private Mission currentMission;
 
 
+
     void Start()
     {
         currentMission.MissMana = this;
@@ -43,6 +44,7 @@ public class MissionManager : MonoBehaviour
         foreach (MissionElement ME in currentMission.chapters[0].conditions[0].objs)
             ME.gameObject.SetActive(true);
 
+        currentMission.chapters[0].walls.SetActive(true);
         currentMission.chapters[0].walls.SetActive(true);
 
     }

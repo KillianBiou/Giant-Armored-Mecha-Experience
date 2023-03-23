@@ -19,6 +19,12 @@ public class MissionFrag : MonoBehaviour
         }
     }
 
+    public void StartFrag()
+    {
+        foreach (MissionElement melem in objs)
+            melem.gameObject.SetActive(true);
+    }
+
     public void ChkEnd()
     {
         checks++;
