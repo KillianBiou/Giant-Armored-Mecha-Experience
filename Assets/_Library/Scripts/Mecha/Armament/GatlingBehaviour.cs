@@ -10,13 +10,18 @@ public class GatlingBehaviour : MonoBehaviour
     private int bulletPerSecond;
     private bool canFire = true;
     private int damage;
+    private AudioSource audio;
 
-    public void Initialize(GameObject bullet, float bulletSpeed, int bulletPerSecond, int damage)
+    public void Initialize(GameObject bullet, float bulletSpeed, int bulletPerSecond, int damage, AudioClip gatlingSound)
     {
         this.bullet = bullet;
         this.bulletSpeed = bulletSpeed;
         this.bulletPerSecond = bulletPerSecond;
         this.damage = damage;
+
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = gatlingSound;
+        this.audio.volume = .3f;
     }
 
     private IEnumerator BulletCooldown()
@@ -29,6 +34,7 @@ public class GatlingBehaviour : MonoBehaviour
     {
         if(canFire)
         {
+            audio.Play();
             foreach (Transform child in transform)
             {
                 GameObject bulletInstance = Instantiate(bullet, child.position, Quaternion.identity);

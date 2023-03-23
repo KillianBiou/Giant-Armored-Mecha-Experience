@@ -10,16 +10,22 @@ public class RailgunBehaviour : MonoBehaviour
 
     private GameObject fx;
     private int railgunDamage;
+    private AudioSource fireSound;
 
-    public void Initialize(GameObject fx, int railgunDamage)
+    public void Initialize(GameObject fx, int railgunDamage, AudioClip fireSound)
     {
         this.fx = fx;
         this.railgunDamage = railgunDamage;
+        this.fireSound = gameObject.AddComponent<AudioSource>();
+        this.fireSound.clip = fireSound;
+        this.fireSound.volume = 3;
     }
 
     public void Fire(GameObject target)
     {
         GameObject railgunEffect = Instantiate(fx, transform.GetChild(0).position, Quaternion.identity, transform);
+
+        fireSound.Play();
 
         EnergyShieldBehaviour es = null;
 

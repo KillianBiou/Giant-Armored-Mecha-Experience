@@ -52,6 +52,7 @@ public class MissileLogic : MonoBehaviour
         MechaParts player = collision.gameObject.GetComponent<MechaParts>();
         if (player)
         {
+            Debug.Log("feziojiojiojiojiojiojiojiojiojiojiojiojiojiojiojiojiojioj");
             player.ProcessDamage(target, Armament.MISSILE, damage, armorShred);
         }
 
@@ -60,7 +61,6 @@ public class MissileLogic : MonoBehaviour
         {
             ai.TakeMissile(damage, armorShred);
         }
-
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

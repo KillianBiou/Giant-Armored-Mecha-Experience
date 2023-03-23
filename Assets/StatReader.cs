@@ -22,7 +22,7 @@ public class StatReader : MonoBehaviour
 
     public static StatReader instance;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
     }

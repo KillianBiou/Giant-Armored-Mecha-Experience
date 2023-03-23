@@ -89,7 +89,7 @@ public class BodyPart : MonoBehaviour
     private void SubstractHP(int amount)
     {
         data.hp = Mathf.Clamp(data.hp - amount, 0, data.maxHp);
-        if(data.hp <= 0)
+        if (data.hp <= 0)
             DisablePart();
 
         StatReader.instance.Actualize(data.part, (data.hp / data.maxHp), (data.armor / data.maxArmor));

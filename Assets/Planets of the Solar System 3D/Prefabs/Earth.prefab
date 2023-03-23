@@ -4833,7 +4833,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4643521465287934}
-  - component: {fileID: 205568318585521926}
   - component: {fileID: 4878998461253096602}
   m_Layer: 0
   m_Name: Earth
@@ -4859,31 +4858,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &205568318585521926
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733945558841920}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 4.279999
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.29735467
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23867915394586346}
-    - renderer: {fileID: 199987257424377576}
-  - screenRelativeHeight: 0.039855596
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 199987257424377576}
-  m_Enabled: 1
 --- !u!135 &4878998461253096602
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -21,11 +21,15 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private float missileThrustFactor;
     [SerializeField]
+    private AudioClip missileFireSound;
+    [SerializeField]
     private float missileCooldown;
     [SerializeField]
     private int missileDamage;
     [SerializeField]
     private int missileArmorShred;
+    [SerializeField]
+    private int missileNumber;
     [SerializeField]
     private GameObject missile;
     [SerializeField]
@@ -36,6 +40,8 @@ public class AIBodyPartsManager : MonoBehaviour
     [Header("Bullet")]
     [SerializeField]
     private float bulletSpeed;
+    [SerializeField]
+    private AudioClip gatlingFireSound;
     [SerializeField]
     private int bulletSeconds;
     [SerializeField]
@@ -50,6 +56,8 @@ public class AIBodyPartsManager : MonoBehaviour
     [Header("Railgun")]
     [SerializeField]
     private float railgunCooldown;
+    [SerializeField]
+    private AudioClip railgunFireSound;
     [SerializeField]
     private int railgunDamage;
     [SerializeField]
@@ -83,17 +91,17 @@ public class AIBodyPartsManager : MonoBehaviour
         {
             case Armament.RAILGUN:
                 RailgunBehaviour railgunBehaviour = bodyPart.GetComponent<RailgunBehaviour>();
-                railgunBehaviour.Initialize(railgunVFX, railgunDamage);
+                railgunBehaviour.Initialize(railgunVFX, railgunDamage, railgunFireSound);
                 railguns.Add(railgunBehaviour);
                 break;
             case Armament.MISSILE:
                 MissileBehaviour missileBehaviour = bodyPart.GetComponent<MissileBehaviour>();
-                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, false, 4);
+                missileBehaviour.Initialize(missile, missileThrustFactor, missileExplosion, missileDamage, missileArmorShred, missileFireSound, false, missileNumber);
                 missiles.Add(missileBehaviour);
                 break;
             case Armament.GATLING:
                 GatlingBehaviour gatlingBehaviour = bodyPart.GetComponent<GatlingBehaviour>();
-                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletSeconds, bulletDamage);
+                gatlingBehaviour.Initialize(bullet, bulletSpeed, bulletSeconds, bulletDamage, gatlingFireSound);
                 gatlings.Add(gatlingBehaviour);
                 break;
         }

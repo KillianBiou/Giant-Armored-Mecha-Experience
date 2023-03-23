@@ -35,7 +35,7 @@ public class InputExpose : MonoBehaviour
 
     public static InputExpose instance;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
     }

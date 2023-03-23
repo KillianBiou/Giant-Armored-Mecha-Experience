@@ -1,22 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class AIComplexBehaviou : MonoBehaviour
 {
 
-    [SerializeField]
+    /*[SerializeField]
     private float movementRadius;
     [SerializeField]
     private float minPatrolDistance;
     [SerializeField]
-    private float waitTime;
+    private float waitTime;*/
     [SerializeField]
     private float speed;
-    [SerializeField]
-    private float rotationSpeed;
+    /*[SerializeField]
+    private float rotationSpeed;*/
 
+    [SerializeField]
+    private float preferedDistance;
+
+    private float currentX;
+    private float currentY;
 
     private bool fetchNew = false;
     private bool wait;
@@ -29,11 +32,47 @@ public class AIComplexBehaviou : MonoBehaviour
         initialPosition = transform.position;
         targetPos = transform.position;
         aiData = GetComponent<AIData>();
+        currentX = 0;
+        currentY = 0;
     }
 
     private void Update()
     {
-        if (!aiData.target)
+        transform.LookAt(aiData.player.transform.position, transform.up);
+        if(Vector3.Distance(aiData.player.transform.position, transform.position) >= preferedDistance)
+        {
+            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+
+            currentY += 0.05f;
+            currentY = Mathf.Clamp(currentY, -1, 1);
+            GetComponent<Animator>().SetFloat("Y", currentY);
+        }
+        else if(Vector3.Distance(aiData.player.transform.position, transform.position) <= preferedDistance * 0.8f)
+        {
+            transform.Translate(-transform.forward * speed * Time.deltaTime, Space.World);
+            
+            currentY -= 0.05f;
+            currentY = Mathf.Clamp(currentY, -1, 1);
+            GetComponent<Animator>().SetFloat("Y", currentY);
+        }
+        else
+        {
+            if(currentY > 0)
+            {
+                currentY -= 0.05f;
+                currentY = Mathf.Clamp(currentY, -1, 1);
+            }
+            else if(currentY < 0)
+            {
+                currentY += 0.05f;
+                currentY = Mathf.Clamp(currentY, -1, 1);
+            }
+            if (Mathf.Abs(currentY) <= 0.1)
+                currentY = 0;
+            GetComponent<Animator>().SetFloat("Y", currentY);
+        }
+
+        /*if (!aiData.target)
         {
             if (!fetchNew && Vector3.Distance(targetPos, transform.position) <= 5)
             {
@@ -60,10 +99,12 @@ public class AIComplexBehaviou : MonoBehaviour
         else
         {
 
-        }
+        }*/
+
+
     }
 
-    private IEnumerator FetchCooldown()
+    /*private IEnumerator FetchCooldown()
     {
         wait = true;
         yield return new WaitForSeconds(waitTime);
@@ -79,5 +120,5 @@ public class AIComplexBehaviou : MonoBehaviour
     private Vector3 GenerateNewTargetPatrol()
     {
         return initialPosition + Random.insideUnitSphere * movementRadius;
-    }
+    }*/
 }

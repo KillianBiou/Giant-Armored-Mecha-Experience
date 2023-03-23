@@ -18,6 +18,15 @@ public class JoystickExpose : MonoBehaviour
     public bool ButtonFour;
     public bool ButtonFive;
 
+    [Header("Buttons")]
+    public bool Switch;
+    public bool P2;
+    public bool P3;
+    public bool P4;
+    public bool P5;
+    public bool P6;
+    public bool P7;
+
     public float Pedals;
 
     private PlayerInput input;
