@@ -20,7 +20,7 @@ public class LerpColor : MonoBehaviour
 
     public void UpdateColor()
     {
-        fill.color = Color.Lerp(c1, c2, sl.value);
+        fill.color = Color.Lerp(c2, c1, sl.value);
     }
 
 }
