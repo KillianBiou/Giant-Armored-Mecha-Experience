@@ -3570,6 +3570,7 @@ GameObject:
   - component: {fileID: 1093903183829951848}
   - component: {fileID: 1289328674}
   - component: {fileID: 2662532544546399150}
+  - component: {fileID: 685101809304282484}
   m_Layer: 0
   m_Name: Mecha
   m_TagString: Player
@@ -3638,6 +3639,7 @@ MonoBehaviour:
   deadzoneTilt: 0.1
   maxSpeed: 100
   maxAngularSpeed: 100
+  canFly: 0
   layers:
     serializedVersion: 2
     m_Bits: 8
@@ -3795,6 +3797,19 @@ MonoBehaviour:
   SpCtrl: {fileID: 7520614344795281356}
   WpnManager: {fileID: 949876443746935263}
   DefManager: {fileID: 1093903183829951848}
+--- !u!65 &685101809304282484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520614344795281331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 35.162056, z: 7.011338}
+  m_Center: {x: 0.0000000072421553, y: 17.581028, z: 0.96256256}
 --- !u!1 &7520614345252345525
 GameObject:
   m_ObjectHideFlags: 0

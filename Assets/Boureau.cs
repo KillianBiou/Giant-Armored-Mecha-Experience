@@ -43,8 +43,6 @@ public class Boureau : MonoBehaviour
 
 	private bool gatling = false;
 
-	public static Boureau instance;
-
 	SerialPort serial;
 
 
@@ -79,7 +77,7 @@ public class Boureau : MonoBehaviour
 
 	void Update()
 	{
-
+		Debug.Log("Current Vibration Intensity : " + currentIntensity);
 		for (int i = vibers.Count - 1; i >= 0; i--)
 		{
 			Vibratation temp = vibers[i];
@@ -106,6 +104,7 @@ public class Boureau : MonoBehaviour
             }
 			else
 			{
+				Debug.Log("None");
                 Vibre(0, 0);
                 currentIntensity = 0;
             }

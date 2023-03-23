@@ -43,7 +43,7 @@ public class RailgunBehaviour : MonoBehaviour
             BodyPart player;
             if (target.TryGetComponent<BodyPart>(out player))
             {
-                player.TakeRailgun(railgunDamage);
+                player.weaponManager.GetComponent<MechaParts>().ProcessDamage(target, Armament.RAILGUN, railgunDamage);
             }
 
             AIData ai;
