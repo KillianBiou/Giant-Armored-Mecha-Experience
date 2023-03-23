@@ -18,15 +18,18 @@ public class MissionManager : MonoBehaviour
     [SerializeField]
     private Mission currentMission;
 
+    [SerializeField]
+    private MissionHolder MH;
+
+
 
     void Start()
     {
         currentMission.MissMana = this;
         currentMission.checks = 0;
 
-        foreach (MissionPoints mp in currentMission.chapters)
+        foreach (MissionPoints mp in currentMission.chapters)//dez tout les enfants
         {
-            //mp.dady = currentMission;
             if(mp.walls != null)
                 mp.walls.SetActive(false);
 
@@ -39,17 +42,24 @@ public class MissionManager : MonoBehaviour
                 }
             }
         }
-
+        /*
         foreach (MissionElement ME in currentMission.chapters[0].conditions[0].objs)
             ME.gameObject.SetActive(true);
-
-        currentMission.chapters[0].walls.SetActive(true);
-
+        */
+        currentMission.chapters[0].StartPoint();//start mission 0
     }
+
+
+
 
     public void QuestFinish()
     {
-        Debug.Log("\n- quete fini - YOUPI\n");
+        Debug.Log("\n- questline terminado - YOUPI\n");
+    }
+
+    public MissionHolder getMH()
+    {
+        return MH;
     }
 
 }

@@ -6,7 +6,7 @@ public class MissionReaderApp : MonoBehaviour
 {
     public static MissionReaderApp instance;
 
-    [SerializeField]
+
     public AudioSource Speaker;
 
     public GameObject target;
@@ -17,16 +17,12 @@ public class MissionReaderApp : MonoBehaviour
     }
 
 
-
-
-
-
-    void SetTarget()
+    public void SetTarget()
     {
         GpsTridi.instance.SetTarget(target);
     }
 
-    void UnsetTarget()
+    public void UnsetTarget()
     {
         GpsTridi.instance.SetTarget(null);
     }

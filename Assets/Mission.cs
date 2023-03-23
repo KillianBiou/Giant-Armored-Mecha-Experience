@@ -20,10 +20,19 @@ public class Mission : MonoBehaviour
         checks = 0;
     }
 
-    public void ChkEnd()
+
+
+
+
+    public void ChkEnd() // fin de missions
     {
         checks++;
         if (checks >= chapters.Length)
             MissMana.QuestFinish();
+    }
+
+    public MissionHolder getMH()
+    {
+        return MissMana.getMH();
     }
 }

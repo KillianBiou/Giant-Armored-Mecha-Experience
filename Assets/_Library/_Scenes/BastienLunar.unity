@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMission: {fileID: 971493668}
+  MH: {fileID: 0}
 --- !u!1001 &38020022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19962,6 +19963,7 @@ MonoBehaviour:
   dady: {fileID: 1200307042}
   objs:
   - {fileID: 1002884188}
+  AC: {fileID: 0}
 --- !u!4 &918470612
 Transform:
   m_ObjectHideFlags: 0
@@ -25636,6 +25638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateFlymode: 0
   activateWeapons: 0
+  MH: {fileID: 0}
+  AC: {fileID: 0}
   dady: {fileID: 0}
   conditions:
   - {fileID: 918470611}
@@ -35259,6 +35263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateFlymode: 0
   activateWeapons: 0
+  MH: {fileID: 0}
+  AC: {fileID: 0}
   dady: {fileID: 971493668}
   conditions:
   - {fileID: 1917361243}
@@ -38238,6 +38244,7 @@ MonoBehaviour:
   dady: {fileID: 1755500174}
   objs:
   - {fileID: 913622598}
+  AC: {fileID: 0}
 --- !u!4 &1917361244
 Transform:
   m_ObjectHideFlags: 0
@@ -39230,10 +39237,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5581854043665674068, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5668717013481585240, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.01586914
+      value: 0.010498047
       objectReference: {fileID: 0}
     - target: {fileID: 7282047038315398236, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}

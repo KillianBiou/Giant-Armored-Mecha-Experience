@@ -10,6 +10,12 @@ public class MissionPoints : MonoBehaviour
     [SerializeField]
     private bool activateWeapons;
 
+    [SerializeField]
+    private MissionHolder MH;
+
+    [SerializeField]
+    private AudioClip AC;
+
     public Mission dady;
     public MissionFrag[] conditions;
     public GameObject walls;
@@ -20,33 +26,41 @@ public class MissionPoints : MonoBehaviour
         checks = 0;
     }
 
-    public void ChkEnd()
+    public void StartPoint()
     {
-        foreach (MissionElement ME in conditions[checks].objs)
+        conditions[0].StartFrag();
+        walls.SetActive(true);
+    }
+
+
+    public void ChkEnd() // fin d'une suite
+    {
+        foreach (MissionElement ME in conditions[checks].objs) // dez la sequence
         {
             ME.gameObject.SetActive(false);
         }
 
-        checks++;
+        checks++; // seq suivante
 
-        if (checks >= conditions.Length)
+        if (checks >= conditions.Length) // fin d'une suite ---->
         {
             if (activateFlymode)
                 Activator.instance.ActivateFlymode();
             if (activateWeapons)
                 Activator.instance.ActivateWeapon();
 
-
             dady.ChkEnd();
             if(walls != null)
                 walls.SetActive(false);
         }
-        else
+        else // sequence suivante start
         {
-            foreach (MissionElement ME in conditions[checks].objs)
-            {
-                ME.gameObject.SetActive(true);
-            }
+            conditions[checks].StartFrag();
         }
+    }
+
+    public MissionHolder getMH()
+    {
+        return dady.getMH();
     }
 }
