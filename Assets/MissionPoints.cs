@@ -33,16 +33,16 @@ public class MissionPoints : MonoBehaviour
     }
 
 
-    public void ChkEnd()
+    public void ChkEnd() // fin d'une suite
     {
-        foreach (MissionElement ME in conditions[checks].objs)
+        foreach (MissionElement ME in conditions[checks].objs) // dez la sequence
         {
             ME.gameObject.SetActive(false);
         }
 
-        checks++;
+        checks++; // seq suivante
 
-        if (checks >= conditions.Length)
+        if (checks >= conditions.Length) // fin d'une suite ---->
         {
             if (activateFlymode)
                 Activator.instance.ActivateFlymode();
@@ -53,12 +53,14 @@ public class MissionPoints : MonoBehaviour
             if(walls != null)
                 walls.SetActive(false);
         }
-        else
+        else // sequence suivante start
         {
-            foreach (MissionElement ME in conditions[checks].objs)
-            {
-                ME.gameObject.SetActive(true);
-            }
+            conditions[checks].StartFrag();
         }
+    }
+
+    public MissionHolder getMH()
+    {
+        return dady.getMH();
     }
 }
