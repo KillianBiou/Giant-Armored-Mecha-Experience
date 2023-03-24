@@ -32,6 +32,7 @@ public class CombatController : MonoBehaviour
         mecha = GetComponent<MechaParts>();
         rb = GetComponent<Rigidbody>();
         wp = GetComponent<WeaponManager>();
+        mecha.mechaAnim.SetBool("isFlying", true);
     }
 
     private void FixedUpdate()

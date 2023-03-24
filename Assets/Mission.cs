@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour
 {
+
     [SerializeField]
     public MissionManager MissMana;
     [SerializeField]
@@ -18,6 +19,11 @@ public class Mission : MonoBehaviour
     void Start()
     {
         checks = 0;
+    }
+
+    public void StartMission()
+    {
+
     }
 
     public void ChkEnd() // fin de missions

@@ -51,7 +51,6 @@ public class InitializingControlls : MonoBehaviour
     {
         if(PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
         {
-            StartCoroutine(OnLight());
             StartCoroutine(InitSeq());
             Estarted = true;
             SoftStartL.enginego();
@@ -64,6 +63,7 @@ public class InitializingControlls : MonoBehaviour
     public void BeginStartup()
     {
         StartCoroutine(OnLight());
+        MissionManager.instance.StartQuestLine();
     }
 
 
@@ -77,7 +77,7 @@ public class InitializingControlls : MonoBehaviour
     {
         if (mainLight.intensity < 1.0f)
         {
-            mainLight.intensity += 2.0f * Time.deltaTime;
+            mainLight.intensity += 0.5f * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

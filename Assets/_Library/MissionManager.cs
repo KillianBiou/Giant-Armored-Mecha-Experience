@@ -14,6 +14,7 @@ public enum MissionType
 
 public class MissionManager : MonoBehaviour
 {
+    public static MissionManager instance;
 
     [SerializeField]
     private Mission currentMission;
@@ -25,6 +26,8 @@ public class MissionManager : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
         currentMission.MissMana = this;
         currentMission.checks = 0;
 
@@ -50,7 +53,12 @@ public class MissionManager : MonoBehaviour
         foreach (MissionElement ME in currentMission.chapters[0].conditions[0].objs)
             ME.gameObject.SetActive(true);
         */
-        currentMission.chapters[0].StartPoint();//start mission 0
+        //start mission 0
+    }
+
+    public void StartQuestLine()
+    {
+        currentMission.chapters[0].StartPoint();
     }
 
 
