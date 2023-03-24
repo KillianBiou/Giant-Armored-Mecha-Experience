@@ -22,7 +22,7 @@ public class BulletLogic : MonoBehaviour
 
     private IEnumerator ArmProjectile()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.layer = LayerMask.NameToLayer("ArmedProjectile");
     }
 
@@ -41,6 +41,7 @@ public class BulletLogic : MonoBehaviour
     {
         if (!collided)
         {
+            Debug.Log("BULLET COLLIDE");
             accelerationForce = 0;
             collided = true;
 

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9067657760985548926
 Transform:
   m_ObjectHideFlags: 0
@@ -5097,8 +5097,8 @@ ParticleSystem:
         key6: {r: 0.8596492, g: 0, b: 1, a: 0}
         key7: {r: 0.8596492, g: 0, b: 1, a: 0}
         ctime0: 3084
-        ctime1: 27949
-        ctime2: 60909
+        ctime1: 30262
+        ctime2: 65535
         ctime3: 65535
         ctime4: 65535
         ctime5: 65535
@@ -5409,7 +5409,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 20
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

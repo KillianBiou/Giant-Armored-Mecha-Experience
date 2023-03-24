@@ -98,6 +98,9 @@ public class InitializingControlls : MonoBehaviour
         fadein = 0;
         yield return FadeCompensate();
 
+
+        Activator.instance.ActivateMove();
+
         this.enabled = false;
         yield return null;
 

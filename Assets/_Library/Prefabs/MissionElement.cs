@@ -10,6 +10,8 @@ public class MissionElement : MonoBehaviour
     [SerializeField]
     private MissionType type;
 
+    private bool check;
+
 
 
     /*
@@ -24,8 +26,9 @@ public class MissionElement : MonoBehaviour
 
     public void CallDady()
     {
-        if(dady != null)
+        if (!check && dady != null)
         {
+            check = true;
             dady.ChkEnd();
             this.enabled = false;
         }
@@ -33,7 +36,11 @@ public class MissionElement : MonoBehaviour
 
     public void ImDead()
     {
-        dady.ChkEnd();
-        this.enabled = false;
+        if(!check && dady != null)
+        {
+            check = true;
+            dady.ChkEnd();
+            this.enabled = false;
+        }
     }
 }

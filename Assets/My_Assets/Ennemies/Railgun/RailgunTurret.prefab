@@ -133,8 +133,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 10.854195, z: 10.213705}
-  m_Center: {x: 0, y: 5.4270973, z: -0.91969585}
+  m_Size: {x: 7, y: 8.096403, z: 13.755747}
+  m_Center: {x: 0, y: -0.041308403, z: 0.8513253}
 --- !u!114 &139016342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   missileCooldown: 5
   missileDamage: 20
   missileArmorShred: 10
+  missileNumber: 0
   missile: {fileID: 8129323822110653699, guid: 9859e003dbea4b041845189ed203ef7b, type: 3}
   missileTrail: {fileID: 6527256424263530757, guid: 2f11888ba8cc02d4186a5a4e4cf84a5c,
     type: 3}
@@ -170,7 +171,7 @@ MonoBehaviour:
   railgunCooldown: 5
   railgunFireSound: {fileID: 8300000, guid: 6ec7cff01ab5e2647ab67c263efa50a8, type: 3}
   railgunDamage: 10
-  railgunVFX: {fileID: 6123301593806592882, guid: dbeb9536772114a4e95654aaabb96541,
+  railgunVFX: {fileID: 6123301593806592882, guid: 4f1ba5e3a58b80141996e405dd4ade2a,
     type: 3}
   laserDetectionRadius: 20
   laser: {fileID: 948636592134259694, guid: fb42f08b88fcdc349a99f5155a4dc431, type: 3}
@@ -228,7 +229,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 375dad8277c893f459e8e83273891640,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 375dad8277c893f459e8e83273891640,
         type: 3}
@@ -361,12 +362,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e90a77f135589324b938522a43ad7e15,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e90a77f135589324b938522a43ad7e15,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e90a77f135589324b938522a43ad7e15,
         type: 3}

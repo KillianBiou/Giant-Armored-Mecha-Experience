@@ -54,19 +54,23 @@ public class JoystickMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Rpedal != null)
+        {
+            if (InputExpose.instance.Pedals > 0)
+            {
+                Rpedal.transform.localRotation = Quaternion.Euler(Vector3.forward * InputExpose.instance.Pedals * maxAngle + new Vector3(0, 30, -90));
+            }
+            else if (InputExpose.instance.Pedals < 0)
+            {
+                Lpedal.transform.localRotation = Quaternion.Euler(Vector3.forward * Mathf.Abs(InputExpose.instance.Pedals) * maxAngle + new Vector3(0, 30, -90));
+            }
+        }
+
         if (side == Side.LEFT)
         {
 
             //handle.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + Vector3.forward * InputExpose.instance.LXAxis * maxAngle);
             handle.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.LYAxis * maxAngle + -Vector3.forward * InputExpose.instance.LXAxis * maxAngle);
-            if(InputExpose.instance.Pedals > 0)
-            {
-                Rpedal.transform.localRotation = Quaternion.Euler(Vector3.left * InputExpose.instance.Pedals * maxAngle);
-            }
-            else if(InputExpose.instance.Pedals < 0)
-            {
-                Lpedal.transform.localRotation = Quaternion.Euler(Vector3.left * Mathf.Abs(InputExpose.instance.Pedals) * maxAngle);
-            }
         }
         if (side == Side.RIGHT)
         {

@@ -107,7 +107,7 @@ public class AIBodyPartsManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         data = GetComponent<AIData>();
 

@@ -10,12 +10,6 @@ public class MissionPoints : MonoBehaviour
     [SerializeField]
     private bool activateWeapons;
 
-    [SerializeField]
-    private MissionHolder MH;
-
-    [SerializeField]
-    private AudioClip AC;
-
     public Mission dady;
     public MissionFrag[] conditions;
     public GameObject walls;

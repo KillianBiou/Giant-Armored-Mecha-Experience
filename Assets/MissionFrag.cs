@@ -29,6 +29,7 @@ public class MissionFrag : MonoBehaviour
 
         if (AC != null)
             dady.getMH().AC = AC;
+
         foreach(MissionElement ME  in objs)
         {
             if (ME.gameObject.activeSelf)

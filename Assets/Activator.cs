@@ -25,7 +25,7 @@ public class Activator : MonoBehaviour
 
     public void ActivateMove()
     {
-        SpCtrl.enabled = true;
+        GndCtrl.enabled = true;
     }
 
     public void ActivateFlymode()
