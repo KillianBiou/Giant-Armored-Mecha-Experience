@@ -44,7 +44,7 @@ public class RailgunBehaviour : MonoBehaviour
         if(!es)
         {
             Debug.Log("Fire");
-            railgunEffect.transform.GetChild(0).transform.position = target.transform.position;
+            //railgunEffect.transform.GetChild(0).transform.position = target.transform.position;
 
             BodyPart player;
             if (target.TryGetComponent<BodyPart>(out player))
@@ -65,7 +65,9 @@ public class RailgunBehaviour : MonoBehaviour
     {
         while (effect)
         {
-            effect.transform.GetChild(0).transform.position = transform.GetChild(0).position + (target.transform.position - transform.position).normalized * (Vector3.Distance(transform.position, target.transform.position) - (es ? es.GetProtectionOffset() : 0));
+            //effect.transform.GetChild(0).transform.position = transform.GetChild(0).position + (target.transform.position - transform.position).normalized * (Vector3.Distance(transform.position, target.transform.position) - (es ? es.GetProtectionOffset() : 0));
+            effect.transform.LookAt(target.transform);
+            effect.transform.localScale = Vector3.one + Vector3.forward * Vector3.Distance(target.transform.position, effect.transform.position) / 15;
             yield return new WaitForEndOfFrame();
         }
     }

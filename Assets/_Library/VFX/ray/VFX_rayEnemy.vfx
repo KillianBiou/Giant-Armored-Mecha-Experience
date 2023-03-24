@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: VFX_ray
+  m_Name: VFX_rayEnemy
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -83,7 +83,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VFX_ray
+  m_Name: VFX_rayEnemy
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -918,7 +918,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.0,"g":0.0493662990629673,"b":2.357240676879883,"a":0.0}'
+      m_SerializableObject: '{"r":2.357240676879883,"g":0.0,"b":0.0,"a":0.0}'
     m_Space: 2147483647
   m_Property:
     name: _Color
@@ -2401,7 +2401,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.50849449634552,"g":3.283193826675415,"b":8.474189758300782,"a":0.0}'
+      m_SerializableObject: '{"r":8.474189758300782,"g":1.5084943771362305,"b":2.114588737487793,"a":0.0}'
     m_Space: 2147483647
   m_Property:
     name: _Color
@@ -7443,7 +7443,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":45.25483322143555,"z":26.62049102783203}'
+      m_SerializableObject: '{"x":90.50969696044922,"y":0.0,"z":0.9477455019950867}'
     m_Space: 2147483647
   m_Property:
     name: Color
