@@ -29,8 +29,11 @@ public class MissionFrag : MonoBehaviour
 
         if (AC != null)
             dady.getMH().AC = AC;
+        else
+            dady.getMH().AC = null;
 
-        foreach(MissionElement ME  in objs)
+
+        foreach (MissionElement ME  in objs)
         {
             if (ME.gameObject.activeSelf)
             {
@@ -38,6 +41,8 @@ public class MissionFrag : MonoBehaviour
                 break;
             }
         }
+
+        dady.getMH().OnValidate();
     }
 
     public void ChkEnd()

@@ -820,7 +820,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3125963560757154340}
         m_TargetAssemblyTypeName: BgApp, Assembly-CSharp
-        m_MethodName: prevBG
+        m_MethodName: nextBG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12891,7 +12891,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7461113973676470500}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.9999971
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21684,7 +21684,7 @@ MonoBehaviour:
   OsStart: {fileID: 1711508971734396515}
   initbar: {fileID: 576175211389973095}
   bg: {fileID: 4925715200094091219}
-  Menu: {fileID: 405349899709262908}
+  Menu: {fileID: 403228459348114099}
   initctrl: {fileID: 0}
 --- !u!1 &6657546855477171597
 GameObject:
@@ -24111,18 +24111,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8758122245811676684}
-        m_TargetAssemblyTypeName: TutorialMenu, Assembly-CSharp
-        m_MethodName: PrevTuto
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TransformerExamples
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8701991478998955788}
         m_TargetAssemblyTypeName: BGM_player_app, Assembly-CSharp
         m_MethodName: pauseBgm
@@ -26018,18 +26006,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8758122245811676684}
-        m_TargetAssemblyTypeName: TutorialMenu, Assembly-CSharp
-        m_MethodName: PrevTuto
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TransformerExamples
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8701991478998955788}
         m_TargetAssemblyTypeName: BGM_player_app, Assembly-CSharp
         m_MethodName: playBgm
@@ -27149,7 +27125,7 @@ RectTransform:
   m_Father: {fileID: 6123232076183766763}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.0000029206276}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -28019,18 +27995,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8758122245811676684}
-        m_TargetAssemblyTypeName: TutorialMenu, Assembly-CSharp
-        m_MethodName: PrevTuto
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TransformerExamples
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8701991478998955788}
@@ -29372,18 +29336,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8758122245811676684}
-        m_TargetAssemblyTypeName: TutorialMenu, Assembly-CSharp
-        m_MethodName: PrevTuto
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TransformerExamples
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8701991478998955788}

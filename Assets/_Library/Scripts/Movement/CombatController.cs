@@ -103,7 +103,7 @@ public class CombatController : MonoBehaviour
 
         Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
 
-        GetComponent<Rigidbody>().angularVelocity += rotateAmount / 4;
+        GetComponent<Rigidbody>().angularVelocity += rotateAmount;
 
         //transform.LookAt(wp.GetTarget().transform.position, transform.up);
     }

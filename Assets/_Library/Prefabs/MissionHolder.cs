@@ -14,11 +14,16 @@ public class MissionHolder : ScriptableObject
 
     public void OnValidate()
     {
-        if(AC != null)
-            MissionReaderApp.instance.Speaker.clip = AC;
-        if(target != null)
-            MissionReaderApp.instance.target = target;
-
-        MissionReaderApp.instance.Speaker.Play();
+        if(MissionReaderApp.instance != null)
+        {
+            if (AC != null)
+            {
+                MissionReaderApp.instance.Speaker.clip = AC;
+                MissionReaderApp.instance.Speaker.Play();
+            }
+            if (target != null)
+                MissionReaderApp.instance.target = target;
+        }
+        
     }
 }

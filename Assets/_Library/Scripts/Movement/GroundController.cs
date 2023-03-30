@@ -54,7 +54,7 @@ public class GroundController : MonoBehaviour
             {
                 rb.AddForce(transform.up * accelerationFactor);
             }
-            else if(Vector3.Distance(transform.position, hit.point) >= 3)
+            else if(Vector3.Distance(transform.position, hit.point) >= 2)
             {
                 rb.useGravity = true;
             }

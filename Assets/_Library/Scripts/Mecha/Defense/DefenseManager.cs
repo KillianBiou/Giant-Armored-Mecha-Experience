@@ -41,7 +41,7 @@ public class DefenseManager : MonoBehaviour
     private DefenseType nextDefense = DefenseType.NONE;
     private float currentCooldown;
 
-    private void Start()
+    private void Awake()
     {
         ChangeDefense(DefenseType.ENERGY_SHIELD);
         currentDefense = DefenseType.ENERGY_SHIELD;

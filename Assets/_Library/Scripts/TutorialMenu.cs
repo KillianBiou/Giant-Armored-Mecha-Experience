@@ -75,10 +75,12 @@ public class TutorialMenu : MonoBehaviour
 
     private void Actualize()
     {
+        Debug.Log("\n-- j'ai recu mon pote -- \n");
         titleTxt.text = currentTuto.title;
         img.sprite = currentTuto.img;
-        vidplay.clip = currentTuto.vid;
+        //vidplay.clip = currentTuto.vid;
         speaker.clip = currentTuto.snd;
+        speaker.Play();
 
         foreach (But b in currentTuto.usableButtonsL)
             LeftController.GetButtByBut(b).GetComponent<Renderer>().materials[0].SetFloat("_Blinking", 1.0f);
