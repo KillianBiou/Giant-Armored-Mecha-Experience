@@ -30,7 +30,7 @@ public class MechaParts : MonoBehaviour
 
     public bool isGrounded {
         get { return debugIsGrounded; }
-        set { 
+        set {
             debugIsGrounded = value;
             if (value)
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
