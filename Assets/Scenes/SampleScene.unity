@@ -1183,6 +1183,7 @@ MonoBehaviour:
   deadzone: 0.3
   deadzoneTilt: 0.5
   maxSpeed: 10
+  maxAngularSpeed: 0
 --- !u!114 &345081281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1198,6 +1199,9 @@ MonoBehaviour:
   leftThruster: {fileID: 984249628}
   rightThruster: {fileID: 86085682}
   debugIsGrounded: 0
+  controllerType: 0
+  mechaAnim: {fileID: 0}
+  bodyParts: []
 --- !u!4 &345081282
 Transform:
   m_ObjectHideFlags: 0
@@ -1215,7 +1219,7 @@ Transform:
   - {fileID: 330585546}
   - {fileID: 735200442}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &345081283
 Rigidbody:
@@ -1366,7 +1370,7 @@ PrefabInstance:
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
@@ -1523,7 +1527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -2027,7 +2031,7 @@ Transform:
   - {fileID: 1668924874}
   - {fileID: 472598535}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602194714
 GameObject:
@@ -2334,7 +2338,7 @@ PrefabInstance:
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
@@ -2462,7 +2466,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &731373219
 MonoBehaviour:
@@ -2525,12 +2529,17 @@ MonoBehaviour:
   LYAxis: 0
   L2Button: 0
   L3Button: 0
+  L4Button: 0
+  L5Button: 0
   LTrigger: 0
   RXAxis: 0
   RYAxis: 0
   R2Button: 0
+  R3Button: 0
+  R4Button: 0
+  R5Button: 0
+  RTrigger: 0
   Pedals: 0
-  ZTilt: 0
 --- !u!1 &735200441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,6 +2603,8 @@ MonoBehaviour:
     m_Bits: 72
   maxDist: 2
   minDist: 0.3
+  gravityPower: 0
+  mecha: {fileID: 0}
 --- !u!1 &739194371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,7 +2846,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &880427799
 GameObject:
@@ -4545,7 +4556,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899353511
 GameObject:
@@ -4739,7 +4750,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990718298
 GameObject:
@@ -4848,7 +4859,7 @@ PrefabInstance:
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8243272322942746136, guid: 8eaf0681f39d68048a33c7af0e62c522,
         type: 3}
