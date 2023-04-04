@@ -8722,26 +8722,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2066262284070084444, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066262284070084444, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: accelerationFactor
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066262284070084444, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: accelerationUpFactor
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066262284070084444, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: accelerationStrafFactor
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 2177998663471392875, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8771,6 +8751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590406362232427375, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 1.8034142
       objectReference: {fileID: 0}
     - target: {fileID: 2662532544546399150, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -8902,6 +8887,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0029296875
       objectReference: {fileID: 0}
+    - target: {fileID: 6724066623880700830, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6724066623880700830, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: MinDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7282047038315398236, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8916,21 +8911,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mecha
-      objectReference: {fileID: 0}
-    - target: {fileID: 7520614344795281356, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7520614344795281356, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: accelerationFactor
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7520614344795281356, guid: 60c3fbe699bf34a4d965b51294567215,
-        type: 3}
-      propertyPath: accelerationTorqueFactor
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7520614344795281358, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -8995,6 +8975,16 @@ PrefabInstance:
     - target: {fileID: 7549537611008859474, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668143813752762818, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668143813752762818, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: MinDistance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040466342159480699, guid: 60c3fbe699bf34a4d965b51294567215,
