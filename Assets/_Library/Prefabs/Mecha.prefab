@@ -3746,10 +3746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9915af2bf98ed1b4da3c76a110a69656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationFactor: 100
+  accelerationFactor: 200
   accelerationUpFactor: 100
   accelerationStrafFactor: 100
-  accelerationTorqueFactor: 200
+  accelerationTorqueFactor: 0.7
   deadzone: 0.3
   deadzoneTilt: 0.2
   maxSpeed: 100
@@ -3766,11 +3766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f7e0c1f5e21ec409e2e17712dc5ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationFactor: 50
-  accelerationUpFactor: 50
-  accelerationStrafFactor: 30
+  accelerationFactor: 200
+  accelerationUpFactor: 200
+  accelerationStrafFactor: 200
   deadzone: 0.2
-  maxSpeed: 10
+  maxSpeed: 200
 --- !u!114 &7520614344795281357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3886,7 +3886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbfe283f37151469700b561c2e4bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GndCtrl: {fileID: 0}
+  GndCtrl: {fileID: 2778095898318739012}
   SpCtrl: {fileID: 7520614344795281356}
   WpnManager: {fileID: 949876443746935263}
   DefManager: {fileID: 1093903183829951848}
@@ -5506,6 +5506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756709015319026279, guid: c151b3207d8cf744ebeb5dd615469fb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1847229046038834295, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
