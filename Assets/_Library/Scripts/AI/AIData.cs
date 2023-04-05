@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AIData : MonoBehaviour
 {
-    [SerializeField]
-    private int maxHP;
+    public int maxHP;
     [SerializeField]
     private float armor;
 
@@ -13,7 +13,8 @@ public class AIData : MonoBehaviour
     public GameObject player;
     public GameObject target;
 
-    private int hp;
+    [DoNotSerialize]
+    public int hp;
 
     private void Start()
     {
