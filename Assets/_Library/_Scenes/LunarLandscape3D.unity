@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 297098016}
-  m_IndirectSpecularColor: {r: 0.0020629393, g: 0.0019484058, b: 0.0021166683, a: 1}
+  m_IndirectSpecularColor: {r: 0.002060286, g: 0.0019486827, b: 0.0021139197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20747,6 +20747,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044630148}
     m_Modifications:
+    - target: {fileID: 4327692269001278782, guid: 1127ba523ddad984fa31f1c193ce406f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6919822261603006276, guid: 1127ba523ddad984fa31f1c193ce406f,
         type: 3}
       propertyPath: m_RootOrder
@@ -20828,6 +20833,11 @@ PrefabInstance:
       value: Cliff04 (7)
       objectReference: {fileID: 0}
     - target: {fileID: 6919822261603006283, guid: 1127ba523ddad984fa31f1c193ce406f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838880734437912241, guid: 1127ba523ddad984fa31f1c193ce406f,
         type: 3}
       propertyPath: m_Layer
       value: 3
@@ -23421,35 +23431,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1448333141}
     m_Modifications:
-    - target: {fileID: 3220626802347538757, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: glidRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220626802347538757, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: glidStart
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220626802347538757, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: gravityFactor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3220626802347538757, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: layers.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6974704572187243616, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
       propertyPath: m_Name
       value: Fly01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6974704572187243616, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
@@ -23458,33 +23443,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
-        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -404.4
+      value: -395
       objectReference: {fileID: 0}
     - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.76
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -255.8
+      value: -288
       objectReference: {fileID: 0}
     - target: {fileID: 7746455749952483034, guid: 909817c9cd185cf48902ac3f90f1229d,
         type: 3}
@@ -23529,26 +23499,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 784271369}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &784271371 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6974704572187243616, guid: 909817c9cd185cf48902ac3f90f1229d,
+--- !u!114 &784271372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 784271372, guid: 909817c9cd185cf48902ac3f90f1229d,
     type: 3}
   m_PrefabInstance: {fileID: 784271369}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &784271372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784271371}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2567c7b2112e67418399f4d9a47cef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dady: {fileID: 0}
-  type: 0
 --- !u!1001 &784930654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59635,6 +59597,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044630148}
     m_Modifications:
+    - target: {fileID: 4327692269001278782, guid: 1127ba523ddad984fa31f1c193ce406f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6919822261603006276, guid: 1127ba523ddad984fa31f1c193ce406f,
         type: 3}
       propertyPath: m_RootOrder
@@ -59716,6 +59683,11 @@ PrefabInstance:
       value: Cliff04 (8)
       objectReference: {fileID: 0}
     - target: {fileID: 6919822261603006283, guid: 1127ba523ddad984fa31f1c193ce406f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838880734437912241, guid: 1127ba523ddad984fa31f1c193ce406f,
         type: 3}
       propertyPath: m_Layer
       value: 3
@@ -66081,7 +66053,7 @@ PrefabInstance:
     - target: {fileID: 5668717013481585240, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.06933594
+      value: 0.055664062
       objectReference: {fileID: 0}
     - target: {fileID: 6904168511550400960, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}

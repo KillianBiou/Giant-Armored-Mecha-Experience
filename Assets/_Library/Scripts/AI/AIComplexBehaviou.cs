@@ -56,11 +56,13 @@ public class AIComplexBehaviou : MonoBehaviour
         float distance = Vector3.Distance(playerPosition, currentPosition);
 
         if (distance >= aiData.detectionRange)
+        {
             return;
+        }
 
         if (distance >= preferedDistance)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
 
             currentY += 0.05f;
             currentY = Mathf.Clamp(currentY, -1, 1);
@@ -68,7 +70,7 @@ public class AIComplexBehaviou : MonoBehaviour
         }
         else if (distance <= preferedDistance * 0.8f)
         {
-            transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(-transform.forward * speed * Time.deltaTime, Space.World);
 
             currentY -= 0.05f;
             currentY = Mathf.Clamp(currentY, -1, 1);
@@ -90,6 +92,8 @@ public class AIComplexBehaviou : MonoBehaviour
                 currentY = 0;
             GetComponent<Animator>().SetFloat("Y", currentY);
         }
+
+        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0));
     }
 
     private void GravityPull()
@@ -104,7 +108,7 @@ public class AIComplexBehaviou : MonoBehaviour
 
             if (distance <= glidStart)
             {
-                rb.AddForce(transform.up * 10);
+                rb.AddForce(transform.up * gravityFactor);
             }
             else if (distance < glidStart + glidRange)
             {
