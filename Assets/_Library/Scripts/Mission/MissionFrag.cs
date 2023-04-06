@@ -37,7 +37,8 @@ public class MissionFrag : MonoBehaviour
         {
             if (ME.gameObject.activeSelf)
             {
-                dady.getMH().target = ME.gameObject;
+                GpsTridi.instance.SetTarget(ME.gameObject);
+                //dady.getMH().target = ME.gameObject;
                 break;
             }
         }
