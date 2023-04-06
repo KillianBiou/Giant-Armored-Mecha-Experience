@@ -6,6 +6,7 @@ using System.Linq;
 public class ScoreManager : MonoBehaviour
 {
     private ScoreData sd;
+
     void Awake()
     {
         LoadScoreFromJson();
@@ -16,10 +17,10 @@ public class ScoreManager : MonoBehaviour
         return sd.scores.OrderByDescending(x => x.score);
     }
 
-    public void AddScore(Score score)
+    public void AddScore(string name, int score)
     {
-        sd.scores.Add(score);
-        SaveScoreToJson();
+        sd.scores.Add(new Score(name, score));
+        ScoreUi.instance.ReloadScoreboard();
     }
 
     private void OnDestroy()
@@ -31,9 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         string LeaderboardData = JsonUtility.ToJson(sd);
         string filePath = Application.persistentDataPath + "/LeaderboardData.json";
-        Debug.Log(filePath);
         System.IO.File.WriteAllText(filePath, LeaderboardData);
-        Debug.Log("Sauvegarde effectué");
     }
 
     public void LoadScoreFromJson()
@@ -41,6 +40,6 @@ public class ScoreManager : MonoBehaviour
         string filePath = Application.persistentDataPath + "/LeaderboardData.json";
         string LeaderboardData = System.IO.File.ReadAllText(filePath);
         sd = JsonUtility.FromJson<ScoreData>(LeaderboardData);
-        Debug.Log("Chargement effectué");
+        Debug.Log(Application.persistentDataPath + "/LeaderboardData.json");
     }
 }
