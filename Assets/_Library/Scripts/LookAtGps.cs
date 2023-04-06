@@ -3,11 +3,10 @@ using UnityEngine.Assertions;
 
 
 
-
 public class LookAtGps : MonoBehaviour
 {
     [SerializeField]
-    private Transform _toRotate;
+    private Transform toRotate;
 
     [SerializeField]
     public Transform target;
@@ -17,8 +16,7 @@ public class LookAtGps : MonoBehaviour
     {
         if(target != null)
         {
-            Vector3 dirToTarget = (target.position - _toRotate.position).normalized;
-            _toRotate.LookAt(_toRotate.position - dirToTarget, Vector3.up);
+            toRotate.LookAt(target);
         }
     }
 }

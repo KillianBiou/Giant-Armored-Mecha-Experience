@@ -7,10 +7,6 @@ using UnityEngine;
 public class MissionHolder : ScriptableObject
 {
     public AudioClip AC;
-    public GameObject target;
-
-
-
 
     public void OnValidate()
     {
@@ -21,8 +17,6 @@ public class MissionHolder : ScriptableObject
                 MissionReaderApp.instance.Speaker.clip = AC;
                 MissionReaderApp.instance.Speaker.Play();
             }
-            if (target != null)
-                MissionReaderApp.instance.target = target;
         }
         
     }
