@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AIData : MonoBehaviour
 {
-    [SerializeField]
-    private int maxHP;
+    public int maxHP;
     [SerializeField]
     private float armor;
+
+    [SerializeField]
+    private int scoreOnDeath;
 
     public int detectionRange;
     public GameObject player;
     public GameObject target;
 
-    private int hp;
+    [DoNotSerialize]
+    public int hp;
 
     private void Start()
     {
@@ -52,6 +56,7 @@ public class AIData : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        player.GetComponent<MechaParts>().AddScore(scoreOnDeath);
         Destroy(gameObject);
         MissionElement me;
         if ((me = gameObject.GetComponent<MissionElement>()) != null)

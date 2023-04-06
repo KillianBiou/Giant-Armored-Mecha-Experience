@@ -511,9 +511,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   armor: 50
+  scoreOnDeath: 50
   detectionRange: 100
   player: {fileID: 0}
   target: {fileID: 0}
+  hp: 0
 --- !u!114 &589227821
 MonoBehaviour:
   m_ObjectHideFlags: 0

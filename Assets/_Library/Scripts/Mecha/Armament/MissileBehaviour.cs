@@ -48,4 +48,9 @@ public class MissileBehaviour : MonoBehaviour
                 missileLeft = maxMissile;
         }
     }
+
+    public int GetMissileLeft()
+    {
+        return missileLeft;
+    }
 }
