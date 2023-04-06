@@ -9,6 +9,9 @@ public class AIData : MonoBehaviour
     [SerializeField]
     private float armor;
 
+    [SerializeField]
+    private int scoreOnDeath;
+
     public int detectionRange;
     public GameObject player;
     public GameObject target;
@@ -53,6 +56,7 @@ public class AIData : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        player.GetComponent<MechaParts>().AddScore(scoreOnDeath);
         Destroy(gameObject);
         MissionElement me;
         if ((me = gameObject.GetComponent<MissionElement>()) != null)

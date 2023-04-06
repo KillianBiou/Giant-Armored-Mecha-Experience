@@ -15,6 +15,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject railgunSlider;
 
+    [Header("Misc")]
+    [SerializeField]
+    private GameObject scoreHolder;
+
     public void UpdateMissile(int missileLeft)
     {
         missileSlider.GetComponent<Slider>().value = (float)missileLeft / 12f;
@@ -24,5 +28,10 @@ public class UIManager : MonoBehaviour
     public void UpdateRailgun(float reloadAdvancement)
     {
         railgunSlider.GetComponent<Slider>().value = reloadAdvancement;
+    }
+
+    public void UpdateScore(float newScore)
+    {
+        scoreHolder.transform.Find("Content").GetComponent<TextMeshProUGUI>().text = newScore.ToString();
     }
 }
