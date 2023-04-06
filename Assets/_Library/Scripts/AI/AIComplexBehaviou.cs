@@ -104,7 +104,6 @@ public class AIComplexBehaviou : MonoBehaviour
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity, layers))
         {
             float distance = Vector3.Distance(transform.position, hit.point);
-            Debug.Log(distance);
 
             if (distance <= glidStart)
             {
