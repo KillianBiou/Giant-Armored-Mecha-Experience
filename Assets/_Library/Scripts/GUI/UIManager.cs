@@ -19,10 +19,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject scoreHolder;
 
-    public void UpdateMissile(int missileLeft)
+    public void UpdateMissileNumber(int missileLeft)
     {
-        missileSlider.GetComponent<Slider>().value = (float)missileLeft / 12f;
         missileSlider.transform.Find("ammo text").GetComponent<TextMeshProUGUI>().text = missileLeft.ToString() + "/12";
+    }
+
+    public void UpdateMissileCD(float reloadAdvancement)
+    {
+        missileSlider.GetComponent<Slider>().value = reloadAdvancement;
     }
 
     public void UpdateRailgun(float reloadAdvancement)

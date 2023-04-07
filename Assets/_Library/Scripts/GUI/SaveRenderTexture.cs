@@ -10,6 +10,13 @@ public class SaveRenderTexture : MonoBehaviour
     [SerializeField]
     private string path;
 
+    [SerializeField]
+    private ScoreManager scoreManager;
+
+    private void Start()
+    {
+    }
+
     public void CaptureScore()
     {
         Texture2D tex = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
@@ -27,6 +34,10 @@ public class SaveRenderTexture : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             CaptureScore();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            scoreManager.AddScore("PILOT", Random.Range(1000, 5000));
         }
     }
 }

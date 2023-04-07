@@ -211,7 +211,14 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator RefreshMissile()
     {
-        yield return new WaitForSeconds(missileCooldown);
+        float currentTimer = 0f;
+        while (currentTimer < missileCooldown)
+        {
+            yield return new WaitForEndOfFrame();
+            currentTimer += Time.deltaTime;
+            uiManager.UpdateMissileCD(currentTimer / missileCooldown);
+        }
+        uiManager.UpdateMissileCD(1f);
         canMissile = true;
     }
 
@@ -242,7 +249,7 @@ public class WeaponManager : MonoBehaviour
             nbMissile += missileBehaviour.GetMissileLeft();
         }
 
-        uiManager.UpdateMissile(nbMissile);
+        uiManager.UpdateMissileNumber(nbMissile);
     }
 
     public GameObject GetTarget()
