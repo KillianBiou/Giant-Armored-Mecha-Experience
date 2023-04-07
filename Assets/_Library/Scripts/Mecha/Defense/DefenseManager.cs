@@ -43,8 +43,8 @@ public class DefenseManager : MonoBehaviour
 
     private void Awake()
     {
-        ChangeDefense(DefenseType.ENERGY_SHIELD);
-        currentDefense = DefenseType.ENERGY_SHIELD;
+        //ChangeDefense(DefenseType.ENERGY_SHIELD);
+        //currentDefense = DefenseType.ENERGY_SHIELD;
     }
 
     private void ScheduleChange(DefenseType newDefense)
