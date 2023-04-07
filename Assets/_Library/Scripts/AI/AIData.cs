@@ -16,6 +16,9 @@ public class AIData : MonoBehaviour
     public GameObject player;
     public GameObject target;
 
+    [SerializeField]
+    private GameObject destoyedVFX;
+
     [DoNotSerialize]
     public int hp;
 
@@ -57,6 +60,8 @@ public class AIData : MonoBehaviour
     private void DestroyEnemy()
     {
         player.GetComponent<MechaParts>().AddScore(scoreOnDeath);
+        if(destoyedVFX != null)
+            Instantiate(destoyedVFX, transform.position, transform.rotation);
         Destroy(gameObject);
         MissionElement me;
         if ((me = gameObject.GetComponent<MissionElement>()) != null)
