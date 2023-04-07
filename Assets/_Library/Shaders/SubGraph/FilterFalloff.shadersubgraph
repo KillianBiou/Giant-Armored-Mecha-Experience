@@ -237,7 +237,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "Filter_Falloff",
     "m_FunctionSource": "",
-    "m_FunctionBody": "if(abs(In - Value) < Falloff)\n{\nOut = Falloff - abs(In - Value);\n}\nelse\n{\nOut = 0;\n}"
+    "m_FunctionBody": "if(abs(In - Value) < Falloff)\n{\nOut = (Falloff - abs(In - Value))/Falloff;\n}\nelse\n{\nOut = 0;\n}"
 }
 
 {

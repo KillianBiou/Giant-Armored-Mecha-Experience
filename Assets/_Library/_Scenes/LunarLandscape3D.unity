@@ -16367,7 +16367,7 @@ GameObject:
   - component: {fileID: 562926302}
   - component: {fileID: 562926301}
   m_Layer: 3
-  m_Name: Terrain_(-125.00, 0.00, 475.00)
+  m_Name: Terrain01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16425,13 +16425,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562926300}
-  m_LocalRotation: {x: -0, y: -0.9238796, z: 0, w: 0.3826833}
-  m_LocalPosition: {x: -123.74363, y: 0, z: -212.13208}
-  m_LocalScale: {x: 0.49999994, y: 0.5, z: 0.49999994}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -124.999985, y: 0, z: 475.00006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 877388826}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &563759234
 PrefabInstance:
@@ -31112,8 +31112,6 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 562926303}
-  - {fileID: 1328898110}
   - {fileID: 1989117944}
   - {fileID: 1579408199}
   - {fileID: 641966103}
@@ -45739,7 +45737,7 @@ GameObject:
   - component: {fileID: 1328898109}
   - component: {fileID: 1328898108}
   m_Layer: 3
-  m_Name: Terrain
+  m_Name: Terrain00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45797,13 +45795,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328898107}
-  m_LocalRotation: {x: -0, y: -0.9238796, z: 0, w: 0.3826833}
-  m_LocalPosition: {x: 88.38835, y: 0, z: 0.000030517578}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -125.000015, y: 0, z: -125.000015}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 877388826}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1330145348
 PrefabInstance:
@@ -54587,7 +54585,7 @@ Transform:
   - {fileID: 1045482853}
   - {fileID: 331150156}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1632761995
 MonoBehaviour:
@@ -56058,7 +56056,7 @@ GameObject:
   - component: {fileID: 1680984168}
   - component: {fileID: 1680984167}
   m_Layer: 3
-  m_Name: Terrain_(-125.00, 0.00, 1075.00)
+  m_Name: Terrain02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56122,7 +56120,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1689880599
 PrefabInstance:
@@ -65619,6 +65617,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1805062872002790494, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.293549
+      objectReference: {fileID: 0}
     - target: {fileID: 1921963480683127643, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -65757,12 +65760,12 @@ PrefabInstance:
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: glidRange
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: glidStart
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -65792,7 +65795,7 @@ PrefabInstance:
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: takeOffDistance
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -66176,7 +66179,7 @@ PrefabInstance:
     - target: {fileID: 8302864183570990035, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0018677469
+      value: -0.014091273
       objectReference: {fileID: 0}
     - target: {fileID: 8311649116204486001, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -67872,7 +67875,7 @@ Transform:
   - {fileID: 1275608243}
   - {fileID: 1708436993}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 147.055, z: 0}
 --- !u!1001 &2046322126
 PrefabInstance:
