@@ -61,6 +61,7 @@ public class MissileLogic : MonoBehaviour
         {
             ai.TakeMissile(damage, armorShred);
         }
+
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

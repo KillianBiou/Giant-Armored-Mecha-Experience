@@ -15,6 +15,9 @@ public class AIBodyPartsManager : MonoBehaviour
     [SerializeField]
     private List<GatlingBehaviour> gatlings = new List<GatlingBehaviour>();
 
+    [SerializeField]
+    private bool automaticRoutine = true;
+
 
     [Header("Weapon Parameters")]
     [Header("Missile")]
@@ -128,7 +131,7 @@ public class AIBodyPartsManager : MonoBehaviour
 
     private void Update()
     {
-        if(data.target && nbCouroutine == 0)
+        if(automaticRoutine && data.target && nbCouroutine == 0)
         {
             if (gatlings.Count > 0)
                 StartCoroutine(FireGatling());
@@ -200,6 +203,45 @@ public class AIBodyPartsManager : MonoBehaviour
         ChangeTarget();
         if (data.target)
             StartCoroutine(FireRailgun());
+    }
+
+    public IEnumerator ManualFireGatling()
+    {
+        burstStarted = Time.time;
+
+        while (Time.time < burstStarted + burstDuration)
+        {
+            foreach (GatlingBehaviour gatlingBehaviour in gatlings)
+            {
+                if (data.target)
+                    gatlingBehaviour.Fire(data.target);
+            }
+            yield return new WaitForSeconds(1 / bulletSeconds);
+        }
+
+        ChangeTarget();
+    }
+
+    public void ManualFireMissile()
+    {
+        foreach (MissileBehaviour missileBehaviour in missiles)
+        {
+            if (data.target)
+                missileBehaviour.Fire(data.target);
+        }
+
+        ChangeTarget();
+    }
+
+    public void ManualFireRailgun()
+    {
+        foreach(RailgunBehaviour railgunBehaviour in railguns)
+        {
+            if (data.target)
+                railgunBehaviour.Fire(data.target);
+        }
+
+        ChangeTarget();
     }
 
     private void ChangeTarget()

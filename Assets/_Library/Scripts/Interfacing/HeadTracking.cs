@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeadTracking : MonoBehaviour
 {
@@ -154,6 +155,14 @@ public class HeadTracking : MonoBehaviour
         {
             targetGO = target;
             weaponManager.SetTarget(targetGO);
+        }
+
+        if (target)
+        {
+            if (target.GetComponent<AIData>())
+                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)target.GetComponent<AIData>().hp / (float)target.GetComponent<AIData>().maxHP;
+            else
+                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)target.transform.root.GetComponent<AIData>().hp / (float)target.transform.root.GetComponent<AIData>().maxHP;
         }
     }
 }

@@ -16,22 +16,30 @@ public class GpsTridi : MonoBehaviour
     void Start()
     {
         instance = this;
+        HideGPS();
     }
 
     public void SetTarget(GameObject go)
     {
         if(go != null)
         {
-            fleche.SetActive(true);
+            ShowGPS();
             gps.target = go.transform;
-            gps.enabled = true;
         }
         else
         {
-            gps.enabled = false;
-            fleche.SetActive(false);
+            HideGPS();
         }
+    }
 
+    public void ShowGPS()
+    {
+        fleche.SetActive(true);
+    }
+
+    public void HideGPS()
+    {
+        fleche.SetActive(false);
     }
 
 

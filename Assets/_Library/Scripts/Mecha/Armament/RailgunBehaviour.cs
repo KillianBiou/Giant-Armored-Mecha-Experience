@@ -23,7 +23,7 @@ public class RailgunBehaviour : MonoBehaviour
 
     public void Fire(GameObject target)
     {
-        GameObject railgunEffect = Instantiate(fx, transform.GetChild(0).position, Quaternion.identity, transform);
+        GameObject railgunEffect = Instantiate(fx, transform.GetChild(0).position, Quaternion.identity);
 
         fireSound.Play();
 

@@ -58,6 +58,10 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private float missileCooldown;
 
+    [Header("UI Parameters")]
+    [SerializeField]
+    private UIManager uiManager;
+
     [Header("Debug Parameters")]
     [SerializeField]
     private GameObject target;
@@ -148,6 +152,7 @@ public class WeaponManager : MonoBehaviour
         try
         {
             missiles[missileIndex].Fire(tar);
+            DepleteMissile();
         }
         catch
         {
@@ -187,7 +192,7 @@ public class WeaponManager : MonoBehaviour
             if(!gatlingMemory)
             {
                 gatlingMemory = true;
-                Boureau.instance.SetGatling(true);
+                //Boureau.instance.SetGatling(true);
             }
         }
         if (railgun && canRailgun)
@@ -200,19 +205,33 @@ public class WeaponManager : MonoBehaviour
         if (!gatling && gatlingMemory)
         {
             gatlingMemory = false;
-            Boureau.instance.SetGatling(false);
+            //Boureau.instance.SetGatling(false);
         }
     }
 
     private IEnumerator RefreshMissile()
     {
-        yield return new WaitForSeconds(missileCooldown);
+        float currentTimer = 0f;
+        while (currentTimer < missileCooldown)
+        {
+            yield return new WaitForEndOfFrame();
+            currentTimer += Time.deltaTime;
+            uiManager.UpdateMissileCD(currentTimer / missileCooldown);
+        }
+        uiManager.UpdateMissileCD(1f);
         canMissile = true;
     }
 
     private IEnumerator RefreshRailgun()
     {
-        yield return new WaitForSeconds(railgunCooldown);
+        float currentTimer = 0f;
+        while (currentTimer < railgunCooldown)
+        {
+            yield return new WaitForEndOfFrame();
+            currentTimer += Time.deltaTime;
+            uiManager.UpdateRailgun(currentTimer / railgunCooldown);
+        }
+        uiManager.UpdateRailgun(1f);
         canRailgun = true;
     }
 
@@ -220,6 +239,17 @@ public class WeaponManager : MonoBehaviour
     {
         if(!(GetComponent<MechaParts>().controllerType == ControllerType.COMBAT_CONTROLLER))
             this.target = target;
+    }
+
+    private void DepleteMissile()
+    {
+        int nbMissile = 0;
+        foreach(MissileBehaviour missileBehaviour in missiles)
+        {
+            nbMissile += missileBehaviour.GetMissileLeft();
+        }
+
+        uiManager.UpdateMissileNumber(nbMissile);
     }
 
     public GameObject GetTarget()

@@ -21,16 +21,20 @@ public class MechaParts : MonoBehaviour
     [SerializeField]
     private bool debugIsGrounded;
     public ControllerType controllerType;
+    [SerializeField]
+    private UIManager UIManager;
 
     public Animator mechaAnim;
 
     public List<BodyPart> bodyParts = new List<BodyPart>();
 
+    private int score;
+
     private bool changeCooldown = false;
 
     public bool isGrounded {
         get { return debugIsGrounded; }
-        set { 
+        set {
             debugIsGrounded = value;
             if (value)
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -62,13 +66,13 @@ public class MechaParts : MonoBehaviour
                         break;
                     case Armament.MISSILE:
                         child.GetComponent<BodyPart>().TakeMissile(damage, armorShred);
-                        Boureau.instance.RegisterViber(20, 500);
-                        Boureau.instance.Airblow(20);
+                        //Boureau.instance.RegisterViber(20, 500);
+                        //Boureau.instance.Airblow(20);
                         break;
                     case Armament.RAILGUN:
                         child.GetComponent<BodyPart>().TakeRailgun(damage);
-                        Boureau.instance.RegisterViber(30, 1000);
-                        Boureau.instance.Airblow(80);
+                        //Boureau.instance.RegisterViber(30, 1000);
+                        //Boureau.instance.Airblow(80);
                         break;
                 }
             }
@@ -131,4 +135,12 @@ public class MechaParts : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         changeCooldown = false;
     }
+
+    public void AddScore(int toAdd)
+    {
+        score += toAdd;
+        UIManager.UpdateScore(score);
+    }
+
+    public int GetScore() { return score; }
 }
