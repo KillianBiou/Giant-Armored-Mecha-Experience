@@ -13,6 +13,9 @@ public enum ControllerType
 
 public class MechaParts : MonoBehaviour
 {
+    [Header("Pilot Parameters")]
+    public string name;
+
     [Header("Thrusters")]
     public GameObject leftThruster;
     public GameObject rightThruster;
@@ -29,8 +32,13 @@ public class MechaParts : MonoBehaviour
     public List<BodyPart> bodyParts = new List<BodyPart>();
 
     private int score;
-
+    public static MechaParts instance;
     private bool changeCooldown = false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public bool isGrounded {
         get { return debugIsGrounded; }
@@ -140,6 +148,12 @@ public class MechaParts : MonoBehaviour
     {
         score += toAdd;
         UIManager.UpdateScore(score);
+    }
+
+    public void ProcessScore(float mul)
+    {
+        score = (int)((float)score * mul);
+        ScoreManager.instance.AddScore(name, score);
     }
 
     public int GetScore() { return score; }

@@ -157,12 +157,12 @@ public class HeadTracking : MonoBehaviour
             weaponManager.SetTarget(targetGO);
         }
 
-        if (target)
+        if (targetGO)
         {
-            if (target.GetComponent<AIData>())
-                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)target.GetComponent<AIData>().hp / (float)target.GetComponent<AIData>().maxHP;
+            if (targetGO.GetComponent<AIData>())
+                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.GetComponent<AIData>().hp / (float)targetGO.GetComponent<AIData>().maxHP;
             else
-                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)target.transform.root.GetComponent<AIData>().hp / (float)target.transform.root.GetComponent<AIData>().maxHP;
+                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.transform.root.GetComponent<AIData>().hp / (float)targetGO.transform.root.GetComponent<AIData>().maxHP;
         }
     }
 }
