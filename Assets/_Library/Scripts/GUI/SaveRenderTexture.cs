@@ -28,16 +28,4 @@ public class SaveRenderTexture : MonoBehaviour
 
         System.IO.File.WriteAllBytes(Application.persistentDataPath + path, bytes);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            CaptureScore();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            scoreManager.AddScore("PILOT", Random.Range(1000, 5000));
-        }
-    }
 }

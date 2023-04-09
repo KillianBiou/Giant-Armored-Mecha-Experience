@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -8,17 +9,42 @@ public class AIBossBehaviour : MonoBehaviour
     [SerializeField]
     private List<SkinnedMeshRenderer> desctructibles;
     [SerializeField]
+    private List<Transform> desctructiblesExplosionPosition;
+
+    [SerializeField]
     private Renderer mainBody;
     [SerializeField]
     private Renderer leftArm;
     [SerializeField]
     private Renderer rightArm;
+
+    [Header("Threshold")]
     [SerializeField]
     private float secondPhaseThreshold;
     [SerializeField]
     private float ThirdPhaseThreshold;
+
+    [Header("Blink Parameters")]
     [SerializeField]
-    private Color secondPhaseColor;
+    private Color blinkColor;
+    [SerializeField]
+    private float maxBlinkSpeed;
+    [SerializeField]
+    private float maxBlinkForce;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioClip partLoose;
+    [SerializeField]
+    private AudioClip armorShred;
+
+    [Header("Explosion")]
+    [SerializeField]
+    private GameObject explosionPrefab;
+    [SerializeField]
+    private GameObject explosionBigPrefab;
+    [SerializeField]
+    private GameObject explosionFinalPrefab;
 
     private AIBodyPartsManager m_BodyPartsManager;
     private AIData aiData;
@@ -33,6 +59,17 @@ public class AIBossBehaviour : MonoBehaviour
         m_BodyPartsManager = GetComponent<AIBodyPartsManager>();
         animator = GetComponent<Animator>();
         aiData = GetComponent<AIData>();
+
+        foreach (Renderer renderer in desctructibles)
+        {
+            renderer.materials[0].SetColor("_Fresnel_Color", blinkColor);
+        }
+
+        mainBody.materials[0].SetColor("_Fresnel_Color", blinkColor);
+
+        leftArm.materials[0].SetColor("_Fresnel_Color", blinkColor);
+
+        rightArm.materials[0].SetColor("_Fresnel_Color", blinkColor);
     }
 
     private void Update()
@@ -56,6 +93,11 @@ public class AIBossBehaviour : MonoBehaviour
             if (desctructibles[i].enabled)
             {
                 desctructibles[i].enabled = false;
+                StartCoroutine(PlaySound(armorShred, 0.0f));
+
+                 GameObject temp = Instantiate(explosionPrefab, desctructiblesExplosionPosition[i]);
+                var shape = temp.GetComponent<ParticleSystem>().shape;
+                shape.skinnedMeshRenderer = desctructibles[i];
             }
         }
 
@@ -66,38 +108,77 @@ public class AIBossBehaviour : MonoBehaviour
 
         if (!isEnraged && currentFraction <= ThirdPhaseThreshold)
         {
-            StartCoroutine(Enrage());
+            Enrage();
         }
+
+        foreach (Renderer renderer in desctructibles)
+        {
+            renderer.materials[0].SetColor("_Fresnel_Color", blinkColor);
+        }
+
+        mainBody.materials[0].SetColor("_Fresnel_Color", blinkColor);
+
+        leftArm.materials[0].SetColor("_Fresnel_Color", blinkColor);
+
+        rightArm.materials[0].SetColor("_Fresnel_Color", blinkColor);
+
+        UpdateBlink(currentFraction);
+    }
+
+    private void UpdateBlink(float percentage)
+    {
+        foreach (Renderer renderer in desctructibles)
+        {
+            renderer.materials[0].SetFloat("_Speed", (1 - percentage) * maxBlinkSpeed);
+            renderer.materials[0].SetFloat("_Force", (1 - percentage) * maxBlinkForce);
+        }
+        mainBody.materials[0].SetFloat("_Speed", (1 - percentage) * maxBlinkSpeed);
+        mainBody.materials[0].SetFloat("_Force", (1 - percentage) * maxBlinkForce);
+
+        leftArm.materials[0].SetFloat("_Speed", (1 - percentage) * maxBlinkSpeed);
+        leftArm.materials[0].SetFloat("_Force", (1 - percentage) * maxBlinkForce);
+
+        rightArm.materials[0].SetFloat("_Speed", (1 - percentage) * maxBlinkSpeed);
+        rightArm.materials[0].SetFloat("_Force", (1 - percentage) * maxBlinkForce);
     }
 
     private void SecondPhase()
     {
         isSecondPhase = true;
         leftArm.enabled = false;
+        animator.SetTrigger("PartDown");
+
+        GameObject temp = Instantiate(explosionBigPrefab);
+        var shape = temp.GetComponent<ParticleSystem>().shape;
+        shape.skinnedMeshRenderer = leftArm.GetComponent<SkinnedMeshRenderer>();
+
+        StartCoroutine(PlaySound(partLoose, 0.5f));
     }
 
-    private IEnumerator Enrage()
+    private void Enrage()
     {
         isEnraged = true;
         rightArm.enabled = false;
-        for (float i = 0; i < 1; i+=0.01f)
-        {
-            foreach (Renderer renderer in desctructibles)
-            {
-                renderer.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, i);
-            }
-            mainBody.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, i);
-            leftArm.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, i);
-            rightArm.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, i);
-            yield return new WaitForEndOfFrame();
-        }
-        foreach (Renderer renderer in desctructibles)
-        {
-            renderer.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, 1);
-        }
-        mainBody.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, 1);
-        leftArm.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, 1);
-        rightArm.materials[0].color = Color.Lerp(Color.white, secondPhaseColor, 1);
+        animator.SetTrigger("PartDown");
+
+        GameObject temp = Instantiate(explosionBigPrefab);
+        var shape = temp.GetComponent<ParticleSystem>().shape;
+        shape.skinnedMeshRenderer = rightArm.GetComponent<SkinnedMeshRenderer>();
+
+        StartCoroutine(PlaySound(partLoose, 0.5f));
+    }
+
+    private IEnumerator PlaySound(AudioClip clip, float volume)
+    {
+        AudioSource tempClip = gameObject.AddComponent<AudioSource>();
+        tempClip.clip = clip;
+        tempClip.maxDistance = 10;
+        tempClip.volume = volume;
+        tempClip.spatialBlend = 1f;
+        tempClip.playOnAwake = false;
+        tempClip.Play();
+        yield return new WaitForSeconds(clip.length);
+        Destroy(tempClip);
     }
 
     private void ProcessInput()
@@ -144,5 +225,11 @@ public class AIBossBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         animator.SetTrigger("EndFire");
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(explosionFinalPrefab, transform.position, Quaternion.identity);
+
     }
 }

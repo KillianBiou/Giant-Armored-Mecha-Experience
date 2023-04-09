@@ -5,10 +5,12 @@ using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance;
     private ScoreData sd;
 
     void Awake()
     {
+        instance = this;
         LoadScoreFromJson();
     }
 
@@ -19,8 +21,10 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(string name, int score)
     {
+        Debug.Log(Application.persistentDataPath);
         sd.scores.Add(new Score(name, score));
         ScoreUi.instance.ReloadScoreboard();
+        GetComponent<SaveRenderTexture>().CaptureScore();
     }
 
     private void OnDestroy()
