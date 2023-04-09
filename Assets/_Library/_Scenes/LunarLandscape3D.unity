@@ -2421,7 +2421,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123561328}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &123561330
 Camera:
   m_ObjectHideFlags: 0
@@ -36988,7 +36988,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045482852}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1045482856
 Camera:
   m_ObjectHideFlags: 0
@@ -66501,6 +66501,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1929051897484549526, guid: 60c3fbe699bf34a4d965b51294567215,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2177998663471392875, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -66714,7 +66719,7 @@ PrefabInstance:
     - target: {fileID: 8302864183570990035, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0034143904
+      value: -0.004260042
       objectReference: {fileID: 0}
     - target: {fileID: 8803957790130395088, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}

@@ -132,10 +132,18 @@ public class GroundController : MonoBehaviour
 
         newEuler.x += RightY * lerpSpeed;
 
-        if (newEuler.x > 180)
+        Debug.Log(newEuler.x);
+
+        if (newEuler.x > 180f)
+        {
             newEuler.x = Mathf.Clamp(newEuler.x, 360 - maxAngle, 360);
-        else
+            Debug.Log("> 180");
+        }
+        else if (newEuler.x < 180f)
+        {
             newEuler.x = Mathf.Clamp(newEuler.x, 0, maxAngle);
+            Debug.Log("< 180");
+        }
 
         cockpit.transform.localRotation = Quaternion.Euler(newEuler);
     }
