@@ -4156,7 +4156,7 @@ MonoBehaviour:
   glidRange: 5
   takeOffDistance: 20
   useGravity: 1
-  gravityForce: 3
+  gravityForce: 8
   canFly: 0
   layers:
     serializedVersion: 2
@@ -4232,7 +4232,7 @@ MonoBehaviour:
     type: 3}
   missileExplosion: {fileID: 4232285359161398352, guid: 32739841c39d12841a49d83e9e73331e,
     type: 3}
-  missileDamage: 20
+  missileDamage: 100
   missileArmorShred: 10
   bulletSpeed: 500
   gatlingFireSound: {fileID: 8300000, guid: 3f74eb28ec62e0645bbb5c5f89f11ae2, type: 3}
@@ -4242,7 +4242,7 @@ MonoBehaviour:
     type: 3}
   railgunFireSound: {fileID: 8300000, guid: 6ec7cff01ab5e2647ab67c263efa50a8, type: 3}
   railgunCooldown: 10
-  railgunDamage: 10
+  railgunDamage: 300
   bullet: {fileID: 4748647922249023635, guid: 0450e53cacae2e942ab3cf5b97a4dfc0, type: 3}
   missile: {fileID: 8129323822110653699, guid: 9859e003dbea4b041845189ed203ef7b, type: 3}
   missileCooldown: 1
@@ -5960,55 +5960,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7520614344795281358}
     m_Modifications:
-    - target: {fileID: 90569399195886840, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_text
-      value: '-
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -
-
-        -'
-      objectReference: {fileID: 0}
-    - target: {fileID: 90569399195886840, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 40.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 90569399195886840, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_margin.w
-      value: -240.20752
-      objectReference: {fileID: 0}
-    - target: {fileID: 90569399195886840, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_margin.y
-      value: 4.260845
-      objectReference: {fileID: 0}
-    - target: {fileID: 90569399195886840, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 285497744981706274, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -6052,7 +6003,7 @@ PrefabInstance:
     - target: {fileID: 692996827662982803, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 127.642456
+      value: 795.6029
       objectReference: {fileID: 0}
     - target: {fileID: 739692368900279199, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6252,7 +6203,7 @@ PrefabInstance:
     - target: {fileID: 4137264479374565996, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 0.8910462
+      value: 0.32097915
       objectReference: {fileID: 0}
     - target: {fileID: 4402444632338346779, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6302,12 +6253,12 @@ PrefabInstance:
     - target: {fileID: 5151715563045136056, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999988
+      value: 0.99999887
       objectReference: {fileID: 0}
     - target: {fileID: 5151715563045136056, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: -0.0625
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5154633820069053720, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6553,16 +6504,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShowMaskGraphic
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7103367262617982422, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 121.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7103367262617982422, guid: c151b3207d8cf744ebeb5dd615469fb8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -12.299999
       objectReference: {fileID: 0}
     - target: {fileID: 7109722829592632594, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}

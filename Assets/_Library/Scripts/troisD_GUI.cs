@@ -24,4 +24,10 @@ public class troisD_GUI : MonoBehaviour
         foreach (GameObject go in elems)
             go.SetActive(false);
     }
+
+    public void Show()
+    {
+        HideIt();
+        //if(b == Buton)
+    }
 }

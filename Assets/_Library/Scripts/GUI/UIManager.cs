@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
 
     [Header("Missile")]
     [SerializeField]
@@ -23,9 +24,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Slider timerSlider;
 
+    private float remainingTime;
+
 
     void Start()
     {
+        instance = this;
         timerTxt.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
@@ -63,9 +67,16 @@ public class UIManager : MonoBehaviour
         timerTxt.gameObject.transform.parent.gameObject.SetActive(true);
     }
 
-    public void UpdateTimer(float newTime)
+    public void UpdateTimer(int newTime)
     {
+        remainingTime = newTime;
         timerTxt.text = ((newTime - (newTime % 60))/60).ToString() + ":" + (newTime % 60).ToString();
         timerSlider.value = newTime/150;
+    }
+
+
+    public int GetRemainingTime()
+    {
+        return (int)remainingTime;
     }
 }

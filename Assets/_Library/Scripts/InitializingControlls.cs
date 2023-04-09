@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class InitializingControlls : MonoBehaviour
 {
+    public static InitializingControlls instance;
+
     [SerializeField]
     private Light mainLight;
 
@@ -37,6 +39,8 @@ public class InitializingControlls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         m_TpsScreen = TpsScreen.GetComponent<Renderer>().materials[0];
         m_TpsScreen.SetFloat("_Grid", 1.1f);
         m_TpsScreen.SetFloat("_Scanner", 0);
@@ -49,7 +53,7 @@ public class InitializingControlls : MonoBehaviour
 
     void Update()
     {
-        if(PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
+        if (PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
         {
             StartCoroutine(InitSeq());
             Estarted = true;
@@ -59,30 +63,20 @@ public class InitializingControlls : MonoBehaviour
     }
 
 
-
     public void BeginStartup()
     {
         StartCoroutine(OnLight());
         MissionManager.instance.StartQuestLine();
     }
 
-
-
-
-
-
-
-
     IEnumerator OnLight()
     {
         if (mainLight.intensity < 1.0f)
         {
             mainLight.intensity += 0.5f * Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
-
-
 
     IEnumerator InitSeq()
     {
@@ -98,17 +92,9 @@ public class InitializingControlls : MonoBehaviour
         fadein = 0;
         yield return FadeCompensate();
 
-
         Activator.instance.ActivateMove();
-
-        this.enabled = false;
-        yield return null;
-
+        //this.enabled = false;
     }
-
-
-
-
 
     IEnumerator DrawGrid()
     {
@@ -132,8 +118,6 @@ public class InitializingControlls : MonoBehaviour
         yield return null;
     }
 
-
-
     IEnumerator FadeIn()
     {
         while (fadein > -1)
@@ -153,6 +137,23 @@ public class InitializingControlls : MonoBehaviour
             m_FieldScreen.SetFloat("_compensation", fadein);
             yield return new WaitForEndOfFrame();
         }
+        yield return null;
+    }
+
+
+    public void ShutDownMecha()
+    {
+        StartCoroutine(ShuttingDown());
+    }
+
+    IEnumerator ShuttingDown()
+    {
+        float fade = 0.0f;
+
+        m_TpsScreen.SetFloat("_Grid", 1.1f);
+        m_TpsScreen.SetFloat("_Scanner", 0);
+        m_FieldScreen.SetFloat("_down", 1);
+        m_FieldScreen.SetFloat("_compensation", 0);
         yield return null;
     }
 }

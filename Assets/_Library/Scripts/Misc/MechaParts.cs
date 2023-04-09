@@ -13,8 +13,11 @@ public enum ControllerType
 
 public class MechaParts : MonoBehaviour
 {
+    public static MechaParts instance;
+
     [Header("Pilot Parameters")]
     public string name;
+    private int score;
 
     [Header("Thrusters")]
     public GameObject leftThruster;
@@ -31,8 +34,6 @@ public class MechaParts : MonoBehaviour
 
     public List<BodyPart> bodyParts = new List<BodyPart>();
 
-    private int score;
-    public static MechaParts instance;
     private bool changeCooldown = false;
 
     private void Awake()
@@ -153,6 +154,7 @@ public class MechaParts : MonoBehaviour
     public void ProcessScore(float mul)
     {
         score = (int)((float)score * mul);
+        score += 10 * UIManager.GetRemainingTime();
         ScoreManager.instance.AddScore(name, score);
     }
 

@@ -41,6 +41,4 @@ public class GpsTridi : MonoBehaviour
     {
         fleche.SetActive(false);
     }
-
-
 }

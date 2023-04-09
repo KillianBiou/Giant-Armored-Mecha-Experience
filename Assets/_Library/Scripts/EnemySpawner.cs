@@ -14,11 +14,15 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField]
 	private GameObject bossPos;
 
+	[SerializeField]
+	private int nbWaves;
 
+	private GameObject player, nearest;
 
 
 	private List<GameObject> enemyList = new List<GameObject>();
-	
+
+	private float countDown;
 	private int waveCount;
 	
 	
@@ -26,6 +30,31 @@ public class EnemySpawner : MonoBehaviour
 	{
 		waveCount = 0;
 		StartCoroutine(EnemyWave(3));
+		player = GameObject.FindGameObjectsWithTag("Player")[0];
+
+		countDown = 150;
+		UIManager.instance.ShowTimer();
+	}
+
+	void Update()
+	{
+		countDown -= Time.deltaTime;
+		UIManager.instance.UpdateTimer((int)countDown);
+
+		if (enemyList.Count > 1)
+		{
+			nearest = enemyList[0];
+			for(int i=1; i<enemyList.Count; i++ )
+            {
+				if (Vector3.Distance(player.transform.position, enemyList[i].transform.position) < Vector3.Distance(player.transform.position, nearest.transform.position))
+					nearest = enemyList[i];
+			}
+			GpsTridi.instance.SetTarget(nearest);
+		}
+		else if(enemyList.Count > 0)
+        {
+			GpsTridi.instance.SetTarget(enemyList[0]);
+		}
 	}
 	
 	
@@ -70,11 +99,12 @@ public class EnemySpawner : MonoBehaviour
 		if(enemyList.Count == 0)
 		{
 			waveCount++;
-			if(waveCount == 6)
+			if(waveCount == nbWaves)
 				CallBoss();
-			else if (waveCount == 7)
+			else if (waveCount == nbWaves+1)
 			{
 				//fin du game !
+				MechaParts.instance.ProcessScore(1);
 			}
 			else
 				StartCoroutine(EnemyWave((int)Random.Range(2.0f, 3.0f)));
@@ -84,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
 	
 	public void CallBoss()
 	{
-		//RegisterEnemy(Instantiate(bossPrefab, bossPos));
+		RegisterEnemy(Instantiate(bossPrefab, bossPos.transform));
 	}
 
 }
