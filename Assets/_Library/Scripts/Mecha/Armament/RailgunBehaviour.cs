@@ -17,6 +17,7 @@ public class RailgunBehaviour : MonoBehaviour
         this.fx = fx;
         this.railgunDamage = railgunDamage;
         this.fireSound = gameObject.AddComponent<AudioSource>();
+        this.fireSound.playOnAwake = false;
         this.fireSound.clip = fireSound;
         this.fireSound.volume = 3;
     }

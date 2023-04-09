@@ -246,9 +246,12 @@ public class AIBodyPartsManager : MonoBehaviour
 
     private void ChangeTarget()
     {
-        if (Vector3.Distance(data.player.transform.position, transform.position) <= data.detectionRange)
+        if(data.player)
         {
-            data.target = data.player.GetComponent<MechaParts>().bodyParts[Random.Range(0, data.player.GetComponent<MechaParts>().bodyParts.Count)].gameObject;
+            if (Vector3.Distance(data.player.transform.position, transform.position) <= data.detectionRange)
+            {
+                data.target = data.player.GetComponent<MechaParts>().bodyParts[Random.Range(0, data.player.GetComponent<MechaParts>().bodyParts.Count)].gameObject;
+            }
         }
     }
 }
