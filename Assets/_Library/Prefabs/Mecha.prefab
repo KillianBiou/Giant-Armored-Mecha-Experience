@@ -4394,10 +4394,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7520614344795281358}
   - component: {fileID: 7520614344795281359}
+  - component: {fileID: 7520614344795281357}
   - component: {fileID: 2778095898318739012}
   - component: {fileID: 7520614344795281356}
   - component: {fileID: 2066262284070084444}
-  - component: {fileID: 7520614344795281357}
   - component: {fileID: 936034332}
   - component: {fileID: 949876443746935263}
   - component: {fileID: 1093903183829951848}
@@ -4455,6 +4455,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7520614344795281357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520614344795281331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bc47114605e1d4dac7ddf9f1a3e2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bastien
+  leftThruster: {fileID: 7520614345496143632}
+  rightThruster: {fileID: 7520614344548860478}
+  debugIsGrounded: 0
+  controllerType: 0
+  UIManager: {fileID: 1991875618}
+  mechaAnim: {fileID: 4419158809371623109}
+  bodyParts: []
 --- !u!114 &2778095898318739012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4524,25 +4544,6 @@ MonoBehaviour:
   accelerationStrafFactor: 200
   deadzone: 0.2
   maxSpeed: 200
---- !u!114 &7520614344795281357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7520614344795281331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63bc47114605e1d4dac7ddf9f1a3e2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftThruster: {fileID: 7520614345496143632}
-  rightThruster: {fileID: 7520614344548860478}
-  debugIsGrounded: 0
-  controllerType: 0
-  UIManager: {fileID: 1991875618}
-  mechaAnim: {fileID: 4419158809371623109}
-  bodyParts: []
 --- !u!114 &936034332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6325,12 +6326,12 @@ PrefabInstance:
     - target: {fileID: 692996827662982803, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.015148036
+      value: 0.021289952
       objectReference: {fileID: 0}
     - target: {fileID: 692996827662982803, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.48583984
+      value: 0.91796875
       objectReference: {fileID: 0}
     - target: {fileID: 739692368900279199, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6485,7 +6486,7 @@ PrefabInstance:
     - target: {fileID: 3750621197827270424, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0026169345
+      value: -0.01060496
       objectReference: {fileID: 0}
     - target: {fileID: 3777878187633387962, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6530,7 +6531,7 @@ PrefabInstance:
     - target: {fileID: 4137264479374565996, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 0.99955744
+      value: 0.9991784
       objectReference: {fileID: 0}
     - target: {fileID: 4402444632338346779, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6585,7 +6586,7 @@ PrefabInstance:
     - target: {fileID: 5151715563045136056, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5154633820069053720, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6820,7 +6821,7 @@ PrefabInstance:
     - target: {fileID: 6797345601352775966, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6947285762237822200, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6915,7 +6916,7 @@ PrefabInstance:
     - target: {fileID: 7414272769303131235, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-      value: -1.2934783
+      value: -0.8804348
       objectReference: {fileID: 0}
     - target: {fileID: 7473018552078148981, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
