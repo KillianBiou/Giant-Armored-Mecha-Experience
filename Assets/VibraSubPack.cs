@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class VibraSubPack : MonoBehaviour
 {
     public static VibraSubPack instance;
 
-    [SerializeField]
-    private AudioSource AS;
 
     [SerializeField]
     private AudioClip[] freqs;
@@ -17,24 +14,27 @@ public class VibraSubPack : MonoBehaviour
     void Start()
     {
         instance = this;
+        VibraSubPack.instance.Vibrate(3.0f, 0);
     }
 
-    public void Vibrate(float intensity, float duration)
+    public void Vibrate(float duration, int intensity)
     {
-        if(intensity == 10.0f)
-        {
-            AS.clip = freqs[0];
-            AS.Play();
-            StartCoroutine(Buzz(duration));
-        }
+        StartCoroutine(Buzz(duration, intensity));
     }
 
-    IEnumerator Buzz(float duree)
+    IEnumerator Buzz(float duree, int freq)
     {
-        while(duree > 0.0f)
+        AudioSource nAS = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        nAS.loop = true;
+        nAS.clip = freqs[freq];
+        nAS.Play();
+
+        while (duree > 0.0f)
         {
             duree -= Time.deltaTime;
             yield return null;
         }
+
+        Destroy(nAS);
     }
 }

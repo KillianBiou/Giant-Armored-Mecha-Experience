@@ -16,6 +16,7 @@ public class GpsTridi : MonoBehaviour
     void Start()
     {
         instance = this;
+        HideGPS();
     }
 
     public void SetTarget(GameObject go)

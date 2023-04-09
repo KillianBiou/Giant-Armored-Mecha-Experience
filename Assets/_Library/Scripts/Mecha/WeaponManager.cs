@@ -192,7 +192,7 @@ public class WeaponManager : MonoBehaviour
             if(!gatlingMemory)
             {
                 gatlingMemory = true;
-                Boureau.instance.SetGatling(true);
+                //Boureau.instance.SetGatling(true);
             }
         }
         if (railgun && canRailgun)
@@ -205,7 +205,7 @@ public class WeaponManager : MonoBehaviour
         if (!gatling && gatlingMemory)
         {
             gatlingMemory = false;
-            Boureau.instance.SetGatling(false);
+            //Boureau.instance.SetGatling(false);
         }
     }
 

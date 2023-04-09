@@ -102,8 +102,8 @@ public class BodyPart : MonoBehaviour
         transform.parent.TryGetComponent<WeaponManager>(out weaponManager);
         if (weaponManager)
             weaponManager.UnregisterArmament(this);
-        Boureau.instance.RegisterViber(40, 300);
-        Boureau.instance.Airblow(50);
+        //Boureau.instance.RegisterViber(40, 300);
+        //Boureau.instance.Airblow(50);
         gameObject.SetActive(false);
     }
 

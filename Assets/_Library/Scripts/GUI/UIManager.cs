@@ -36,6 +36,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(float newScore)
     {
-        scoreHolder.transform.Find("Content").GetComponent<TextMeshProUGUI>().text = newScore.ToString();
+        string scoreTxt = "";
+        for(int i=0; i < 6 - newScore.ToString().Length; i++)
+        {
+            scoreTxt += "0";
+        }
+        scoreTxt += newScore.ToString();
+        scoreHolder.transform.Find("Content").GetComponent<TextMeshProUGUI>().text = scoreTxt;
     }
 }
