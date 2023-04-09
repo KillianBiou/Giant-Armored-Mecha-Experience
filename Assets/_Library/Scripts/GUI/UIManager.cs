@@ -18,6 +18,18 @@ public class UIManager : MonoBehaviour
     [Header("Misc")]
     [SerializeField]
     private GameObject scoreHolder;
+    [SerializeField]
+    private TMP_Text timerTxt;
+    [SerializeField]
+    private Slider timerSlider;
+
+
+    void Start()
+    {
+        timerTxt.gameObject.transform.parent.gameObject.SetActive(false);
+    }
+
+
 
     public void UpdateMissileNumber(int missileLeft)
     {
@@ -43,5 +55,17 @@ public class UIManager : MonoBehaviour
         }
         scoreTxt += newScore.ToString();
         scoreHolder.transform.Find("Content").GetComponent<TextMeshProUGUI>().text = scoreTxt;
+    }
+
+
+    public void ShowTimer()
+    {
+        timerTxt.gameObject.transform.parent.gameObject.SetActive(true);
+    }
+
+    public void UpdateTimer(float newTime)
+    {
+        timerTxt.text = ((newTime - (newTime % 60))/60).ToString() + ":" + (newTime % 60).ToString();
+        timerSlider.value = newTime/150;
     }
 }
