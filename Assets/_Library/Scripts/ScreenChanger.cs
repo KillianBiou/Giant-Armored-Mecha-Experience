@@ -11,6 +11,12 @@ public class ScreenChanger : MonoBehaviour
 
 
 
+    void Start()
+    {
+        foreach (GameObject go in Screens)
+            go.SetActive(false);
+    }
+
 
     public void SwitchScreen(int a)
     {
