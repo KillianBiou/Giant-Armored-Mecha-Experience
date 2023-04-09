@@ -62,7 +62,7 @@ public class AIComplexBehaviou : MonoBehaviour
 
         if (distance >= preferedDistance)
         {
-            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
 
             currentY += 0.05f;
             currentY = Mathf.Clamp(currentY, -1, 1);
@@ -70,7 +70,7 @@ public class AIComplexBehaviou : MonoBehaviour
         }
         else if (distance <= preferedDistance * 0.8f)
         {
-            transform.Translate(-transform.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.Self);
 
             currentY -= 0.05f;
             currentY = Mathf.Clamp(currentY, -1, 1);
