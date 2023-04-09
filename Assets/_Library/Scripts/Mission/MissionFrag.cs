@@ -51,5 +51,20 @@ public class MissionFrag : MonoBehaviour
         checks++;
         if (checks >= objs.Length) // fin d'une sequence
             dady.ChkEnd();
+        else
+        {/*
+            foreach (MissionElement ME in objs)
+            {
+                if(ME != null)
+                {
+                    if (ME.gameObject.activeSelf)
+                    {
+                        GpsTridi.instance.SetTarget(ME.gameObject);
+                        //dady.getMH().target = ME.gameObject;
+                        break;
+                    }
+                }
+            }*/
+        }
     }
 }

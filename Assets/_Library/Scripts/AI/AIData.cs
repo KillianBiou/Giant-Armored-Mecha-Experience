@@ -62,10 +62,10 @@ public class AIData : MonoBehaviour
         player.GetComponent<MechaParts>().AddScore(scoreOnDeath);
         if(destoyedVFX != null)
             Instantiate(destoyedVFX, transform.position, transform.rotation);
-        Destroy(gameObject);
         MissionElement me;
         if ((me = gameObject.GetComponent<MissionElement>()) != null)
             me.ImDead();
+        Destroy(gameObject);
     }
 
 }

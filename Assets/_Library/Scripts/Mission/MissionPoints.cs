@@ -31,7 +31,8 @@ public class MissionPoints : MonoBehaviour
     {
         foreach (MissionElement ME in conditions[checks].objs) // dez la sequence
         {
-            ME.gameObject.SetActive(false);
+            if(ME)
+                ME.gameObject.SetActive(false);
         }
 
         checks++; // seq suivante

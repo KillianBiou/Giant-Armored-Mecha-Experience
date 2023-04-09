@@ -31,7 +31,6 @@ public class MissionManager : MonoBehaviour
         currentMission.MissMana = this;
         currentMission.checks = 0;
 
-        int i = 0;
 
         foreach (MissionPoints mp in currentMission.chapters)//dez tout les enfants
         {
@@ -44,8 +43,6 @@ public class MissionManager : MonoBehaviour
                 foreach(MissionElement go in mf.objs)
                 {
                     go.gameObject.SetActive(false);
-                    i++;
-                    Debug.Log("\n -- " + i + ".");
                 }
             }
         }
