@@ -70,8 +70,12 @@ public class UIManager : MonoBehaviour
     public void UpdateTimer(int newTime)
     {
         remainingTime = newTime;
-        timerTxt.text = ((newTime - (newTime % 60))/60).ToString() + ":" + (newTime % 60).ToString();
-        timerSlider.value = newTime/150;
+        if(newTime % 60 < 10)
+            timerTxt.text = "0" + ((newTime - (newTime % 60))/60).ToString() + ":0" + (newTime % 60).ToString();
+        else
+            timerTxt.text = "0" + ((newTime - (newTime % 60)) / 60).ToString() + ":" + (newTime % 60).ToString();
+
+        timerSlider.value = (float)newTime/150;
     }
 
 

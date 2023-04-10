@@ -194,7 +194,10 @@ public class AIBodyPartsManager : MonoBehaviour
         foreach(RailgunBehaviour railgunBehaviour in railguns)
         {
             if (data.target)
+            {
                 railgunBehaviour.Fire(data.target);
+                VibraSubPack.instance.Vibrate(2, 0);
+            }
         }
 
         yield return new WaitForSeconds(railgunCooldown);

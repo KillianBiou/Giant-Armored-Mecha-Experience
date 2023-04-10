@@ -25,6 +25,8 @@ public class MechaParts : MonoBehaviour
 
     [Header("Other")]
     [SerializeField]
+    private AudioClip deathClip;
+    [SerializeField]
     private bool debugIsGrounded;
     public ControllerType controllerType;
     [SerializeField]
@@ -87,7 +89,12 @@ public class MechaParts : MonoBehaviour
                 if(child.data.part == MemberPart.TORSO)
                 {
                     if (child.data.hp <= 0)
+                    {
+                        //death
                         ProcessScore(0.8f);
+                        if(deathClip)
+                            NarratorManager.instance.SayThis(deathClip);
+                    }
                 }
             }
         }

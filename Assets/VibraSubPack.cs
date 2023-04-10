@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 
 public class VibraSubPack : MonoBehaviour
 {
@@ -11,10 +11,13 @@ public class VibraSubPack : MonoBehaviour
     [SerializeField]
     private AudioClip[] freqs;
 
+    [SerializeField]
+    private AudioMixerGroup mix;
+
     void Start()
     {
         instance = this;
-        VibraSubPack.instance.Vibrate(3.0f, 0);
+        //VibraSubPack.instance.Vibrate(3.0f, 0);
     }
 
     public void Vibrate(float duration, int intensity)
@@ -27,6 +30,8 @@ public class VibraSubPack : MonoBehaviour
         AudioSource nAS = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
         nAS.loop = true;
         nAS.clip = freqs[freq];
+        if (freq == 0)
+            nAS.outputAudioMixerGroup = mix;
         nAS.Play();
 
         while (duree > 0.0f)

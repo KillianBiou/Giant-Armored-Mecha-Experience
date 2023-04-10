@@ -6,13 +6,16 @@ public class EnemySpawner : MonoBehaviour
 {
 
 	[SerializeField]
-	private GameObject[] spawnPoses;
+	private GameObject[] spawnPoses, flyPos;
 	[SerializeField]
 	private GameObject[] enemyPrefabs;
 	[SerializeField]
 	private GameObject bossPrefab;
 	[SerializeField]
 	private GameObject bossPos;
+
+	[SerializeField]
+	private AudioClip timeoutedClip, winClip;
 
 	[SerializeField]
 	private int nbWaves;
@@ -29,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 	private void Start()
 	{
 		waveCount = 0;
-		StartCoroutine(EnemyWave(3));
+		StartCoroutine(EnemyWave(6));
 		player = GameObject.FindGameObjectsWithTag("Player")[0];
 
 		countDown = 150;
@@ -42,7 +45,11 @@ public class EnemySpawner : MonoBehaviour
 		UIManager.instance.UpdateTimer((int)countDown);
 
 		if (countDown <= 0.0f) //time out
+		{
 			MechaParts.instance.ProcessScore(1);
+			if (timeoutedClip)
+				NarratorManager.instance.SayThis(timeoutedClip);
+		}
 
 		if (enemyList.Count > 1)
 		{
@@ -107,7 +114,16 @@ public class EnemySpawner : MonoBehaviour
 			else if (waveCount == nbWaves+1)
 			{
 				//fin du game !
+				if (winClip)
+					NarratorManager.instance.SayThis(winClip);
 				MechaParts.instance.ProcessScore(1);
+			}
+			else if(waveCount%3 == 0)
+            {
+				RegisterEnemy(Instantiate(enemyPrefabs[3], flyPos[0].transform));
+				RegisterEnemy(Instantiate(enemyPrefabs[3], flyPos[1].transform));
+				RegisterEnemy(Instantiate(enemyPrefabs[3], flyPos[2].transform));
+				StartCoroutine(EnemyWave((int)Random.Range(2.0f, 3.0f)));
 			}
 			else
 				StartCoroutine(EnemyWave((int)Random.Range(2.0f, 3.0f)));
