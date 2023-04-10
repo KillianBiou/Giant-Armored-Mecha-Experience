@@ -10,6 +10,8 @@ public class EngineStart : MonoBehaviour
     [SerializeField]
     private GameObject bootScreen;
     [SerializeField]
+    private GameObject content;
+    [SerializeField]
     private TMP_Text bootText;
 
     [SerializeField]
@@ -32,6 +34,7 @@ public class EngineStart : MonoBehaviour
     void Start()
     {
         bg.color = new Color(0.0f, 0.0f, 0.0f);
+        content.SetActive(false);
     }
 
     public void enginego()
@@ -71,6 +74,7 @@ public class EngineStart : MonoBehaviour
 
     IEnumerator BootScrolling()
     {
+        content.SetActive(true);
         bootText.text += "\n Starting the G.A.M.E System";
         yield return new WaitForSeconds(0.5f);
         bootText.text += "\n Init Arms Engine...";

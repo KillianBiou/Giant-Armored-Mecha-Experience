@@ -84,6 +84,11 @@ public class MechaParts : MonoBehaviour
                         //Boureau.instance.Airblow(80);
                         break;
                 }
+                if(child.data.part == MemberPart.TORSO)
+                {
+                    if (child.data.hp <= 0)
+                        ProcessScore(0.8f);
+                }
             }
         }
     }

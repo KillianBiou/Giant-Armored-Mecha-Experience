@@ -16,8 +16,6 @@ public class TutorialMenu : MonoBehaviour
 
     [SerializeField]
     private Image img;
-    [SerializeField]
-    private VideoPlayer vidplay;
 
     [SerializeField]
     private AudioSource speaker;
@@ -77,8 +75,14 @@ public class TutorialMenu : MonoBehaviour
     {
         Debug.Log("\n-- j'ai recu mon pote -- \n");
         titleTxt.text = currentTuto.title;
-        img.sprite = currentTuto.img;
-        //vidplay.clip = currentTuto.vid;
+        if (currentTuto.img)
+        {
+            img.gameObject.SetActive(true);
+            img.sprite = currentTuto.img;
+        }
+        else
+            img.gameObject.SetActive(false);
+
         speaker.clip = currentTuto.snd;
         speaker.Play();
 

@@ -34,15 +34,17 @@ public class MissileLogic : MonoBehaviour
     {
         if (!target)
             DestroyMissile();
+        else
+        {
+            Vector3 direction = transform.position - target.transform.position;
 
-        Vector3 direction = transform.position - target.transform.position;
+            direction.Normalize();
 
-        direction.Normalize();
+            Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
 
-        Vector3 rotateAmount = Vector3.Cross(direction, transform.forward);
-
-        GetComponent<Rigidbody>().angularVelocity = rotateAmount * 15;
-        GetComponent<Rigidbody>().velocity = transform.forward * accelerationForce;
+            GetComponent<Rigidbody>().angularVelocity = rotateAmount * 15;
+            GetComponent<Rigidbody>().velocity = transform.forward * accelerationForce;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1576,7 +1576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8043590589708655055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3977,6 +3977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bootScreen: {fileID: 106301698923041575}
+  content: {fileID: 5662805563824603040}
   bootText: {fileID: 7020071504579059157}
   OsStart: {fileID: 8781370896376633302}
   initbar: {fileID: 7630169067393649618}

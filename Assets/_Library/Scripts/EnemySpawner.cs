@@ -41,6 +41,9 @@ public class EnemySpawner : MonoBehaviour
 		countDown -= Time.deltaTime;
 		UIManager.instance.UpdateTimer((int)countDown);
 
+		if (countDown <= 0.0f) //time out
+			MechaParts.instance.ProcessScore(1);
+
 		if (enemyList.Count > 1)
 		{
 			nearest = enemyList[0];
@@ -112,9 +115,8 @@ public class EnemySpawner : MonoBehaviour
 	}
 	
 	
-	public void CallBoss()
+	private void CallBoss()
 	{
 		RegisterEnemy(Instantiate(bossPrefab, bossPos.transform));
 	}
-
 }
