@@ -8,7 +8,7 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = Camera.main.transform;
     }
 
     private void Update()

@@ -1105,6 +1105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3990564336594957089}
   - component: {fileID: 3990564336594957088}
+  - component: {fileID: 611793981518923634}
   m_Layer: 11
   m_Name: cuisse_L
   m_TagString: Untagged
@@ -1142,6 +1143,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.050629273, y: 0.17572027, z: 0.094940975}
   m_Center: {x: 0.001916058, y: 0.07012115, z: -0.024955522}
+--- !u!114 &611793981518923634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2570252385231647431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4ec65e6ed2a5c49935acba50847cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 7469952982793471090}
 --- !u!1 &2598032423754343462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +1897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4642545112422323217}
   - component: {fileID: 3636940062805472265}
+  - component: {fileID: 2086498223620338039}
   m_Layer: 11
   m_Name: Torse
   m_TagString: Untagged
@@ -1929,6 +1944,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19495755, y: 0.19049026, z: 0.1}
   m_Center: {x: -0.0024310155, y: 0.045245126, z: -0.00000001522387}
+--- !u!114 &2086498223620338039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636940062805472266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4ec65e6ed2a5c49935acba50847cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 7469952982793471090}
 --- !u!1 &3840488967610737948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8288528731845233257}
   - component: {fileID: 5121782779927697927}
+  - component: {fileID: 1405537855851330346}
   m_Layer: 11
   m_Name: cuisse_R
   m_TagString: Untagged
@@ -2390,6 +2419,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.050629273, y: 0.17572027, z: 0.094940975}
   m_Center: {x: 0.001916058, y: 0.07012115, z: -0.024955522}
+--- !u!114 &1405537855851330346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121782779927697920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4ec65e6ed2a5c49935acba50847cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 7469952982793471090}
 --- !u!1 &5812044005443055779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5659,6 +5701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466707571543950331}
   - component: {fileID: 2466707571543950330}
+  - component: {fileID: 6208331591314030860}
   m_Layer: 11
   m_Name: bras_R
   m_TagString: Untagged
@@ -5696,6 +5739,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06794535, y: 0.2651876, z: 0.1}
   m_Center: {x: 0.00391026, y: 0.10696595, z: 0.000000006984936}
+--- !u!114 &6208331591314030860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029502260283475899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4ec65e6ed2a5c49935acba50847cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 7469952982793471090}
 --- !u!1 &8150766406658035921
 GameObject:
   m_ObjectHideFlags: 0
@@ -6181,6 +6237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6716395976236945189}
   - component: {fileID: 6716395976236945188}
+  - component: {fileID: 8974913814839394407}
   m_Layer: 11
   m_Name: bras_L
   m_TagString: Untagged
@@ -6218,3 +6275,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06794535, y: 0.2651876, z: 0.1}
   m_Center: {x: 0.00391026, y: 0.10696595, z: 0.000000006984936}
+--- !u!114 &8974913814839394407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9189802879607676818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4ec65e6ed2a5c49935acba50847cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 7469952982793471090}

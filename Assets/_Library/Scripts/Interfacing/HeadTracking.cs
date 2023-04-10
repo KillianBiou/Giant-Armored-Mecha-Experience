@@ -162,8 +162,8 @@ public class HeadTracking : MonoBehaviour
         {
             if (targetGO.GetComponent<AIData>())
                 lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.GetComponent<AIData>().hp / (float)targetGO.GetComponent<AIData>().maxHP;
-            else
-                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.transform.root.GetComponent<AIData>().hp / (float)targetGO.transform.root.GetComponent<AIData>().maxHP;
+            if(targetGO.GetComponent<ManagerReference>())
+                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.GetComponent<ManagerReference>().data.GetComponent<AIData>().hp / (float)targetGO.GetComponent<ManagerReference>().data.GetComponent<AIData>().maxHP;
         }
     }
 
