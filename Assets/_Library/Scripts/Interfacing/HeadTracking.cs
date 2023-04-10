@@ -49,11 +49,12 @@ public class HeadTracking : MonoBehaviour
         if (IsInBound())
         {
             target.SetActive(true);
-            Collider[] hit = Physics.OverlapSphere(transform.position, distance, layerMask);
-            if (hit.Length > 0)
+            List<Collider> hit = Sort(Physics.OverlapSphere(transform.position, distance, layerMask));
+
+            if (hit.Count > 0)
             {
                 bool stop = false;
-                for(int i = 0; i < hit.Length && !stop; i++)
+                for(int i = 0; i < hit.Count && !stop; i++)
                 {
                     /*if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[i].transform.position - transform.position)))
                     {*/
@@ -164,5 +165,26 @@ public class HeadTracking : MonoBehaviour
             else
                 lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.transform.root.GetComponent<AIData>().hp / (float)targetGO.transform.root.GetComponent<AIData>().maxHP;
         }
+    }
+
+    public List<Collider> Sort(Collider[] items)
+    {
+        List<(Collider, float)> distances = new List<(Collider, float)>();
+        foreach (Collider item in items)
+        {
+            float distance = Vector3.Distance(item.transform.position, transform.position);
+            distances.Add((item, distance));
+        }
+
+        // Sort the list of tuples by distance.
+        distances.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+
+        List<Collider> sortedItems = new List<Collider>();
+        foreach ((Collider, float) distance in distances)
+        {
+            sortedItems.Add(distance.Item1);
+        }
+
+        return sortedItems;
     }
 }
