@@ -17,6 +17,8 @@ public class HeadTracking : MonoBehaviour
 
     [SerializeField]
     private LayerMask layerMask;
+    [SerializeField]
+    private LayerMask targetLayer;
 
     [SerializeField]
     private Vector2 YClamp;
@@ -60,7 +62,7 @@ public class HeadTracking : MonoBehaviour
                     {*/
 
                         RaycastHit castHit;
-                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance))
+                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance, targetLayer))
                         {
                             if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
                             {
@@ -75,6 +77,11 @@ public class HeadTracking : MonoBehaviour
                                 SetTarget(null);
                                 lockTarget.SetActive(false);
                             }
+                        }
+                        else
+                        {
+                            lockTarget.SetActive(false);
+                            SetTarget(null);
                         }
                         Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
                     /*}
@@ -126,7 +133,7 @@ public class HeadTracking : MonoBehaviour
     }
 
     private bool IsInBound()
-    {
+    {/*
         if(transform.parent.localRotation.eulerAngles.y <= YClamp.y)
         {
             return true;
@@ -142,8 +149,8 @@ public class HeadTracking : MonoBehaviour
         if (transform.parent.localRotation.eulerAngles.x - 360 >= YClamp.y)
         {
             return true;
-        }
-        return false;
+        }*/
+        return true;
     }
 
     private void SetTarget(GameObject target)

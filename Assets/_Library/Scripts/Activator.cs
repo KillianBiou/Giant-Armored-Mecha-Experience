@@ -21,8 +21,12 @@ public class Activator : MonoBehaviour
     void Start()
     {
         instance = this;
+<<<<<<< Updated upstream
+=======
         WpnManager.enabled = false;
-        GndCtrl.enabled = false;
+        if (GndCtrl)
+            GndCtrl.enabled = false;
+>>>>>>> Stashed changes
     }
 
     public void ActivateMove()
@@ -43,7 +47,8 @@ public class Activator : MonoBehaviour
 
     public void ActivateDefennse()
     {
-        DefManager.enabled = true;
+         if (GndCtrl)
+             GndCtrl.enabled = false;
     }
 
 
