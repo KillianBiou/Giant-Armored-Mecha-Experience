@@ -1370,6 +1370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7675785528913664514}
+  - component: {fileID: 5044651646221408212}
   m_Layer: 0
   m_Name: VibratorManager
   m_TagString: Untagged
@@ -1392,6 +1393,20 @@ Transform:
   m_Father: {fileID: 7520614344795281358}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5044651646221408212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363469071447193687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a27a6b1dc1a5b4babdae7031d70d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAirblow: 0
+  vibers: []
 --- !u!1 &1477870988995547427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4455,7 +4470,6 @@ MonoBehaviour:
   name: Bastien
   leftThruster: {fileID: 7520614345496143632}
   rightThruster: {fileID: 7520614344548860478}
-  deathClip: {fileID: 0}
   debugIsGrounded: 0
   controllerType: 0
   UIManager: {fileID: 1991875618}
@@ -4482,7 +4496,6 @@ MonoBehaviour:
   lerpSpeed: 1
   deadzone: 0.1
   deadzoneTilt: 0.1
-  deadzoneCockpit: 1
   maxSpeed: 100
   maxAngularSpeed: 400
   glidStart: 10
@@ -4588,7 +4601,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7520614344795281331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21d4f40dc4efc9d409b5934cfdd9284f, type: 3}
   m_Name: 
@@ -6313,11 +6326,7 @@ PrefabInstance:
     - target: {fileID: 692996827662982803, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-<<<<<<< Updated upstream
       value: -0.021059977
-=======
-      value: -0.031342294
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 692996827662982803, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6517,20 +6526,12 @@ PrefabInstance:
     - target: {fileID: 4137264479374565996, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-<<<<<<< Updated upstream
       value: 0.45658746
-=======
-      value: 0.45658824
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 4137264479374565996, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-<<<<<<< Updated upstream
       value: 0.9971996
-=======
-      value: 0.0000072406046
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 4402444632338346779, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
@@ -6580,20 +6581,12 @@ PrefabInstance:
     - target: {fileID: 5151715563045136056, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Size
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 0.9999815
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5151715563045136056, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}
       propertyPath: m_Value
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: -0.714
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5154633820069053720, guid: c151b3207d8cf744ebeb5dd615469fb8,
         type: 3}

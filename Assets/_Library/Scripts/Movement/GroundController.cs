@@ -31,8 +31,6 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private float deadzoneTilt;
     [SerializeField]
-    private float deadzoneCockpit;
-    [SerializeField]
     private float maxSpeed;
     [SerializeField]
     private float maxAngularSpeed;
@@ -148,15 +146,6 @@ public class GroundController : MonoBehaviour
         }
 
         cockpit.transform.localRotation = Quaternion.Euler(newEuler);
-<<<<<<< Updated upstream
-=======
-        */
-        if(Mathf.Abs(InputExpose.instance.RYAxis) >= deadzoneCockpit)
-        {
-            angler = Mathf.Clamp(angler + InputExpose.instance.RYAxis * lerpSpeed * -1 * Time.deltaTime, 0.0f, 1.0f);
-            cockpit.transform.localRotation = Quaternion.Lerp(angleDOWN.transform.localRotation, angleUP.transform.localRotation, angler);
-        }
->>>>>>> Stashed changes
     }
 
     private void HandleMisc()

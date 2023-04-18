@@ -33,7 +33,7 @@ public class ScoreUi : MonoBehaviour
     public void ReloadScoreboard()
     {
         var scores = scoreManager.GetHighScores().ToArray();
-        for (int i = 0; i < Mathf.Min(scores.Length, 10); i++)
+        for (int i = 0; i < scores.Length; i++)
         {
             Names[i].text = scores[i].name;
             Scores[i].text = scores[i].score.ToString();
