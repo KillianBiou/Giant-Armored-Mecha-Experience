@@ -168,6 +168,11 @@ public class MechaParts : MonoBehaviour
     private bool registered = false;
     public void ProcessScore(float mul)
     {
+<<<<<<< Updated upstream
+        score = (int)((float)score * mul);
+        score += 10 * UIManager.GetRemainingTime();
+        ScoreManager.instance.AddScore(name, score);
+=======
         if(!registered)
         {
             registered = true;
@@ -175,6 +180,7 @@ public class MechaParts : MonoBehaviour
             score += 10 * UIManager.GetRemainingTime();
             ScoreManager.instance.AddScore(name, score);
         }
+>>>>>>> Stashed changes
     }
 
     public int GetScore() { return score; }

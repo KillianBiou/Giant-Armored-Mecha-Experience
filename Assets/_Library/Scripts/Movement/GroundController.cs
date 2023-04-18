@@ -20,7 +20,7 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private GameObject cockpit;
     [SerializeField]
-    private Transform angleDOWN, angleUP;
+    private float maxAngle;
     [SerializeField]
     private float lerpSpeed;
 
@@ -54,11 +54,9 @@ public class GroundController : MonoBehaviour
 
     private MechaParts mecha;
     private Rigidbody rb;
-    private float angler;
 
     private void Start()
     {
-        angler = 0.5f;
         mecha = GetComponent<MechaParts>();
         rb = GetComponent<Rigidbody>();
         Physics.gravity = Physics.gravity * gravityForce;
@@ -130,7 +128,6 @@ public class GroundController : MonoBehaviour
 
     private void HandleCockpit()
     {
-        /*
         float RightY = InputExpose.instance.RYAxis;
 
         Vector3 newEuler = cockpit.transform.localRotation.eulerAngles;
@@ -151,12 +148,15 @@ public class GroundController : MonoBehaviour
         }
 
         cockpit.transform.localRotation = Quaternion.Euler(newEuler);
+<<<<<<< Updated upstream
+=======
         */
         if(Mathf.Abs(InputExpose.instance.RYAxis) >= deadzoneCockpit)
         {
             angler = Mathf.Clamp(angler + InputExpose.instance.RYAxis * lerpSpeed * -1 * Time.deltaTime, 0.0f, 1.0f);
             cockpit.transform.localRotation = Quaternion.Lerp(angleDOWN.transform.localRotation, angleUP.transform.localRotation, angler);
         }
+>>>>>>> Stashed changes
     }
 
     private void HandleMisc()
