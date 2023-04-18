@@ -21,8 +21,6 @@ public class Activator : MonoBehaviour
     void Start()
     {
         instance = this;
-        WpnManager.enabled = false;
-        GndCtrl.enabled = false;
     }
 
     public void ActivateMove()
