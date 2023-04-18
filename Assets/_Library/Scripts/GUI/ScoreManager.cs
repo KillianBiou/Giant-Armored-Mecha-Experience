@@ -46,12 +46,4 @@ public class ScoreManager : MonoBehaviour
         sd = JsonUtility.FromJson<ScoreData>(LeaderboardData);
         Debug.Log(Application.persistentDataPath + "/LeaderboardData.json");
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            AddScore("Default Pilot", 0);
-        }
-    }
 }

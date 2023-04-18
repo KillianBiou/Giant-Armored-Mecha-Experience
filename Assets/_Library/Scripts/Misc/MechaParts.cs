@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -42,7 +41,6 @@ public class MechaParts : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Debug.Log(Application.persistentDataPath);
     }
 
     public bool isGrounded {
@@ -165,22 +163,11 @@ public class MechaParts : MonoBehaviour
         UIManager.UpdateScore(score);
     }
 
-    private bool registered = false;
     public void ProcessScore(float mul)
     {
-<<<<<<< Updated upstream
         score = (int)((float)score * mul);
         score += 10 * UIManager.GetRemainingTime();
         ScoreManager.instance.AddScore(name, score);
-=======
-        if(!registered)
-        {
-            registered = true;
-            score = (int)((float)score * mul);
-            score += 10 * UIManager.GetRemainingTime();
-            ScoreManager.instance.AddScore(name, score);
-        }
->>>>>>> Stashed changes
     }
 
     public int GetScore() { return score; }
