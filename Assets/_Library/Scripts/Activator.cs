@@ -21,12 +21,10 @@ public class Activator : MonoBehaviour
     void Start()
     {
         instance = this;
-<<<<<<< Updated upstream
-=======
         WpnManager.enabled = false;
+
         if (GndCtrl)
             GndCtrl.enabled = false;
->>>>>>> Stashed changes
     }
 
     public void ActivateMove()
