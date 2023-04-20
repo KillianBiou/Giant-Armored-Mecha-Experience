@@ -11,10 +11,14 @@ public class UIManager : MonoBehaviour
     [Header("Missile")]
     [SerializeField]
     private GameObject missileSlider;
+    [SerializeField]
+    private ShaderValue cdMissile;
 
     [Header("Railgun")]
     [SerializeField]
     private GameObject railgunSlider;
+    [SerializeField]
+    private ShaderValue cdRailgun;
 
     [Header("Misc")]
     [SerializeField]
@@ -43,11 +47,13 @@ public class UIManager : MonoBehaviour
     public void UpdateMissileCD(float reloadAdvancement)
     {
         missileSlider.GetComponent<Slider>().value = reloadAdvancement;
+        cdMissile.Actualize(reloadAdvancement);
     }
 
     public void UpdateRailgun(float reloadAdvancement)
     {
         railgunSlider.GetComponent<Slider>().value = reloadAdvancement;
+        cdRailgun.Actualize(reloadAdvancement);
     }
 
     public void UpdateScore(float newScore)

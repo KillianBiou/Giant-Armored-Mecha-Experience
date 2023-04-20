@@ -20,6 +20,8 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private GameObject cockpit;
     [SerializeField]
+    private float cockpitDeadzone;
+    [SerializeField]
     private GameObject angleUP, angleDOWN;
     [SerializeField]
     private float maxAngle;
@@ -129,7 +131,8 @@ public class GroundController : MonoBehaviour
     }
 
     private void HandleCockpit()
-    {/*
+    {
+        /*
         float RightY = InputExpose.instance.RYAxis;
 
         Vector3 newEuler = cockpit.transform.localRotation.eulerAngles;
@@ -151,8 +154,11 @@ public class GroundController : MonoBehaviour
 
         cockpit.transform.localRotation = Quaternion.Euler(newEuler);
         */
-        angler = Mathf.Clamp(angler + InputExpose.instance.RYAxis * lerpSpeed * Time.deltaTime, 0.0f, 1.0f);
-        cockpit.transform.localRotation = Quaternion.Lerp(angleDOWN.transform.localRotation, angleUP.transform.localRotation, angler);
+        if(InputExpose.instance.RYAxis < -cockpitDeadzone || InputExpose.instance.RYAxis > cockpitDeadzone)
+        {
+            angler = Mathf.Clamp(angler + InputExpose.instance.RYAxis * lerpSpeed * Time.deltaTime, 0.0f, 1.0f);
+            cockpit.transform.localRotation = Quaternion.Lerp(angleDOWN.transform.localRotation, angleUP.transform.localRotation, angler);
+        }
     }
 
     private void HandleMisc()

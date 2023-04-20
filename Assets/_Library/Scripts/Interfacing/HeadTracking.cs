@@ -19,6 +19,9 @@ public class HeadTracking : MonoBehaviour
     private LayerMask layerMask;
 
     [SerializeField]
+    private LayerMask uiLayer;
+
+    [SerializeField]
     private Vector2 YClamp;
 
     [SerializeField]
@@ -46,8 +49,8 @@ public class HeadTracking : MonoBehaviour
 
     private void Update()
     {
-        if (IsInBound())
-        {
+        /*if (IsInBound())
+        {*/
             target.SetActive(true);
             List<Collider> hit = Sort(Physics.OverlapSphere(transform.position, distance, layerMask));
 
@@ -60,7 +63,7 @@ public class HeadTracking : MonoBehaviour
                     {*/
 
                         RaycastHit castHit;
-                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance))
+                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance, uiLayer))
                         {
                             if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
                             {
@@ -70,13 +73,13 @@ public class HeadTracking : MonoBehaviour
                                 lockTarget.transform.position = castHit.point;
                                 stop = true;
                             }
-                            else
-                            {
-                                SetTarget(null);
-                                lockTarget.SetActive(false);
-                            }
                         }
-                        Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
+                        else
+                        {
+                            lockTarget.SetActive(false);
+                            SetTarget(null);
+                        }
+                Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
                     /*}
                     else
                     {
@@ -90,13 +93,13 @@ public class HeadTracking : MonoBehaviour
                 lockTarget.SetActive(false);
                 SetTarget(null);
             }
-        }
+        /*}
         else
         {
             lockTarget.SetActive(false);
             target.SetActive(false);
             SetTarget(null);
-        }
+        }*/
     }
 
     private void OnTargetFound(GameObject target)
