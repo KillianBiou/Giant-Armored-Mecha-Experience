@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 70653855983719721}
   - component: {fileID: 4119018420046302479}
   - component: {fileID: 3359406003975146385}
-  - component: {fileID: 5122482068103238997}
+  - component: {fileID: 5116494952942532887}
   m_Layer: 0
   m_Name: LaserFill
   m_TagString: Untagged
@@ -84,20 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5122482068103238997
-MeshCollider:
+--- !u!114 &5116494952942532887
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278991169325173548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271382837564f2a478489f950c38fbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: _fill
 --- !u!1 &493557643643545805
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +969,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
-  XYClamp: {x: 0, y: 0}
+  uiLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  YClamp: {x: 0, y: 0}
+  XClamp: {x: 0, y: 0}
   target: {fileID: 1525329086405679538}
   lockTarget: {fileID: 1525329084672697487}
   maxAngle: 25
@@ -1295,7 +1298,7 @@ GameObject:
   - component: {fileID: 8189919191438852610}
   - component: {fileID: 772879648208227702}
   - component: {fileID: 5120077416347271097}
-  - component: {fileID: 2563283681564973780}
+  - component: {fileID: 2469706634773130981}
   m_Layer: 0
   m_Name: MissileFill
   m_TagString: Untagged
@@ -1368,20 +1371,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2563283681564973780
-MeshCollider:
+--- !u!114 &2469706634773130981
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3647093384208476111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271382837564f2a478489f950c38fbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: _fill
 --- !u!1 &4713166878685362933
 GameObject:
   m_ObjectHideFlags: 0
