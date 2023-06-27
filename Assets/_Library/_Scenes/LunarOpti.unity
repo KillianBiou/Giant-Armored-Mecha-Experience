@@ -11062,7 +11062,7 @@ MonoBehaviour:
   bossPos: {fileID: 147347382}
   timeoutedClip: {fileID: 0}
   winClip: {fileID: 0}
-  nbWaves: 12
+  nbWaves: 6
 --- !u!4 &592333430
 Transform:
   m_ObjectHideFlags: 0
@@ -11691,7 +11691,7 @@ PrefabInstance:
     - target: {fileID: 2778095898318739012, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: cockpitDeadzone
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2979601351580813029, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
@@ -11787,12 +11787,12 @@ PrefabInstance:
     - target: {fileID: 5668717013481585240, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.04976894
+      value: -0.028789293
       objectReference: {fileID: 0}
     - target: {fileID: 5668717013481585240, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1171.6934
+      value: 1171.6997
       objectReference: {fileID: 0}
     - target: {fileID: 6698399495417668710, guid: 60c3fbe699bf34a4d965b51294567215,
         type: 3}
