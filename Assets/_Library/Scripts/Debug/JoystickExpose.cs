@@ -42,11 +42,24 @@ public class JoystickExpose : MonoBehaviour
         input = GetComponent<PlayerInput>();
         instance = this;
         playerOne = PlayerInputManager.instance.playerCount == 1 ? true : false;
+        Debug.Log("player : " + playerOne);
 
         /*if (playerOne)
             GetComponent<JoystickMove>().side = Side.LEFT;
         else
             GetComponent<JoystickMove>().side = Side.RIGHT;*/
+    }
+
+    public void OnLstick()
+    {
+    	InputExpose.instance.LXAxis = input.actions["Lstick"].ReadValue<Vector2>().x;
+    	InputExpose.instance.LYAxis = input.actions["Lstick"].ReadValue<Vector2>().y;
+    }
+
+    public void OnRstick()
+    {
+    	InputExpose.instance.RXAxis = input.actions["Rstick"].ReadValue<Vector2>().x;
+    	InputExpose.instance.RYAxis = input.actions["Rstick"].ReadValue<Vector2>().y;
     }
 
     public void OnX()

@@ -60,13 +60,31 @@ public class InitializingControlls : MonoBehaviour
             SoftStartL.enginego();
             SoftStartR.enginego();
         }
+
+        if (PIM.playerCount >= 1 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["R2"].ReadValue<float>() == 1 ? true : false) && !Estarted)
+        {
+            StartCoroutine(InitSeq());
+            Estarted = true;
+            SoftStartL.enginego();
+            SoftStartR.enginego();
+        }
+
+
+        if (Input.GetKeyDown("space") && !Estarted)
+        {
+            StartCoroutine(InitSeq());
+            Estarted = true;
+            SoftStartL.enginego();
+            SoftStartR.enginego();
+        }
     }
 
 
     public void BeginStartup()
     {
         StartCoroutine(OnLight());
-        MissionManager.instance.StartQuestLine();
+        if(MissionManager.instance)
+            MissionManager.instance.StartQuestLine();
     }
 
     IEnumerator OnLight()

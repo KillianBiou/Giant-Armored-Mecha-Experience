@@ -94,7 +94,7 @@
                     "path": "<HID::Logitech Logitech Attack 3>/stick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "Piloting",
                     "action": "Y",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -116,7 +116,7 @@
                     "path": "<HID::Logitech Logitech Attack 3>/stick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "Piloting",
                     "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -125,6 +125,17 @@
                     "name": "",
                     "id": "9861647a-b296-4258-83c1-e747d4734c76",
                     "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d08a1422-3ea0-4002-8f6e-23012bffb45e",
+                    "path": "<HID::Logitech Logitech Dual Action>/hat/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -222,6 +233,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8db0f677-f383-4b35-a220-977446c0c3ff",
+                    "path": "<HID::Logitech Logitech Dual Action>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Piloting",
+                    "action": "Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "51dda033-9e82-4127-a1ba-7c20429ff4a2",
                     "path": "<HID::Logitech Logitech Attack 3>/button4",
                     "interactions": "",
@@ -265,20 +287,308 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GamePad",
+            "id": "504c33d6-0234-470c-9117-0b94e0d8f579",
+            "actions": [
+                {
+                    "name": "L stick",
+                    "type": "Value",
+                    "id": "89f3eced-486d-4566-94e7-ed6641d7ceea",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "R stick",
+                    "type": "Value",
+                    "id": "a90785f0-21b8-42d4-824c-101c930c6a53",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "A",
+                    "type": "Button",
+                    "id": "90beb2e5-a164-418f-ae0e-91a630055f40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "B",
+                    "type": "Button",
+                    "id": "fddd5e89-ecbe-4779-8ab7-53a6bf6811c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "X",
+                    "type": "Button",
+                    "id": "3f7a2f52-ea22-45c9-84f3-e5524680ac73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Y",
+                    "type": "Button",
+                    "id": "5e7f7469-621a-48f1-977f-c17b9611dd22",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L1",
+                    "type": "Button",
+                    "id": "da8c5697-3f9f-4210-a56d-6479a66da79f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L2",
+                    "type": "Button",
+                    "id": "d37af8ce-8391-4279-ac7d-fcbbb3934c6f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R1",
+                    "type": "Button",
+                    "id": "993898cc-628d-492b-a99d-f56ca533badd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R2",
+                    "type": "Button",
+                    "id": "546574c7-89d4-44bd-a257-658e3c4e75e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "197a3cdf-3b03-4ec6-93d4-7d3fbe3bc6cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e188d96-1d52-4b76-aa04-aff3c1ef7934",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee45683f-3bdf-4407-851f-7886274def3a",
+                    "path": "<HID::Logitech Logitech Dual Action>/hat",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc9e94ae-f734-4d93-ae9d-e6e12ac28bf5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91b9317e-caba-4d61-856e-9780a1a49468",
+                    "path": "<HID::Logitech Logitech Dual Action>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f908913-2c97-49b8-b24d-b5f0050a848b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33f288cf-cd20-452e-af8c-90a87b05b5c8",
+                    "path": "<HID::Logitech Logitech Dual Action>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cea18ae5-7850-4303-983a-5036cce44891",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3d4d8c4-83a3-4b37-99a8-65982e5cd8ee",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0cd8dd3f-0564-4a3f-b8a0-d4978b618256",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70f16549-130d-4435-8108-72a5592f171f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dcbcae0-46d4-4f13-91a1-0ee6ee7c3c8e",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96b71dc8-5f4b-4596-9157-304e064e42cf",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4048563-db83-432a-ba64-07e9d04e1dd3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26879ada-3dd2-4d00-8b9d-7856102c7468",
+                    "path": "<HID::Logitech Logitech Dual Action>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c3f7f74-7353-4a4c-86b8-2fe2a5b0dba3",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d2cebf1-6656-45ca-a076-b93d6abad54c",
+                    "path": "<HID::Logitech Logitech Dual Action>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
         {
-            "name": "Joystick",
-            "bindingGroup": "Joystick",
+            "name": "Piloting",
+            "bindingGroup": "Piloting",
             "devices": [
                 {
                     "devicePath": "<HID::Logitech Logitech Attack 3>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 },
                 {
                     "devicePath": "<HID::Enzo PC-PS2 RW>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<HID::Logitech Logitech Dual Action>",
                     "isOptional": true,
                     "isOR": false
                 }

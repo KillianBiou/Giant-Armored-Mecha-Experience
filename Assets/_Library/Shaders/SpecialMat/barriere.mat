@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5753139262358265201
+--- !u!114 &-1081727858569099418
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: -6465566751694194690, guid: c9f6e3eb1c486e04a91903c0c2fcc580,
+  m_Name: barriere
+  m_Shader: {fileID: -6465566751694194690, guid: 5dc21c93a7499ca4e8b5f81df8fb3669,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -78,6 +78,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 2800000, guid: f5347bde27fe07943bae0aa554f6021d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,6 +101,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contact_Thickness: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -106,6 +111,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Line_Thickness: 0.04
+    - _MaxDist: 60
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -117,14 +124,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Thikness: 0.05
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _tiling: 0.2
+    - _opacity: 0.2
+    - _tilling: 10
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.759, g: 0.759, b: 0.759, a: 1}
-    - _Color_1: {r: 0.461, g: 0.461, b: 0.461, a: 1}
+    - _Color: {r: 0, g: 0.9308512, b: 1, a: 1}
+    - _Contact_Color: {r: 0.6933962, g: 1, b: 0.94403267, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
