@@ -3503,7 +3503,7 @@ MonoBehaviour:
   player: {fileID: 0}
   target: {fileID: 0}
   destoyedVFX: {fileID: 0}
-  hp: 0
+  hp: 500
 --- !u!114 &7469952982793471091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3595,6 +3595,15 @@ MonoBehaviour:
   mainBody: {fileID: 2316926264266334753}
   leftArm: {fileID: 3609632981011669427}
   rightArm: {fileID: 1067895400559764243}
+  routineMode: 1
+  routineLoop:
+  - AttackType: 0
+    cdAfter: 3
+  - AttackType: 1
+    cdAfter: 4
+  - AttackType: 2
+    cdAfter: 6
+  currentRoutineCD: 0
   secondPhaseThreshold: 0.6
   ThirdPhaseThreshold: 0.3
   blinkColor: {r: 1, g: 0.504717, b: 0.504717, a: 0}

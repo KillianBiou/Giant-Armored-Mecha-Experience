@@ -1,8 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 //using UnityEditor.Animations;
 using UnityEngine;
+
+[System.Serializable]
+public enum AttackType
+{
+    GATLING,
+    MISSILE,
+    RAILGUN
+}
+
+[System.Serializable]
+public struct AttackPattern
+{
+    public AttackType AttackType;
+    public float cdAfter;
+}
 
 public class AIBossBehaviour : MonoBehaviour
 {
@@ -17,6 +33,14 @@ public class AIBossBehaviour : MonoBehaviour
     private Renderer leftArm;
     [SerializeField]
     private Renderer rightArm;
+
+    [Header("Behaviour")]
+    [SerializeField]
+    private bool routineMode;
+    [SerializeField]
+    private List<AttackPattern> routineLoop;
+    [SerializeField]
+    private float currentRoutineCD;
 
     [Header("Threshold")]
     [SerializeField]
@@ -183,17 +207,42 @@ public class AIBossBehaviour : MonoBehaviour
 
     private void ProcessInput()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (!routineMode)
         {
-            UseGatling();
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                UseGatling();
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                UseMissile();
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                animator.SetTrigger("Fire");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        else
         {
-            UseMissile();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            animator.SetTrigger("Fire");
+            currentRoutineCD -= Time.deltaTime;
+            if (currentRoutineCD <= 0)
+            {
+                currentRoutineCD = routineLoop[0].cdAfter;
+                switch (routineLoop[0].AttackType)
+                {
+                    case AttackType.GATLING:
+                        UseGatling();
+                        break;
+                    case AttackType.MISSILE:
+                        UseMissile();
+                        break;
+                    case AttackType.RAILGUN:
+                        animator.SetTrigger("Fire");
+                        break;
+                }
+                routineLoop.Add(routineLoop[0]);
+                routineLoop.RemoveAt(0);
+            }
         }
     }
 
