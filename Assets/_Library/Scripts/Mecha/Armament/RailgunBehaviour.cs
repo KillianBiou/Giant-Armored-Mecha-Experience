@@ -24,6 +24,7 @@ public class RailgunBehaviour : MonoBehaviour
     public void Fire(GameObject target)
     {
         GameObject railgunEffect = Instantiate(fx, transform.GetChild(0).position, Quaternion.identity);
+        railgunEffect.transform.LookAt(target.transform);
 
         fireSound.Play();
 
