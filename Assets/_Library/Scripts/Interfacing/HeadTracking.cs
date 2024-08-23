@@ -1,19 +1,18 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
+using static OVRPlugin;
 
 public class HeadTracking : MonoBehaviour
 {
     [SerializeField]
-    private float radius;
+    private float aimRadius;
 
     [SerializeField]
     private float distance;
-
-    [SerializeField]
-    private float offset;
 
     [SerializeField]
     private LayerMask layerMask;
@@ -25,7 +24,7 @@ public class HeadTracking : MonoBehaviour
     private Vector2 XClamp;
 
     [SerializeField]
-    private GameObject target;
+    private GameObject visorUI;
 
     [SerializeField]
     private GameObject lockTarget;
@@ -37,65 +36,43 @@ public class HeadTracking : MonoBehaviour
     private WeaponManager weaponManager;
 
     private GameObject targetGO;
-
+    /*
     private void Start()
     {
-        Debug.Log(target.transform.GetChild(0).name);
-        target.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(radius * 2, radius * 2, radius * 2);
-    }
+        Debug.Log(visorUI.transform.GetChild(0).name);
+        visorUI.transform.GetChild(0).GetComponent<RectTransform>().localScale = new Vector3(aimRadius * 2, aimRadius * 2, aimRadius * 2);
+    }*/
 
     private void Update()
     {
-        if (IsInBound())
+        if (!IsGazeInBound())
         {
-            target.SetActive(true);
-            Collider[] hit = Physics.OverlapSphere(transform.position, distance, layerMask);
-            if (hit.Length > 0)
-            {
-                bool stop = false;
-                for(int i = 0; i < hit.Length && !stop; i++)
-                {
-                    /*if (TargetInBound(Quaternion.FromToRotation(transform.forward, hit[i].transform.position - transform.position)))
-                    {*/
-
-                        RaycastHit castHit;
-                        if (Physics.Raycast(transform.position, hit[i].transform.position - transform.position, out castHit, distance))
-                        {
-                            if (castHit.transform.gameObject.layer == LayerMask.NameToLayer("UI"))
-                            {
-                                OnTargetFound(hit[i].gameObject);
-
-                                lockTarget.SetActive(true);
-                                lockTarget.transform.position = castHit.point;
-                                stop = true;
-                            }
-                            else
-                            {
-                                SetTarget(null);
-                                lockTarget.SetActive(false);
-                            }
-                        }
-                        Debug.DrawRay(transform.position, (hit[i].transform.position - transform.position) * 10);
-                    /*}
-                    else
-                    {
-                        lockTarget.SetActive(false);
-                        SetTarget(null);
-                    }*/
-                }
-            }
-            else
-            {
-                lockTarget.SetActive(false);
-                SetTarget(null);
-            }
-        }
-        else
-        {
-            lockTarget.SetActive(false);
-            target.SetActive(false);
+            visorUI.SetActive(false);
             SetTarget(null);
+            return;
         }
+
+        visorUI.SetActive(true);
+        Collider[] hit = Physics.OverlapSphere(transform.position, distance, layerMask);
+        if (hit.Length < 1)
+        {
+            SetTarget(null);
+            return;
+        }
+
+        GameObject bestTarget = null;
+        float bestDot = -1;
+
+        for (int i = 0; i < hit.Length; i++)
+        {
+            float res = Vector3.Dot(transform.forward, (hit[i].transform.position - transform.position).normalized);
+            if (res > 1-(aimRadius/90) && res > bestDot)
+            {
+                bestTarget = hit[i].gameObject;
+                bestDot = res;
+            }
+        }
+        SetTarget(bestTarget);
     }
 
     private void OnTargetFound(GameObject target)
@@ -103,66 +80,37 @@ public class HeadTracking : MonoBehaviour
         SetTarget(target);
     }
 
-    private bool TargetInBound(Quaternion rawAngle)
+    private bool IsGazeInBound()
     {
-        if (rawAngle.eulerAngles.y <= maxAngle * radius)
+        Vector3 rot = transform.parent.localEulerAngles;
+        if (rot.x > XClamp.y && rot.x < 360 - XClamp.x)
         {
-            if (rawAngle.eulerAngles.x <= maxAngle * radius)
-                return true;
-            if (rawAngle.eulerAngles.x - 360 >= -maxAngle * radius)
-                return true;
             return false;
         }
-        if (rawAngle.eulerAngles.y - 360 >= -maxAngle * radius)
+        if (rot.y > YClamp.y && rot.y < 360 - YClamp.x)
         {
-            if (rawAngle.eulerAngles.x <= maxAngle * radius)
-                return true;
-            if (rawAngle.eulerAngles.x - 360 >= -maxAngle * radius)
-                return true;
             return false;
         }
-        return false;
+        return true;
     }
 
-    private bool IsInBound()
+    private void SetTarget(GameObject newTarget)
     {
-        if(transform.parent.localRotation.eulerAngles.y <= YClamp.y)
+        if(newTarget == null)
         {
-            return true;
-        }
-        if (transform.parent.localRotation.eulerAngles.y - 360 >= YClamp.x)
-        {
-            return true;
-        }
-        if (transform.parent.localRotation.eulerAngles.x <= YClamp.x)
-        {
-            return true;
-        }
-        if (transform.parent.localRotation.eulerAngles.x - 360 >= YClamp.y)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private void SetTarget(GameObject target)
-    {
-        if(!target && !targetGO)
-        {
+            lockTarget.SetActive(false);
             return;
         }
-        if(target != targetGO)
-        {
-            targetGO = target;
-            weaponManager.SetTarget(targetGO);
-        }
 
-        if (targetGO)
-        {
-            if (targetGO.GetComponent<AIData>())
-                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.GetComponent<AIData>().hp / (float)targetGO.GetComponent<AIData>().maxHP;
-            else
-                lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetGO.transform.root.GetComponent<AIData>().hp / (float)targetGO.transform.root.GetComponent<AIData>().maxHP;
-        }
+        weaponManager.SetTarget(newTarget);
+
+        lockTarget.SetActive(true);
+        lockTarget.transform.LookAt(newTarget.transform);
+
+
+        AIData targetData = newTarget.transform.GetComponentInChildren<AIData>();
+
+        if (targetData != null)
+            lockTarget.transform.GetChild(0).GetComponentInChildren<Slider>().value = (float)targetData.hp / (float)targetData.maxHP;
     }
 }

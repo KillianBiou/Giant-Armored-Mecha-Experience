@@ -19,6 +19,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject scoreHolder;
 
+    public static UIManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void UpdateMissileNumber(int missileLeft)
     {
         missileSlider.transform.Find("ammo text").GetComponent<TextMeshProUGUI>().text = missileLeft.ToString() + "/12";

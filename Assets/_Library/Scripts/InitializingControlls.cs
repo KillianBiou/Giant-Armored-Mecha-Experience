@@ -48,8 +48,17 @@ public class InitializingControlls : MonoBehaviour
     }
 
     void Update()
-    {
-        if(PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
+    {/*
+        if (PIM.playerCount >= 2 && (GameObject.FindObjectsOfType<PlayerInput>()[0].actions["Trigger"].ReadValue<float>() == 1 ? true : false) && !Estarted)
+        {
+            StartCoroutine(InitSeq());
+            Estarted = true;
+            SoftStartL.enginego();
+            SoftStartR.enginego();
+        }*/
+
+
+        if (InputExpose.instance.RTrigger && !Estarted)
         {
             StartCoroutine(InitSeq());
             Estarted = true;

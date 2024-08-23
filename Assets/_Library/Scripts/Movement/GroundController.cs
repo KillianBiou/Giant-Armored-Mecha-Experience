@@ -22,7 +22,7 @@ public class GroundController : MonoBehaviour
     [SerializeField]
     private float maxAngle;
     [SerializeField]
-    private float lerpSpeed;
+    private float tiltSensibility;
 
     [Header("Other Parameters")]
 
@@ -130,7 +130,13 @@ public class GroundController : MonoBehaviour
 
         Vector3 newEuler = cockpit.transform.localRotation.eulerAngles;
 
-        newEuler.x += RightY * lerpSpeed;
+        float loop = 0;
+        if (cockpit.transform.localEulerAngles.x > 180)
+            loop = 360;
+
+        float newX = Mathf.Clamp(cockpit.transform.localEulerAngles.x - loop + RightY * tiltSensibility, -maxAngle, maxAngle);
+
+        newEuler.x += RightY * tiltSensibility;
 
         Debug.Log(newEuler.x);
 
@@ -145,7 +151,7 @@ public class GroundController : MonoBehaviour
             Debug.Log("< 180");
         }
 
-        cockpit.transform.localRotation = Quaternion.Euler(newEuler);
+        cockpit.transform.localRotation = Quaternion.Euler(new Vector3(newX, 0, 0));
     }
 
     private void HandleMisc()

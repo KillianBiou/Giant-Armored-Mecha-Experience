@@ -147,7 +147,8 @@ public class MechaParts : MonoBehaviour
     public void AddScore(int toAdd)
     {
         score += toAdd;
-        UIManager.UpdateScore(score);
+        if(UIManager.Instance)
+            UIManager.Instance.UpdateScore(score);
     }
 
     public void ProcessScore(float mul)
