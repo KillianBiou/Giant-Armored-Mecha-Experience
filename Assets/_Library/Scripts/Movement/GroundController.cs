@@ -143,12 +143,12 @@ public class GroundController : MonoBehaviour
         if (newEuler.x > 180f)
         {
             newEuler.x = Mathf.Clamp(newEuler.x, 360 - maxAngle, 360);
-            Debug.Log("> 180");
+            //Debug.Log("> 180");
         }
         else if (newEuler.x < 180f)
         {
             newEuler.x = Mathf.Clamp(newEuler.x, 0, maxAngle);
-            Debug.Log("< 180");
+            //Debug.Log("< 180");
         }
 
         cockpit.transform.localRotation = Quaternion.Euler(new Vector3(newX, 0, 0));
@@ -162,7 +162,6 @@ public class GroundController : MonoBehaviour
         if (canFly && !mecha.isGrounded && verticalThrust > 0f)
         {
             mecha.ChangeControllerType(ControllerType.SPACE_CONTROLLER);
-            rb.useGravity = false;
         }
     }
 }

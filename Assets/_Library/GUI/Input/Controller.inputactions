@@ -347,6 +347,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pedals",
+                    "type": "Value",
+                    "id": "c198d67a-da60-4cd8-b97a-e3675a5cfb64",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -523,6 +532,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ddb19815-c344-4634-b476-fbe015c76f36",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Pedals",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3f70f63-b2af-4d19-8859-15a3c157b2a4",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "Scale(factor=-1)",
+                    "groups": "",
+                    "action": "Pedals",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

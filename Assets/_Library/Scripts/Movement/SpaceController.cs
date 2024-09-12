@@ -32,14 +32,23 @@ public class SpaceController : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Rigidbody>().useGravity = false;
+        rb = GetComponent<Rigidbody>();
+        mecha = GetComponent<MechaParts>();
+        rb.useGravity = false;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        mecha = GetComponent<MechaParts>();
-        rb = GetComponent<Rigidbody>();
+        mecha.mechaAnim.SetBool("isFlying", true);
+        rb.useGravity = false;
     }
+
+    private void OnDisable()
+    {
+        mecha.mechaAnim.SetBool("isFlying", false);
+        rb.useGravity = true;
+    }
+
 
     private void FixedUpdate()
     {
@@ -146,6 +155,17 @@ public class SpaceController : MonoBehaviour
 
         //transform.rotation = Quaternion.Euler(new Vector3(Mathf.Clamp(transform.rotation.eulerAngles.x, -maxXTilt, maxXTilt), transform.rotation.eulerAngles.y, Mathf.Clamp(transform.rotation.eulerAngles.z, -maxZTilt, maxZTilt)));
     }
+
+    private void HandleDiferentialMode()
+    {
+        float leftY = InputExpose.instance.LYAxis;
+        float rightY = InputExpose.instance.RYAxis;
+    }
+
+
+
+
+
 
     private void HandleMisc()
     {

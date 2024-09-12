@@ -16,6 +16,8 @@ public class GamepadExpose : MonoBehaviour
     public float RXAxis;
     [Tooltip("Y Axis (-1, 1)")]
     public float RYAxis;
+    [Tooltip("up pedal Axis (-1, 1)")]
+    public float UpAxis;
 
     [Header("Buttons")]
     public bool LButtonTwo, RButtonTwo;
@@ -138,6 +140,7 @@ public class GamepadExpose : MonoBehaviour
         SynchronizeValue();
     }
 
+
     public void OnChangePlayer()
     {
         if (PlayerInputManager.instance.playerCount == 2)
@@ -158,9 +161,6 @@ public class GamepadExpose : MonoBehaviour
         InputExpose.instance.L4Button = LButtonFour;
         InputExpose.instance.L5Button = LButtonFive;
         InputExpose.instance.LTrigger = LTrigger;
-        /*
-        if (input.devices.Count == 2)
-            InputExpose.instance.Pedals = Pedals;*/
 
         InputExpose.instance.RXAxis = RXAxis;
         InputExpose.instance.RYAxis = RYAxis;
@@ -169,10 +169,8 @@ public class GamepadExpose : MonoBehaviour
         InputExpose.instance.R4Button = RButtonFour;
         InputExpose.instance.R5Button = RButtonFive;
         InputExpose.instance.RTrigger = RTrigger;
-        /*
-        if (input.devices.Count == 2)
-            InputExpose.instance.Pedals = Pedals;*/
-        
+
+        InputExpose.instance.Pedals = Pedals;
     }
 
     public void ChangePlayer()
